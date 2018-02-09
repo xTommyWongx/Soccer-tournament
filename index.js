@@ -15,4 +15,8 @@ const redisClient = redis.createClient({
 
 const ViewRouter = require('./ViewRouter');
 
+const {app} = require('./utils/init-app')();
+
 app.use('/', new ViewRouter().router());
+
+app.listen(8080)
