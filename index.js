@@ -1,8 +1,3 @@
-const express = require('express');
-const app = express();
-const port = 3000;
-const hb = require('express-handlebars');
-
 // General Initialization
 require('dotenv').config();
 const REDIS_HOST = process.env.REDIS_HOST || 'localhost';
@@ -18,14 +13,12 @@ const redisClient = redis.createClient({
     port: REDIS_PORT
 })
 
-app.engine('handlebars', hb({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
-
-
 const ViewRouter = require('./ViewRouter');
 
 const {app} = require('./utils/init-app')();
 
 app.use('/', new ViewRouter().router());
 
-app.listen(8080)
+app.listen(8080, () => {
+    console.log(`Server listening on port 8080`);
+})
