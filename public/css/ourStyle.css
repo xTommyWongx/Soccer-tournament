@@ -1,8 +1,20 @@
 #navbarCollapse li {
-    border: 1px solid rgb(92, 181, 233);
+    border: 1px solid rgba(228, 231, 9, 0.952);
     border-radius: 10px;
     /* background-color: #fff; */
 }
 #navbarCollapse a{
-    color:#fff;
+    font-size: 22px;
+    color:rgba(228, 231, 9, 0.952);
+}
+body {
+    background: url('/img/soccerPitch.jpg');
+    background-size: cover;
+   
+}
+.navbar {
+    background: url('/img/soccerPitch.jpg');
+    background-size: cover;
+    
+    
 }
