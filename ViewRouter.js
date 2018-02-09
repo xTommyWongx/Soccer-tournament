@@ -17,6 +17,9 @@ module.exports = class ViewRouter{
         router.get('/teams', isLoggedIn, (req,res)=>res.render("teams",{user:req.user.profile.displayName}));
        
         router.get('/login', isNotLoggedIn, (req,res)=>res.render("login"));
+        router.get('/register',isNotLoggedIn, (req,res)=>{
+            res.render("register");
+        })
         router.get('/logout',(req,res)=>{
             req.logout();
             res.redirect('/login');

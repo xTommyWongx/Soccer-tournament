@@ -34,6 +34,14 @@ body {
     background: linear-gradient(-90deg, rgb(23, 110, 168), rgb(9, 125, 192));
 }
 
+#register {
+    padding-top: 100px;
+}
+
+#profile-pic img{
+    max-width: 400px;
+}
+
 
 /* login page */
 
