@@ -24,9 +24,8 @@ app.set('view engine', 'handlebars');
 
 const ViewRouter = require('./ViewRouter');
 
+const {app} = require('./utils/init-app')();
+
 app.use('/', new ViewRouter().router());
 
-app.listen(port,  () => {
-    console.log(`Server listening on ${port}`);
-})
-
+app.listen(8080)
