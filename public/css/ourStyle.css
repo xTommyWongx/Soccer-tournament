@@ -14,7 +14,8 @@ body {
 }
 .navbar {
     background: url('/img/soccerPitch.jpg');
-    background-size: cover;
-    
-    
+    background-size: cover; 
+}
+#navbarCollapse a:hover {
+    color: #fff;
 }
