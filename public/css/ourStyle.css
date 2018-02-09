@@ -1,0 +1,8 @@
+#navbarCollapse li {
+    border: 1px solid rgb(92, 181, 233);
+    border-radius: 10px;
+    /* background-color: #fff; */
+}
+#navbarCollapse a{
+    color:#fff;
+}
