@@ -19,4 +19,6 @@ const {app} = require('./utils/init-app')();
 
 app.use('/', new ViewRouter().router());
 
-app.listen(8080)
+app.listen(8080, () => {
+    console.log(`Server listening on port 8080`);
+})
