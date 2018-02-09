@@ -21,7 +21,10 @@
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
     "knex": "^0.14.3",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
     "pg": "^7.4.1",
     "redis": "^2.8.0"
   }
