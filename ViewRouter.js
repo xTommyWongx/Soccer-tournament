@@ -10,7 +10,7 @@ module.exports = class ViewRouter{
         router.get('/teams',(req,res)=>res.render("teams"));
         router.get('/login',(req,res)=>res.render("login"));
         router.get('/logout',(req,res)=> res.send());
-
+        router.get('/tournaments',(req,res)=>res.render("tournaments"));
 
         return router;
     }

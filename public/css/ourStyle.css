@@ -1,21 +1,87 @@
 #navbarCollapse li {
-    border: 1px solid rgba(228, 231, 9, 0.952);
+    border: 1px solid rgb(89, 186, 211);
     border-radius: 10px;
-    /* background-color: #fff; */
 }
 #navbarCollapse a{
-    font-size: 22px;
-    color:rgba(228, 231, 9, 0.952);
+    /* font-size: 22px; */
+    color: #fff;
 }
 body {
     background: url('/img/soccerPitch.jpg');
     background-size: cover;
-   
+}
+#overlay {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    background-color: black;
+    opacity: 0.4;
 }
 .navbar {
-    background: url('/img/soccerPitch.jpg');
+    /* background: url('/img/soccerPitch.jpg'); */
     background-size: cover; 
+    border-bottom: 1px solid rgb(124, 115, 115);
 }
-#navbarCollapse a:hover {
-    color: #fff;
+#loginPage {
+    margin-top: 35%;
 }
+#navbarCollapse li:hover {
+    background-color: rgb(58, 57, 57);
+    opacity: 0.5;
+}
+
+.facebook-btn {
+    background: linear-gradient(-90deg, rgb(23, 110, 168), rgb(9, 125, 192));
+}
+
+
+/* login page */
+
+.loginBody {
+    height: 100vh;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    z-index: 3;
+  }
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #0ab0da;
+    border-radius: 20px;
+    opacity: 0.9;
+  }
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  .form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  /* end of login */

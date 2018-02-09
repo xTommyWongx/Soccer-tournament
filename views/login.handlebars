@@ -1,1 +1,34 @@
-<h1>This is login</h1>
+<div class="text-center loginBody">
+    <form class="form-signin">
+        
+        {{!-- social login start --}}
+
+        <div class="btn-group py-3">
+            <a class='btn btn-primary disabled text-white'>
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a class='btn facebook-btn text-white' href='/auth/facebook'><i class="fa">Sign in with Facebook</i></a>
+        </div>
+        <br />
+        <br />
+        
+        {{!-- end of social login --}}
+        <h1 class="h5 mb-3 font-weight-normal text-white">Log in with email</h1>
+
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="Password" required>
+
+        <div class="checkbox mb-3 text-white">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-danger btn-block" type="submit">Sign in</button>
+        <br>
+        <a href="/register" class="btn btn-primary btn-block">Sign up</a>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+</div>
