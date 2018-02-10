@@ -6,6 +6,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse text-center" id="navbarCollapse">
+          {{#if user}}
           <ul class="navbar-nav m-auto">
             <li class="nav-item btn-sm ">
               <a class="nav-link " href="/">Home</a>
@@ -25,15 +26,16 @@
               <a class="nav-link" href="/tournaments">Tournaments</a>
             </li>&nbsp
           </ul>
+          {{/if}}
           
-          <ul class="navbar-nav">
+          <ul class="navbar-nav ml-auto">
             {{#if user}}
             <li class="navbar-nav btn-sm ">
-              <a href="/logout" class="nav-link">Logout</a>
+              <a href="/auth/logout" class="nav-link">Logout</a>
             </li>&nbsp
             {{else}}
             <li class="nav-item btn-sm ">
-              <a href="/login" class="nav-link">Login</a>
+              <a href="/auth/login" class="nav-link">Login</a>
             </li>
             {{/if}}
           </ul>

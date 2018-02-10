@@ -1,21 +1,51 @@
 <div class="row text-white" id="register">
-    <div class="col-md-4 m-auto">
-        <form action="">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control"><br>
-                <label for="password">Password</label>
-                <input type="password" class="form-control"><br>
-                <label for="email">Email</label>
-                <input type="email" class="form-control"><br>
-                <label for="phone">Phone No.</label>
-                <input type="text" class="form-control"><br>
-                <label for="age">Age</label>
-                <input type="text" class="form-control">
-                <br>
-                <br>
-                <input type="submit" class="form-control btn btn-danger" value="Submit">
+    <div class="col-lg-8 m-auto">
+        <div class="text-center">
+            Registration
+        </div>
+        <form action="/api/player/" method="POST" >
+            <div class="form-row">
+                <div class="from-group col-md-6">
+                    <label for="fristName">First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" id="firstName">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name" id="lastName">
+                </div>
             </div>
+            <div class="form-group">
+                <label for="userName">Username</label>
+                <input type="text" class="form-control" placeholder="Username" id="username">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" id="password">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" placeholder="Email" id="email">
+            </div>
+
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <select name="location" id="location" class="form-control">
+                    <option selected>Choose one</option>
+                    <option value="Central">Central</option>
+                    <option value="Wanchai">Wanchai</option>
+                    <option value="Sheung Wan">Sheung Wan</option>
+                </select>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-dark btn-block" value="Submit">
         </form>
     </div>
 </div>
