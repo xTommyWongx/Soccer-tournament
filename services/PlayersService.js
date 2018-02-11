@@ -24,15 +24,17 @@ module.exports = class PlayerService {
                             }
                             user.password = hash;
                             console.log(user.password);
-                            return self.knex('players').insert({
+                            return self.knex('players')
+                            .returning('id')
+                            .insert({
                                 firstname: user.firstName,
                                 lastname: user.lastName,
                                 username: user.username,
                                 email: user.email,
                                 password: user.password,
                                 location: user.location
-                            }).then((result)=>{
-                                console.log(result);
+                            }).then((id)=>{
+                                console.log("result",id);
                             }).catch((err)=>console.log(err));
                         })
                     });

@@ -9,13 +9,13 @@ module.exports = class ViewRouter {
     router() {
         
         const router = express.Router();
-        router.get('/', isLoggedIn,(req, res) => res.render("home",{ user: req.user.profile.displayName }));
+        router.get('/', isLoggedIn,(req, res) => res.render("home"));
         router.get('/profile', isLoggedIn, (req, res) => {
-            res.render("profile", { user: req.user.profile.displayName });
+            res.render("profile", { user: req.user.user.username });
         });
-        router.get('/dashboard', isLoggedIn, (req, res) => res.render("dashboard", { user: req.user.profile.displayName }));
-        router.get('/teams', isLoggedIn, (req, res) => res.render("teams", { user: req.user.profile.displayName }));
-        router.get('/tournaments', (req, res) => res.render("tournaments", { user: req.user.profile.displayName }));
+        router.get('/dashboard', isLoggedIn, (req, res) => res.render("dashboard"));
+        router.get('/teams', isLoggedIn, (req, res) => res.render("teams"));
+        router.get('/tournaments', (req, res) => res.render("tournaments"));
 
         
         router.get('/register', isNotLoggedIn, (req, res) => {
