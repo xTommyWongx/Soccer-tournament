@@ -8,6 +8,9 @@ module.exports = class AuthRouter {
     router(){
         let router = express.Router();
         router.get('/login', isNotLoggedIn, (req, res) => res.render("login"));
+        router.post('/login',(req,res,next) => {
+            console.log(req.body);
+        })
         router.get('/logout', (req, res) => {
             req.logout();
             res.redirect('/auth/login');
@@ -15,7 +18,7 @@ module.exports = class AuthRouter {
         
         router.get("/facebook", passport.authenticate('facebook', {
             authType: 'reauthenticate',
-            scope: ['user_friends', 'manage_pages']
+            scope: ['public_profile','user_friends', 'manage_pages']
         }));
 
         router.get("/facebook/callback", passport.authenticate('facebook'), (req, res) => {

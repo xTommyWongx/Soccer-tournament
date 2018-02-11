@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParse = require('body-parser');
 
 module.exports = class PlayersRouter {
     constructor(playersService){
@@ -18,7 +19,19 @@ module.exports = class PlayersRouter {
 
     }
     post(req,res){
-
+        console.log("post active ", req.body);
+        return this.playersService.create(req.body)
+            .then((data) => {
+                req.flash('success_msg', 'You are now registered and can login');
+                res.redirect('/auth/login');
+            })
+            .catch((err) => {
+                console.log(err);
+                if(err == "emailExists"){
+                    req.flash('error_msg', 'Email already in use'); 
+                }
+                res.redirect('/register')
+            });  
     }
     put(req,res){
 

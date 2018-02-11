@@ -1,7 +1,13 @@
 #navbarCollapse li {
     border: 1px solid rgb(89, 186, 211);
+    box-shadow: 0 5px #096880;
+    outline: none;
     border-radius: 10px;
 }
+#navbarCollapse li:active { 
+    box-shadow: 0 3px #333;
+    transform: translateY(2px);}
+
 #navbarCollapse a{
     /* font-size: 22px; */
     color: #fff;
@@ -10,6 +16,15 @@ body {
     background: url('/img/soccerPitch.jpg');
     background-size: cover;
 }
+
+#message {
+    display: flex;
+    
+    margin-top : 70px;
+    justify-content: center;
+    align-items: center;
+}
+
 #overlay {
     height: 100%;
     width: 100vw;
@@ -22,9 +37,7 @@ body {
     background-size: cover; 
     border-bottom: 1px solid rgb(124, 115, 115);
 }
-#loginPage {
-    margin-top: 35%;
-}
+
 #navbarCollapse li:hover {
     background-color: rgb(58, 57, 57);
     opacity: 0.5;
@@ -37,7 +50,7 @@ body {
 #register {
     font-family: 'Nanum Brush Script', cursive;
     font-size: 1.2em;
-    padding-top: 100px;
+    
 }
 #register form{
     
@@ -67,7 +80,6 @@ body {
     align-items: center;
     -webkit-box-pack: center;
     justify-content: center;
-    padding-top: 40px;
     padding-bottom: 40px;
     z-index: 3;
   }

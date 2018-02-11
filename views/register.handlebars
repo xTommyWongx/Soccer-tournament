@@ -3,42 +3,43 @@
         <div class="text-center">
             Registration
         </div>
-        <form action="/api/player/" method="POST" >
+        <form action="/api/players/" method="POST">
             <div class="form-row">
                 <div class="from-group col-md-6">
                     <label for="fristName">First Name</label>
-                    <input type="text" class="form-control" placeholder="First Name" id="firstName">
+                    <input type="text" class="form-control" placeholder="First Name" name="firstName">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last Name" id="lastName">
+                    <input type="text" class="form-control" placeholder="Last Name" name="lastName">
                 </div>
             </div>
             <div class="form-group">
                 <label for="userName">Username</label>
-                <input type="text" class="form-control" placeholder="Username" id="username">
+                <input type="text" class="form-control" placeholder="Username" name="username">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" id="password">
+                    <input type="password" class="form-control" placeholder="Password" name="password">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword">
+                    <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword">
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" placeholder="Email" id="email">
+                <input type="email" class="form-control" placeholder="Email" name="email">
             </div>
 
 
+            
             <div class="form-group">
                 <label for="location">Location</label>
-                <select name="location" id="location" class="form-control">
-                    <option selected>Choose one</option>
+                <select name="location" name="location" class="form-control">
+                    <option value="">Choose one</option>
                     <option value="Central">Central</option>
                     <option value="Wanchai">Wanchai</option>
                     <option value="Sheung Wan">Sheung Wan</option>

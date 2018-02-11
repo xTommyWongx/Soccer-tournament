@@ -16,11 +16,13 @@ module.exports = (app) => {
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
         callbackURL: `/auth/facebook/callback`
     }, (accessToken, refreshToken, profile, cb)=>{
+            console.log(profile);
             return cb(null,{profile:profile,accessToken:accessToken});
         }
     )); 
     
     passport.serializeUser((user,done)=>{
+        // console.log(user);
         done(null,user);
     });
     

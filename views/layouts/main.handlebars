@@ -13,13 +13,16 @@
 </head>
 <body>
     {{> header}}
-    <div id="overlay"></div>
+    {{!-- <div id="overlay"></div> --}}
     <div class="container">
+        <div id="message" class="row">
+            <div class="col-md-6 m-auto text-center">
+                {{> _msg}}
+                {{> _errors}}
+            </div>   
+        </div> 
     {{{body}}}
-    </div>
-    
-
-    {{> footer}}
-    
+    </div> 
+    {{> footer}}   
 </body>
 </html>
