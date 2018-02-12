@@ -14,7 +14,7 @@
 }
 body {
     background: url('/img/soccerPitch.jpg');
-    background-size: cover;
+    background-size: cover;  
 }
 
 #message {
@@ -62,9 +62,58 @@ body {
     border-radius: 20px;
 }
 
-#profile-pic img{
-    max-width: 400px;
+#profile-pic {
+    max-width: 350px;
 }
+/* profile pic */
+img {
+    border:solid 2px;
+    border-bottom-color:#ffe;
+    border-left-color:#eed;
+    border-right-color:#eed;
+    border-top-color:#ccb;
+   
+  }
+  
+  .frame {
+    background-color:#ddc;
+    border:solid 1vmin #eee;
+    border-bottom-color:#fff;
+    border-left-color:#eee;
+    border-radius:10px;
+    border-right-color:#eee;
+    border-top-color:#ddd;
+    box-shadow:0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+    box-sizing:border-box;
+    display:inline-block;
+    /* margin:10vh 10vw; */
+    /* height:80vh; */
+    /* padding:8vmin; */
+    position:relative;
+    text-align:center;
+  }
+  /* .frame:before {
+      border-radius:10px;
+      bottom:-1vmin;
+      box-shadow:0 2px 5px 0 rgba(0,0,0,.25) inset;
+      content:"";
+      left:-1vmin;
+      position:absolute;
+      right:-1vmin;
+      top:-1vmin;
+    }
+  .frame:after {
+      border-radius:10px;
+      bottom:-1.5vmin;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
+      content:"";
+      left:-1.5vmin;
+      position:absolute;
+      right:-1.5vmin;
+      top:-1.5vmin;
+    } */
+
+    /* end of profile pic */
 
 
 /* login page */
