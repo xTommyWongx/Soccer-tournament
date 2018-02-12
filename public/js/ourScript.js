@@ -1,4 +1,3 @@
-import { TIMEOUT } from "dns";
 
 // window.onload = function(){
   

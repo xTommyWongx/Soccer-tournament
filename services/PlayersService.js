@@ -47,8 +47,20 @@ module.exports = class PlayerService {
     delete(userId) {
 
     }
-    update(userId, newUser) {
-
+    update(user, image) {
+         console.log("user,,",user);
+            return this.knex('players')
+                        .where('email',user.user.email)
+                        .update({
+                            img : image
+                        })
+                        .then(()=>{
+                            return this.knex.select().from('players')
+                                    .where('email', user.user.email)
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        })
     }
     list() {
 

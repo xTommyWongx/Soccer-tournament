@@ -3,15 +3,28 @@
 <div class="row  text-white text-center">
     <div class="col-md-6 mx-auto">
         <div class="frame">
-            <img src="/img/soccerPitch.jpg" alt="profile picture" id="profile-pic" class="img-fluid">
+            <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid">
         </div>
-        <input type="file">       
+        <br>
+        <br>
+        <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i> 
+                </label>
+                <input id="file-upload" type="file" name="profileimg"/>
+                <input type="submit" value="submit">
+            </div>
+        </form>
     </div>
 </div>
 <div class="row">
     <div class="col mx-auto">
         <hr>
-        <p>Edit Profile | Edit profile img</p>
+        <p>This is message {{msg}}</p>
+        <p>filepath: {{file}}</p>
+        <p>user: {{user.user.id}}</p>
+        <p>ima: {{user.user.img}}</p>
         <hr>
     </div>
 </div>

@@ -6,7 +6,8 @@
 }
 #navbarCollapse li:active { 
     box-shadow: 0 3px #333;
-    transform: translateY(2px);}
+    transform: translateY(2px);
+}
 
 #navbarCollapse a{
     /* font-size: 22px; */
@@ -25,13 +26,25 @@ body {
     align-items: center;
 }
 
-#overlay {
-    height: 100%;
-    width: 100vw;
-    position: absolute;
-    background-color: black;
-    opacity: 0.4;
+/* profile upload buttom */
+.custom-file-upload {
+    border: 1px solid rgb(54, 53, 53);
+    border-radius: 10px;
+    box-shadow: 0 5px  #282929;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
+.custom-file-upload:active {
+    box-shadow: 0 2px #282929;
+    transform: translateY(2px);
+}
+
+#file-upload{
+    display: none;
+}
+/* profile upload end */
+
 .navbar {
     /* background: url('/img/soccerPitch.jpg'); */
     background-size: cover; 
@@ -67,23 +80,27 @@ body {
 }
 /* profile pic */
 img {
-    border:solid 2px;
+    /* border:solid 2px;
     border-bottom-color:#ffe;
     border-left-color:#eed;
     border-right-color:#eed;
-    border-top-color:#ccb;
+    border-top-color:#ccb; */
+    border-radius: 10px;
    
+  }
+  #cloudIcon {
+      color: #fff;
   }
   
   .frame {
-    background-color:#ddc;
-    border:solid 1vmin #eee;
-    border-bottom-color:#fff;
-    border-left-color:#eee;
+    background-color:rgb(46, 46, 44);
+    border:solid 1vmin rgb(51, 50, 50);
+    border-bottom-color:rgb(59, 58, 58);
+    border-left-color:rgb(59, 58, 58);
     border-radius:10px;
-    border-right-color:#eee;
-    border-top-color:#ddd;
-    box-shadow:0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+    border-right-color:rgb(59, 58, 58);
+    border-top-color:rgb(59, 58, 58);
+    box-shadow:0 0 5px 0 rgb(59, 58, 58) inset, 0 5px 10px 5px rgba(0,0,0,.25);
     box-sizing:border-box;
     display:inline-block;
     /* margin:10vh 10vw; */
@@ -92,7 +109,7 @@ img {
     position:relative;
     text-align:center;
   }
-  /* .frame:before {
+   .frame:before {
       border-radius:10px;
       bottom:-1vmin;
       box-shadow:0 2px 5px 0 rgba(0,0,0,.25) inset;
@@ -102,7 +119,7 @@ img {
       right:-1vmin;
       top:-1vmin;
     }
-  .frame:after {
+  /* .frame:after {
       border-radius:10px;
       bottom:-1.5vmin;
       box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
@@ -111,7 +128,7 @@ img {
       position:absolute;
       right:-1.5vmin;
       top:-1.5vmin;
-    } */
+    }  */
 
     /* end of profile pic */
 
