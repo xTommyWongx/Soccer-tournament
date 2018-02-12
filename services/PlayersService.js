@@ -9,13 +9,13 @@ module.exports = class PlayerService {
         return this.knex.select('id').from('players').where('email', user.email)
             .then((result) => {
                 
-                console.log(result);
-                console.log("result,",result.length);
+                // email already in use
                 if ( result.length > 0 ) {
                          let err = "emailExists";
                          return err;
                 } else {
-                    console.log("create user");
+                
+                    // encrypt the password
                     bcrypt.genSalt(10, (err, salt) => {
                         bcrypt.hash(user.password , salt, (err, hash)=>{
                             if(err){
@@ -23,7 +23,8 @@ module.exports = class PlayerService {
                                 throw err;
                             }
                             user.password = hash;
-                            console.log(user.password);
+                            
+                            // save the new user in the db
                             return self.knex('players')
                             .returning('id')
                             .insert({
