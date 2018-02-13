@@ -1,3 +1,7 @@
-{{#if user.user.manager}}
-    <button class="btn btn-danger">Create Team</button>
+{{!-- if user is manager --}}
+{{#if user.user.manager }}
+    {{!-- but haven't formed any team yet, then show 'create team' --}}
+    {{#unless user.user.team_id}}
+    <a href="/createTeam" class="btn btn-danger my-3">Create Team</a>
+    {{/unless}}
 {{/if}}

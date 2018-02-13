@@ -1,0 +1,22 @@
+{{!-- if user is manager --}}
+{{#if user.user.manager }}
+    {{!-- but haven't formed any team yet, then show 'create team' --}}
+    {{#unless user.user.team_id}}
+        <div class="row text-white">
+
+            <div class="col-md-8 mx-auto">
+                <div class="text-center">
+                    Create Your Team
+                </div>
+                <form action="/api/managers/createTeam" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter name for your team">
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-info">
+
+                </form>
+            </div>
+        </div>
+    {{/unless}}
+{{/if}}

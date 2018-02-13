@@ -14,6 +14,7 @@ module.exports = class ViewRouter {
             res.render("profile");
         });
         router.get('/dashboard', isLoggedIn, (req, res) => res.render("dashboard"));
+        router.get('/createTeam', isLoggedIn, (req,res) => res.render("createTeam"));
         router.get('/teams', isLoggedIn, (req, res) => res.render("teams"));
         router.get('/tournaments', (req, res) => res.render("tournaments"));
 
