@@ -7,8 +7,6 @@ const NODE_ENV = process.env.NODE_ENV || 'development' ;
 const knexFile = require('../knexfile')[NODE_ENV];
 const knex = require('knex')(knexFile);
 
-
-
 module.exports = (app) => {
     app.use(passport.initialize());
     app.use(passport.session());
@@ -42,7 +40,6 @@ module.exports = (app) => {
                     }).catch((err) => {
                         console.log(err);
                     });
-
                 })
         }
     )); 
@@ -61,8 +58,11 @@ module.exports = (app) => {
                 // Match password
                 bcrypt.compare(password, user[0].password, (err,match) => {
                    if(err) throw err;
-                   if(match)
+                   if(match){
+                        console.log('user[0] is', user[0]);
                         return done(null,{user:user[0]});
+                   }
+                        
                    if(!match)
                         return done(null,false,{ message :"Incorrect password"});
                 } )

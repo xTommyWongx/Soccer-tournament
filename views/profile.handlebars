@@ -1,14 +1,30 @@
-
-    <div class="row py-3">
+<div class="row py-3">
+</div>
+<div class="row  text-white text-center">
+    <div class="col-md-6 mx-auto">
+        <div class="frame">
+            <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid">
+        </div>
+        <br>
+        <br>
+        <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i> 
+                </label>
+                <input id="file-upload" type="file" name="profileimg"/>
+                <input type="submit" class="save" value="Save">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col mx-auto">
+       
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 mx-auto">
 
     </div>
-    <div class="row my-5 text-white text-center">
-        <div class="col-lg-4" id="profile-pic">
-            <img src="/img/soccerPitch.jpg" alt="profile picture">
-            <br>
-            <br>
-        </div>
-        <div class="col-lg-8">
-            <p>Welcome to ur profile {{user}}</p>
-        </div>
-    </div>
+</div>
