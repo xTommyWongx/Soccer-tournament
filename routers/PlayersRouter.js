@@ -5,7 +5,7 @@ const path = require('path');
 
 // Set The Storage Engine
 const storage = multer.diskStorage({
-    destination: 'uploads/',
+    destination: './public/uploads/',
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
@@ -67,16 +67,23 @@ module.exports = class PlayersRouter {
                     //     msg: 'File Uploaded!',
                     //     file: `/uploads/${req.file.filename}`
                     // });
-                    let file = `uploads/${req.file.filename}`;
+                    let file = `/uploads/${req.file.filename}`;
                     return this.playersService.update(req.user, file)
                         .then((user) => {
-                            console.log('data,,',user);
+                            console.log('data,,', user[0]);
                             req.flash('success_msg', 'Image upload successful');
-                            res.render('profile');
+                            req.session.passport.user.user = user[0];
+
+                            req.session.save(function (err) {
+                                req.session.reload(function (err) {
+                                    res.render('profile');
+                                });
+                            });
+
                         })
                         .catch((err) => {
                             console.log(err);
-                             
+
                         });
                 }
             }

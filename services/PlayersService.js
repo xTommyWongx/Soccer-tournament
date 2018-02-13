@@ -57,6 +57,10 @@ module.exports = class PlayerService {
                         .then(()=>{
                             return this.knex.select().from('players')
                                     .where('email', user.user.email)
+                                    // .then((user)=>{
+                                    //     console.log("users ",user[0]);
+                                    //     return user;
+                                    // })
                         })
                         .catch((err) => {
                             console.log(err);
