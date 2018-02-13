@@ -91,6 +91,22 @@ img {
   #cloudIcon {
       color: #fff;
   }
+  /* profile img save button */
+  .save {
+    width: 200px;
+    height: 40px;
+    border: 1/3px solid #fff;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px  #282929;
+    background: linear-gradient(-90deg, rgb(119, 205, 245), rgb(9, 125, 192));
+  }
+  .save:active {
+    box-shadow: 0 2px #282929;
+    transform: translateY(2px);
+}
+
   
   .frame {
     background-color:rgb(46, 46, 44);
