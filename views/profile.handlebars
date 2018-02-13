@@ -10,17 +10,20 @@
         <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="file-upload" class="custom-file-upload">
-                    <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i> 
+                    <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
                 </label>
-                <input id="file-upload" type="file" name="profileimg"/>
-                <input type="submit" class="save" value="Save">
+                <input id="file-upload" type="file" name="profileimg" accept="image/*" capture/>&nbsp
+
+                <input type="submit" class="btn btn-success save" value="Save">
+
+
             </div>
         </form>
     </div>
 </div>
 <div class="row">
     <div class="col mx-auto">
-       
+
     </div>
 </div>
 <div class="row">

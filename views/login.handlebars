@@ -1,5 +1,5 @@
 <div class="text-center loginBody">
-    <form class="form-signin" action="/auth/login" method="POST">
+    <form class="form-signin loginFrame" action="/auth/login" method="POST">
         
         {{!-- social login start --}}
 
@@ -17,7 +17,7 @@
 
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
-
+        <br>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" class="form-control" placeholder="Password" required>
 
@@ -26,9 +26,9 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <input class="btn btn-danger btn-block" type="submit" value="Sing in">
+        <input class="btn btn-info btn-block" type="submit" value="Sing in">
         <br>
         <a href="/register" class="btn btn-primary btn-block">Sign up</a>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+        <br><br>
     </form>
 </div>
