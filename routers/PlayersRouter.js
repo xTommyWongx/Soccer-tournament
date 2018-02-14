@@ -88,6 +88,7 @@ module.exports = class PlayersRouter {
         console.log("get");
         return this.playersService.list()
                 .then((players)=>{
+                    console.log(players);
                     res.render('dashboard',{players: players});
                 })
                 .catch(err=>console.log(err));

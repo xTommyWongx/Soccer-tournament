@@ -202,9 +202,7 @@ img {
       color: #fff;
 
   }
-  .foregroundForm {
-     /* grid-template-columns:;  */
-  }
+
   .teamslist {
       color: #fff;
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -216,4 +214,11 @@ img {
       display: flex;
       align-content: center;
       justify-content: center;
+  }
+  .player-card {
+      margin-left: 10px;
+      margin-bottom: 10px;
+  }
+  .player-card + .player-card {
+        margin-left: 10px; 
   }
