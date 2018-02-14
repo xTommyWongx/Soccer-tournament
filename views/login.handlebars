@@ -1,5 +1,5 @@
 <div class="text-center loginBody">
-    <form class="form-signin" action="/auth/login" method="POST">
+    <form class="form-signin loginFrame" action="/auth/login" method="POST">
         
         {{!-- social login start --}}
 
@@ -13,22 +13,22 @@
         <br />
         
         {{!-- end of social login --}}
-        <h1 class="h5 mb-3 font-weight-normal text-white">Log in with email</h1>
+        <h1 class="h5 mb-2 font-weight-normal text-white fa">Log in with email</h1>
 
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
-
+        <input type="email" name="email" class="form-control fa" placeholder="Email address" required autofocus>
+        <br><br>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" class="form-control fa" placeholder="Password" required>
 
         <div class="checkbox mb-3 text-white">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <input class="btn btn-danger btn-block" type="submit" value="Sing in">
+        <input class="btn btn-info btn-block" type="submit" value="Sign in">
         <br>
         <a href="/register" class="btn btn-primary btn-block">Sign up</a>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+        <br><br>
     </form>
 </div>
