@@ -41,7 +41,7 @@ module.exports = class PlayersRouter {
     }
     router() {
         let router = express.Router();
-        router.get("/", this.get.bind(this));
+        router.get("/", this.get.bind(this)); // get list of players
         router.post("/", this.post.bind(this)); // register new user
         router.put("/:id", this.put.bind(this));
         router.patch("/:id", this.patch.bind(this));
@@ -71,15 +71,9 @@ module.exports = class PlayersRouter {
                     return this.playersService.update(req.user, file)
                         .then((user) => {
                             console.log('data,,', user[0]);
-                            req.flash('success_msg', 'Image upload successful');
                             req.session.passport.user.user = user[0];
-
-                            req.session.save(function (err) {
-                                req.session.reload(function (err) {
-                                    res.render('profile');
-                                });
-                            });
-
+                            req.flash('success_msg', 'Image upload successful'); 
+                            res.redirect('/profile');
                         })
                         .catch((err) => {
                             console.log(err);
@@ -89,10 +83,14 @@ module.exports = class PlayersRouter {
             }
         });
     }
-
+    // get all players
     get(req, res) {
         console.log("get");
-
+        return this.playersService.list()
+                .then((players)=>{
+                    res.render('dashboard',{players: players});
+                })
+                .catch(err=>console.log(err));
     }
 
     // register new user

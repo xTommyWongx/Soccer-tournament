@@ -14,6 +14,13 @@
 body {
     background: url('/img/football-stadium.jpg');
     background-size: cover;  
+    background-position: fixed;
+}
+.teamlistbutton{
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #message {
@@ -101,13 +108,13 @@ img {
 
   /* profile picture frame */
   .frame {
-    background-color:rgb(46, 46, 44);
-    border:solid 1vmin rgb(51, 50, 50);
-    border-bottom-color:rgb(59, 58, 58);
-    border-left-color:rgb(59, 58, 58);
+    background-color:rgb(41, 139, 21);
+    border:solid 1vmin rgba(30, 122, 18, 0.897);
+    border-bottom-color:rgb(28, 133, 89);
+    border-left-color:rgb(28, 133, 89);
     border-radius:10px;
-    border-right-color:rgb(59, 58, 58);
-    border-top-color:rgb(59, 58, 58);
+    border-right-color:rgb(28, 133, 51);
+    border-top-color:rgb(28, 133, 89);
     box-shadow:0 0 5px 0 rgb(59, 58, 58) inset, 0 5px 10px 5px rgba(0,0,0,.25);
     box-sizing:border-box;
     display:inline-block;
@@ -197,4 +204,16 @@ img {
   }
   .foregroundForm {
      /* grid-template-columns:;  */
+  }
+  .teamslist {
+      color: #fff;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-size: 22px;
+    
+  }
+  
+  #playerslist {
+      display: flex;
+      align-content: center;
+      justify-content: center;
   }

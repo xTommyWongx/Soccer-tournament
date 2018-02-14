@@ -29,7 +29,7 @@ let managerService = new ManagerService(knex);
 
 const {app} = require('./utils/init-app')();
 
-app.use('/', new ViewRouter().router());
+app.use('/', new ViewRouter(knex).router());
 app.use('/api/players', new PlayersRouter(playersService).router());
 app.use('/api/managers',isLoggedIn, new ManagerRouter(managerService).router());
 app.use('/api/teams',isLoggedIn, new TeamsRouter(teamsService).router());
