@@ -33,9 +33,7 @@
                 <label for="email">Email</label>
                 <input type="email" class="form-control" placeholder="Email" name="email" value="{{email}}" required aria-required="true">
             </div>
-
-
-            
+ 
             <div class="form-group">
                 <label for="location">Location</label>
                 <select name="location" name="location" class="form-control">
@@ -45,7 +43,20 @@
                     <option value="Sheung Wan">Sheung Wan</option>
                 </select>
             </div>
-            <br>
+            
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <input type="radio" id="player"
+                    name="player" value="false" checked>
+                    <label for="player">Player</label>
+                </div>
+                 <div class="form-group col-sm-6">
+                    <input type="radio" id="manager"
+                    name="manager" value="true" >
+                    <label for="manager">Manager</label>
+                </div>
+            </div>
+
             <input type="submit" class="btn btn-info btn-block" value="Submit">
         </form>
     </div>
