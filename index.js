@@ -7,6 +7,8 @@ const knexFile = require('./knexfile')[NODE_ENV];
 const knex = require('knex')(knexFile);
 const bodyParse = require('body-parser');
 
+const isLoggedIn = require('./utils/guard').isLoggedIn;
+
 // const redis = require('redis');
 // const redisClient = redis.createClient({
 //     host: REDIS_HOST,
@@ -15,18 +17,22 @@ const bodyParse = require('body-parser');
 const ViewRouter = require('./ViewRouter');
 const { PlayersRouter,
         TeamsRouter,
-        AuthRouter} = require('./routers');
+        AuthRouter,
+        ManagerRouter} = require('./routers');
 const { PlayersService,
-        TeamsService} = require('./services');
+        TeamsService,
+        ManagerService} = require('./services');
 
 let playersService = new PlayersService(knex);
 let teamsService = new TeamsService(knex);
+let managerService = new ManagerService(knex);
 
 const {app} = require('./utils/init-app')();
 
-app.use('/', new ViewRouter().router());
+app.use('/', new ViewRouter(knex).router());
 app.use('/api/players', new PlayersRouter(playersService).router());
-app.use('/api/teams', new TeamsRouter(teamsService).router());
+app.use('/api/managers',isLoggedIn, new ManagerRouter(managerService).router());
+app.use('/api/teams',isLoggedIn, new TeamsRouter(teamsService).router());
 app.use('/auth', new AuthRouter().router());
 
 

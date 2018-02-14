@@ -67,6 +67,10 @@ module.exports = class PlayerService {
                         })
     }
     list() {
-
+        return this.knex.select().from('players').where('manager', false)
+                    .then((res)=>{
+                        return res;
+                    })
+                    .catch((err)=>console.log(err));
     }
 }

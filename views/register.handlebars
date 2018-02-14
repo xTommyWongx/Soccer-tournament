@@ -1,9 +1,9 @@
-<div class="row text-white" id="register">
+<div class="row text-white mb-3" id="register">
     <div class="col-lg-8 m-auto">
         <div class="text-center">
             Registration
         </div>
-        <form action="/api/players/" method="POST" class="loginFrame">
+        <form action="/api/players" method="POST" class="loginFrame">
             <div class="form-row">
                 <div class="from-group col-md-6">
                     <label for="fristName">First Name</label>
@@ -21,7 +21,8 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" name="password" title="(at least 6 characters, no spaces)" pattern="\S{6,}">
+                    <input type="password" class="form-control" placeholder="Password" name="password" title="(at least 6 characters, no spaces)"
+                        pattern="\S{6,}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="confirmPassword">Confirm Password</label>

@@ -1,1 +1,16 @@
-<h1>This is teams</h1>
+<div class="row teamslist">
+    <div class="col-md-12 mx-auto">
+        <div class="text-center">
+            <span class="h2 text-white">Team list</span>
+        </div>
+        <br>
+        <div class="row">
+            {{#each teams}}
+            <div class="col-md-5 mx-auto">
+                <a href="" class="btn btn-success text-white teamlistbutton">{{teamname}}&nbsp<img src="/img/rotatingSoccer.gif" width="20px" height="20px"></a><br>
+            </div>
+            {{/each}}
+        </div>
+        
+    </div>
+</div>
