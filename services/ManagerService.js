@@ -12,25 +12,30 @@ module.exports = class ManagerService {
                         if(res.length > 0){
                             let err = "Name in use"
                             return err;
-                        }else {
-                            // create new team
-                            return this.knex('teams')
-                                        .returning('id')
-                                        .insert({
-                                            teamname: teamname.name
-                                      }).then((id)=>{
-                                        //  assign newly created team to manager
-                                           return this.knex('players')
-                                                       .where('id',managerId)
-                                                       .update({
-                                                           team_id: id[0]
-                                                       });
-                                      });
-                                        
                         }
+                        // create new team
+                        return this.knex('teams')
+                                    .returning('id')
+                                    .insert({
+                                        teamname: teamname.name
+                                    }).then((id)=>{
+                                    //  assign newly created team to manager
+                                        return this.knex('players')
+                                                    .where('id',managerId)
+                                                    .update({
+                                                        team_id: id[0]
+                                                    });
+                                    });
+                                        
+                        
                             
                     })
-                    .catch(err=>console.log(err));
-        
+                    .catch(err=>console.log(err));   
+    }
+
+    getDetails(managerEmail){
+        return this.knex.select().from('players')
+                    .innerJoin('teams','players.team_id','teams.id')
+                    .where('email',managerEmail);
     }
 }

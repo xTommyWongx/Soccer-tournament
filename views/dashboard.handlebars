@@ -1,7 +1,23 @@
-{{!-- if user is manager --}}
-{{#if user.user.manager }}
-    {{!-- but haven't formed any team yet, then show 'create team' --}}
-    {{#unless user.user.team_id}}
-    <a href="/createTeam" class="btn btn-danger my-3">Create Team</a>
-    {{/unless}}
+{{!-- if user is manager show the following --}} 
+{{#if user.user.manager }} 
+        {{!-- but haven't formed any team yet, then show 'create team' --}}
+        {{#unless user.user.team_id}}
+        <a href="/createTeam" class="btn btn-danger my-3">Create Team</a>
+        {{/unless}} 
+        {{!-- if manager already has team, then show team details --}}
+        {{#if user.user.team_id}}
+        <div class="row">
+            <div class="col">
+                <div class="col text-center">ImageHere</div>
+                <div class="form-group backgroundForm">
+                    <div class="clubDetails">
+                        <label for="">Club name:&nbsp</label>
+                        <span>{{user.user.teamname}}</span>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+        {{/if}} 
 {{/if}}

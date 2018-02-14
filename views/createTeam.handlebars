@@ -1,7 +1,7 @@
 {{!-- if user is manager --}}
 {{#if user.user.manager }}
     {{!-- but haven't formed any team yet, then show 'create team' --}}
-    {{#unless user.user.team_id}}
+    {{!-- {{#unless user.user.team_id}} --}}
         <div class="row text-white">
 
             <div class="col-md-8 mx-auto">
@@ -18,5 +18,5 @@
                 </form>
             </div>
         </div>
-    {{/unless}}
+    {{!-- {{/unless}} --}}
 {{/if}}

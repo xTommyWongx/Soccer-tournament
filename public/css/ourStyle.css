@@ -185,3 +185,16 @@ img {
     border-radius: 20px;
   }
   /* end of login */
+
+  .backgroundForm {
+      background: rgb(2, 2, 2);
+      opacity: 0.6;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: 'Times New Roman', Times, serif;
+      color: #fff;
+
+  }
+  .foregroundForm {
+     /* grid-template-columns:;  */
+  }

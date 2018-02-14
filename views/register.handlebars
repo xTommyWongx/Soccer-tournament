@@ -3,7 +3,7 @@
         <div class="text-center">
             Registration
         </div>
-        <form action="/api/players/" method="POST" class="loginFrame">
+        <form action="/api/players" method="POST" class="loginFrame">
             <div class="form-row">
                 <div class="from-group col-md-6">
                     <label for="fristName">First Name</label>
@@ -21,7 +21,8 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" name="password" title="(at least 6 characters, no spaces)" pattern="\S{6,}">
+                    <input type="password" class="form-control" placeholder="Password" name="password" title="(at least 6 characters, no spaces)"
+                        pattern="\S{6,}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="confirmPassword">Confirm Password</label>
@@ -35,7 +36,7 @@
             </div>
 
 
-            
+
             <div class="form-group">
                 <label for="location">Location</label>
                 <select name="location" name="location" class="form-control">

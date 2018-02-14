@@ -91,6 +91,7 @@ module.exports = class PlayersRouter {
     }
 
     get(req, res) {
+        console.log("get");
 
     }
 
