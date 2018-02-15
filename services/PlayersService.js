@@ -6,6 +6,17 @@ module.exports = class PlayerService {
     }
     create(user) {
         let self = this;
+        let manager = false;
+        let organizer = false;
+
+        if (user.role = "manager") {
+            manager = true;
+            organizer = false;
+        } else if (user.role = "organizer") {
+            manager = false;
+            organizer = true;
+        }
+
         return this.knex.select('id').from('players').where('email', user.email)
             .then((result) => {
                 
@@ -34,8 +45,8 @@ module.exports = class PlayerService {
                                 email: user.email,
                                 password: user.password,
                                 location: user.location,
-                                // manager: role,
-                                // organizer: role
+                                manager: manager,
+                                organizer: organizer
                             }).then((id)=>{
                                 console.log("result",id);
                             }).catch((err)=>console.log(err));
