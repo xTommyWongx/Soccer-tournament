@@ -25,11 +25,12 @@
             
             {{#each players}}    
                 <div class="card player-card" style="width: 20rem;">
-                    <img class="card-img-top" src="{{img}}" alt="Player picture">
+                    <img class="card-img-top img-fluid" src="{{img}}" width='220px' height='220px'alt="Player picture">
                     <div class="card-block">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h4 class="card-title">{{username}}</h4>
+                        <p class="card-text">Position: {{position}}</p>
+                        <p class="card-text">Location: {{location}}</p>
+                        <a href="#" class="btn btn-primary btn-block">Invite to join</a>
                     </div>
                 </div>       
             {{/each}}

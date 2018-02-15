@@ -29,7 +29,8 @@ module.exports = (app) => {
                     .returning('id')
                     .insert({
                         facebook_id: profile.id,
-                        username: profile.displayName
+                        username: profile.displayName,
+                        // img : get facebook profile image url
                     }).then((id) => {
                         console.log(id[0]);
                         return knex('players').select().where('id', id[0])

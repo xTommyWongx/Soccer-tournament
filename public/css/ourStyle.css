@@ -1,6 +1,5 @@
 #navbarCollapse li {
-    box-shadow: 1px 2px 1px rgb(1, 111, 184);
-    border: 1px solid rgb(101, 176, 226);
+    box-shadow: 1px 2px 4px  rgb(4, 5, 5);
     outline: none;
     border-radius: 10px;
 }
@@ -203,9 +202,7 @@ img {
       color: #fff;
 
   }
-  .foregroundForm {
-     /* grid-template-columns:;  */
-  }
+
   .teamslist {
       color: #fff;
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -217,4 +214,12 @@ img {
       display: flex;
       align-content: center;
       justify-content: center;
+  }
+  .player-card {
+      margin-left: 10px;
+      margin-bottom: 10px;
+      box-shadow: 3px 5px 2px #000;
+  }
+  .player-card + .player-card {
+        margin-left: 10px; 
   }

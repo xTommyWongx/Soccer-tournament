@@ -13,7 +13,8 @@ module.exports = class ViewRouter {
         const router = express.Router();
         router.get('/', isLoggedIn,(req, res) => res.render("home"));
         router.get('/profile', isLoggedIn, (req, res) => {
-            res.render("profile");
+            let defaultImg = "/img/kakashi.jpg";
+            res.render("profile",{defaultImg: defaultImg});
         });
         router.get('/dashboard', isLoggedIn, (req, res) => res.render("dashboard"));
         router.get('/createTeam', isLoggedIn, (req,res) => res.render("createTeam"));
