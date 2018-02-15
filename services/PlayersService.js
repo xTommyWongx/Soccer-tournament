@@ -6,7 +6,7 @@ module.exports = class PlayerService {
     }
     create(user) {
         let self = this;
-        return this.knex.select('id').from('players').where('email', user.email)
+        return this.knex.select().from('players').where('email', user.email)
             .then((result) => {
                 
                 // email already in use
