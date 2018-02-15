@@ -1,3 +1,32 @@
+window.onload = function(){
+    let socket = io();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // window.onload = function(){
   
@@ -22,4 +51,5 @@
 // }, false);
 
 // }
+
 

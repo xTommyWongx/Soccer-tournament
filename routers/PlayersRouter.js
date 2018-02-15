@@ -70,7 +70,7 @@ module.exports = class PlayersRouter {
                     let file = `/uploads/${req.file.filename}`;
                     return this.playersService.update(req.user, file)
                         .then((user) => {
-                            console.log('data,,', user[0]);
+                            // console.log('data,,', user[0]);
                             req.session.passport.user.user = user[0];
                             req.flash('success_msg', 'Image upload successful'); 
                             res.redirect('/profile');
@@ -88,15 +88,14 @@ module.exports = class PlayersRouter {
         console.log("get");
         return this.playersService.list()
                 .then((players)=>{
-                    console.log(players);
-                    res.render('dashboard',{players: players});
+                     res.render('dashboard',{players: players});
                 })
                 .catch(err=>console.log(err));
     }
 
     // register new user
     post(req, res) {
-        console.log("req body ", req.body);
+        // console.log("req body ", req.body);
         let errors = [];
 
         if (req.body.password !== req.body.confirmPassword) {

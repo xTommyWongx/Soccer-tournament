@@ -16,7 +16,7 @@ module.exports = class ViewRouter {
             let defaultImg = "/img/kakashi.jpg";
             res.render("profile",{defaultImg: defaultImg});
         });
-        router.get('/dashboard', isLoggedIn, (req, res) => res.render("dashboard"));
+        router.get('/dashboard', isLoggedIn, this.joinRequest.bind(this));
         router.get('/createTeam', isLoggedIn, (req,res) => res.render("createTeam"));
         router.get('/teams', isLoggedIn, this.teamlist.bind(this)); //get teams list for team page
         router.get('/tournaments', (req, res) => res.render("tournaments")); 
@@ -35,6 +35,20 @@ module.exports = class ViewRouter {
                  console.log(err);
              })
     }
+    // show join request
+    joinRequest(req, res){
+        if(!req.user.user.mananger) //&& !req.user.user.organizer)
+            {
+                this.knex('requests').select().where('playerEmail',req.user.user.email)
+                    .then((result)=>{
+                        console.log('request ..',result);
+
+                    })
+                    .catch((err)=>{
+                        console.log(err);
+                    })
+            }
+    }   
 
 
 }

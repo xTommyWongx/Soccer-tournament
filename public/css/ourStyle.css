@@ -8,6 +8,7 @@
     transform: translateY(2px);
 }
 
+
 #navbarCollapse a{
     color: #fff;
 }
@@ -62,6 +63,7 @@ body {
 
 .btn {
     border-radius: 20px;
+    outline: none;
 }
 
 .facebook-btn {

@@ -30,11 +30,19 @@
                         <h4 class="card-title">{{username}}</h4>
                         <p class="card-text">Position: {{position}}</p>
                         <p class="card-text">Location: {{location}}</p>
-                        <a href="#" class="btn btn-primary btn-block">Invite to join</a>
+                        <form action="/api/requests" method="POST">
+                            <input type="text" name="player" value={{email}} class="d-none">
+                            <input type="submit" class="btn btn-primary btn-block" value="Invite to join">
+                        </form>
+                        {{!-- <a href="/api/requests/" class="btn btn-primary btn-block">Invite to join</a> --}}
                     </div>
                 </div>       
             {{/each}}
+            <p>user..{{user.user.id}}</p>
+            
              
         </div>
     {{/if}}
 {{/if}}
+
+{{!--  If user if player then only proceed--}}

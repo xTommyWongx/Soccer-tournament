@@ -35,7 +35,7 @@ module.exports = class PlayerService {
                                 password: user.password,
                                 location: user.location
                             }).then((id)=>{
-                                console.log("result",id);
+                                // console.log("result",id);
                             }).catch((err)=>console.log(err));
                         })
                     });
