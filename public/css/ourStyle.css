@@ -65,6 +65,28 @@ body {
     border-radius: 20px;
     outline: none;
 }
+/* card */
+.card {
+    border-radius: 20px !important;
+    border: 0;
+}
+.cardHead {
+    color: #fff;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+    background: linear-gradient(45deg, rgb(28, 155, 228),rgb(89, 163, 233),rgb(28, 155, 228));
+}
+.cardFooter {
+    display: flex;
+    justify-content: center;
+}
+.card-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* --end of card */
+
 
 .facebook-btn {
     background: linear-gradient(-90deg, rgb(23, 110, 168), rgb(9, 125, 192));
@@ -202,14 +224,12 @@ img {
       border-radius: 10px;
       font-family: 'Times New Roman', Times, serif;
       color: #fff;
-
   }
 
   .teamslist {
       color: #fff;
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      font-size: 22px;
-    
+      font-size: 22px; 
   }
   
   #playerslist {

@@ -33,7 +33,8 @@ module.exports = class PlayerService {
                                 username: user.username,
                                 email: user.email,
                                 password: user.password,
-                                location: user.location
+                                location: user.location,
+                                manager: user.manager
                             }).then((id)=>{
                                 // console.log("result",id);
                             }).catch((err)=>console.log(err));
@@ -67,10 +68,13 @@ module.exports = class PlayerService {
                         })
     }
     list() {
-        return this.knex.select().from('players').where('manager', false)
-                    .then((res)=>{
-                        return res;
-                    })
-                    .catch((err)=>console.log(err));
+        return this.knex.select().from('players').where({
+                                            manager: false,
+                                            team_id: null
+                                        })
+                                        .then((res)=>{
+                                            return res;
+                                        })
+                                        .catch((err)=>console.log(err));
     }
 }

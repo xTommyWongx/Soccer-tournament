@@ -45,4 +45,40 @@
     {{/if}}
 {{/if}}
 
-{{!--  If user if player then only proceed--}}
+{{!-- Players block --}}
+<div class="row my-3">
+    <div class="col-md-7"> 
+        <div class="card text-white bg-success mb-3" >
+            <div class="card-header">Club : {{user.user.teamname}}</div>
+            <div class="card-body">
+            <h4 class="card-title">Dark card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+      
+    </div>
+    </div>
+    <div class="col-md-5">
+        {{#each requests}}
+            <div class="card player-card">
+                    
+                    <div class="card-block text-center">
+                        <p class="card-header cardHead">Request from <strong>{{managerName}}</strong></p>
+                        <div class="card-body cardBody">
+                            <p class="card-text">Club: {{teamName}}</p>
+                        </div>
+                        <div class="card-footer cardFooter p-1">
+                            <form action="/api/requests/accept" method="POST">
+                                <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
+                            </form>&nbsp&nbsp
+                             <form action="/api/requests/reject" method="POST">
+                                <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
+                            </form>
+                        </div>  
+                    </div>
+                </div>       
+        {{/each}}
+    </div>
+</div>
