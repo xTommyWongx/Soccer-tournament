@@ -14,8 +14,8 @@
 }
 body {
     background: url('/img/football-stadium.jpg');
-    background-size: cover;  
-    background-position: fixed;
+    
+    
 }
 .teamlistbutton{
    
@@ -87,14 +87,16 @@ body {
 }
 /* --end of card */
 
-
+hr {
+    color: #fff !important;
+}
 .facebook-btn {
     background: linear-gradient(-90deg, rgb(23, 110, 168), rgb(9, 125, 192));
 }
 
 #register {
-    font-family: 'Nanum Brush Script', cursive;
-    font-size: 1.2em;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
     
 }
 #register form{   
@@ -236,8 +238,11 @@ img {
       display: flex;
       align-content: center;
       justify-content: center;
+      flex-wrap: wrap;
   }
   .player-card {
+      min-width: 300px;
+      max-width: 300px;
       margin-left: 10px;
       margin-bottom: 10px;
       box-shadow: 3px 5px 2px #000;
@@ -245,3 +250,24 @@ img {
   .player-card + .player-card {
         margin-left: 10px; 
   }
+  /* squad list table */
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background: linear-gradient(45deg,rgb(4, 150, 175),rgb(6, 129, 201),rgb(20, 156, 197));
+    color: #fff;
+}
+
+/* tr:nth-child(even) {
+    background-color: #dddddd;
+} */
+/* end of list */

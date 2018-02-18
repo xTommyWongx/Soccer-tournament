@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
-
+const sess = require('../ViewRouter').sess;
 // Set The Storage Engine
 const storage = multer.diskStorage({
     destination: './public/uploads/',
@@ -41,12 +41,13 @@ module.exports = class PlayersRouter {
     }
     router() {
         let router = express.Router();
-        router.get("/", this.get.bind(this)); // get list of players
+        router.get("/", this.get.bind(this)); // get list of players in market
         router.post("/", this.post.bind(this)); // register new user
         router.put("/:id", this.put.bind(this));
         router.patch("/:id", this.patch.bind(this));
         router.delete("/:id", this.delete.bind(this));
         router.post("/uploadPic", this.uploadPic.bind(this));// upload profile pic
+        router.get("/leaveTeam",this.leaveTeam.bind(this)); // leave the current team
 
         return router;
     }
@@ -70,27 +71,30 @@ module.exports = class PlayersRouter {
                     let file = `/uploads/${req.file.filename}`;
                     return this.playersService.update(req.user, file)
                         .then((user) => {
-                            // console.log('data,,', user[0]);
+                            // update user info in the session
                             req.session.passport.user.user = user[0];
                             req.flash('success_msg', 'Image upload successful'); 
                             res.redirect('/profile');
                         })
                         .catch((err) => {
                             console.log(err);
-
-                        });
+                       });
                 }
             }
         });
     }
-    // get all players
+    // get all players in the market Plus players who r in requests table with the same manager
     get(req, res) {
+        console.log("sess test",sess.data.teamname);
         console.log("get");
         return this.playersService.list()
-                .then((players)=>{
-                     res.render('dashboard',{players: players});
+                .then((playersInMarket)=>{
+                    // console.log("playersInMarket",playersInMarket);
+                    // return this.playersService.listrequestedplayers(sess.data.team_id,sess.data.)
+                     res.json(playersInMarket);
                 })
                 .catch(err=>console.log(err));
+
     }
 
     // register new user
@@ -126,6 +130,17 @@ module.exports = class PlayersRouter {
                     res.redirect('/register')
                 });
         }
+    }
+
+    leaveTeam(req, res){
+        console.log("exit team");
+        //  console.log(req.user.user.email);
+        return this.playersService.exitTeam(req.user.user.email)
+                    .then((user)=>{
+                        req.session.passport.user.user = user[0];
+                        res.render('dashboard');
+                    })
+                    .catch(err => console.log(err));
     }
 
     put(req, res) {

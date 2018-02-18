@@ -18,9 +18,21 @@ module.exports = class RequestService {
                         team_id: teamId
                     });
     }
+    rejectRequest(team_id,playerEmail){
+        return this.knex('requests')
+                    .where({
+                        team_id: team_id,
+                        playerEmail: playerEmail
+                    })
+                    .del();
+    }
     clearRequest(playerEmail){
         return this.knex('requests')
                     .where('playerEmail', playerEmail)
                     .del();
+    }
+    getPlayerInfo(playerEmail){
+        return this.knex('players').select().innerJoin('teams', 'players.team_id', 'teams.id')
+                                       .where('email', playerEmail);
     }
 }

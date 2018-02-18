@@ -13,52 +13,56 @@
                 <div class="form-group backgroundForm">
                     <div class="clubDetails">
                         <label for="">Club name:&nbsp</label>
-                        <span>{{user.user.teamname}}</span>
+                        <span><strong>{{user.user.teamname}}</strong></span>
+                        <hr>
+                        <span>Squad:</span>
+                        <table>
+                           <tr>
+                               <th>Name</th>
+                               <th>Position</th>
+                           </tr>
+                           {{#each players}}
+                            <tr>
+                                <td>{{username}}</td>
+                                <td>{{position}}</td>
+                            </tr>
+                           {{/each}}
+                        </table> 
                     </div>
                 </div>
+                
             </div>
         </div>
         {{!-- Available players details --}}
-        <a href="/api/players" class="btn btn-danger fa">Show available players</a>
+        {{!-- <a href="/api/players" class="btn btn-danger fa">Show available players</a> --}}
+        <button class="btn btn-danger" id="showPlayerMarket">Show available players</button>
         <br><br>
-        <div class="row" id="playerslist">
-            
-            {{#each players}}    
-                <div class="card player-card" style="width: 20rem;">
-                    <img class="card-img-top img-fluid" src="{{img}}" width='220px' height='220px'alt="Player picture">
-                    <div class="card-block">
-                        <h4 class="card-title">{{username}}</h4>
-                        <p class="card-text">Position: {{position}}</p>
-                        <p class="card-text">Location: {{location}}</p>
-                        <form action="/api/requests" method="POST">
-                            <input type="text" name="player" value={{email}} class="d-none">
-                            <input type="submit" class="btn btn-primary btn-block" value="Invite to join">
-                        </form>
-                        {{!-- <a href="/api/requests/" class="btn btn-primary btn-block">Invite to join</a> --}}
-                    </div>
-                </div>       
-            {{/each}}
-            <p>user..{{user.user.id}}</p>
-            
-             
+        <div id="playerslist">
+            {{!-- available players are displayed here --}}
         </div>
     {{/if}}
 {{/if}}
+{{!-- End of manager block --}}
 
 {{!-- Players block --}}
+{{#if user.user.player}}
 <div class="row my-3">
     <div class="col-md-7"> 
         <div class="card text-white bg-success mb-3" >
             <div class="card-header">Club : {{user.user.teamname}}</div>
             <div class="card-body">
-            <h4 class="card-title">Dark card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
+                <h4 class="card-title">Your squad: </h4>
+                {{#each players}}
+                    <p class="card-text"> {{username}}</p>
+                {{/each}}
+            </div>
+        </div>   
     </div>
-      
-    </div>
-    </div>
+    
     <div class="col-md-5">
+        {{#if user.user.team_id}}
+            <a href="/api/players/leaveTeam" class="btn btn-danger">Leave</a>
+        {{/if}}
         {{#each requests}}
             <div class="card player-card">
                     
@@ -68,12 +72,13 @@
                             <p class="card-text">Club: {{teamName}}</p>
                         </div>
                         <div class="card-footer cardFooter p-1">
-                            <form action="/api/requests/accept" method="POST">
+                            <form action="/api/request/accept" method="POST">
                                 <input type="text" name="team_id" value={{team_id}} class="d-none">
                                 <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
                             </form>&nbsp&nbsp
-                             <form action="/api/requests/reject" method="POST">
+                             <form action="/api/request/reject" method="POST">
                                 <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                <input type="text" name="playerEmail" value={{playerEmail}} class="d-none">
                                 <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
                             </form>
                         </div>  
@@ -82,3 +87,5 @@
         {{/each}}
     </div>
 </div>
+{{/if}}
+{{!-- End of player block --}}

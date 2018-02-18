@@ -41,8 +41,8 @@ module.exports = class PlayerService {
                             return self.knex('players')
                             .returning('id')
                             .insert({
-                                firstname: user.firstName,
-                                lastname: user.lastName,
+                                firstname: user.firstname,
+                                lastname: user.lastname,
                                 username: user.username,
                                 email: user.email,
                                 password: user.password,
@@ -63,6 +63,7 @@ module.exports = class PlayerService {
     delete(userId) {
 
     }
+    // update Image
     update(user, image) {
          console.log("user,,",user);
             return this.knex('players')
@@ -71,25 +72,53 @@ module.exports = class PlayerService {
                             img : image
                         })
                         .then(()=>{
-                            return this.knex.select().from('players')
-                                    .where('email', user.user.email)
-                                    // .then((user)=>{
-                                    //     console.log("users ",user[0]);
-                                    //     return user;
-                                    // })
+                            if(user.user.team_id){
+                                // if player has is in team join 'players' and 'teams' tables and return info
+                                return this.knex('players').select().innerJoin('teams', 'players.team_id', 'teams.id')
+                                       .where('email', user.user.email)
+                            }else{
+                                // if player is not in team return info from 'players' table
+                                return this.knex('players').select().where('email',user.user.email);
+                            }
+                            
                         })
                         .catch((err) => {
                             console.log(err);
                         })
     }
+    // list all players without team
     list() {
         return this.knex.select().from('players').where({
-                                            manager: false,
+                                            player: true,
                                             team_id: null
                                         })
                                         .then((res)=>{
+                                            // console.log("res",res[0]);
                                             return res;
                                         })
                                         .catch((err)=>console.log(err));
     }
+    // list players which are in request table with same manager
+    listrequestedplayers(){
+        // return this.knex.select().from('requests').where({
+
+        //                                          })
+    }
+
+    exitTeam(email){
+        console.log("leave team");
+        // console.log(playerEmail);
+        return this.knex('players').where('email',email)
+                                    .update({
+                                        team_id: null
+                                    })
+                                    .then((data)=>{
+                                        return this.knex('players').select().where('email',email);
+                                    })
+                                    .catch(err=>console.log(err));
+    }
+    getSquad(team_id){
+        return this.knex('players').where('team_id',team_id);
+    }
+    
 }
