@@ -19,22 +19,27 @@ const { PlayersRouter,
         TeamsRouter,
         AuthRouter,
         ManagerRouter,
-        RequestRouter} = require('./routers');
+        RequestRouter,
+        OrganizerRouter} = require('./routers');
+
 const { PlayersService,
         TeamsService,
         ManagerService,
-        RequestService} = require('./services');
+        RequestService,
+        OrganizerService} = require('./services');
 
 let playersService = new PlayersService(knex);
 let teamsService = new TeamsService(knex);
 let managerService = new ManagerService(knex);
 let requestService = new RequestService(knex);
+let organizerService = new OrganizerService(knex);
 
 const {app} = require('./utils/init-app')();
 
 app.use('/', new ViewRouter(knex).router());
 app.use('/api/players', new PlayersRouter(playersService).router());
 app.use('/api/managers',isLoggedIn, new ManagerRouter(managerService).router());
+app.use('/api/organizers',isLoggedIn, new OrganizerRouter(organizerService).router());
 app.use('/api/teams',isLoggedIn, new TeamsRouter(teamsService).router());
 app.use('/auth', new AuthRouter().router());
 app.use('/api/request', new RequestRouter(requestService).router());
