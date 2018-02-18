@@ -9,8 +9,6 @@ module.exports = class PlayerService {
         let manager = false;
         let organizer = false;
 
-        console.log(user.role)
-
         if (user.role === "manager") {
             manager = true;
             organizer = false;
@@ -18,7 +16,6 @@ module.exports = class PlayerService {
             manager = false;
             organizer = true;
         }
-        console.log(manager, organizer)
 
         return this.knex.select().from('players').where('email', user.email)
             .then((result) => {
