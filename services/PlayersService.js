@@ -99,10 +99,12 @@ module.exports = class PlayerService {
                                         .catch((err)=>console.log(err));
     }
     // list players which are in request table with same manager
-    listrequestedplayers(){
-        // return this.knex.select().from('requests').where({
-
-        //                                          })
+    listrequestedplayers(team_id){
+        return this.knex.select().from('requests').where('team_id',team_id)
+                                .then((players)=>{
+                                    return players;
+                                })
+                                .catch(err=>console.log(err));
     }
 
     exitTeam(email){

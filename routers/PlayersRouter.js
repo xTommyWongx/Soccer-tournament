@@ -89,9 +89,33 @@ module.exports = class PlayersRouter {
         console.log("get");
         return this.playersService.list()
                 .then((playersInMarket)=>{
-                    // console.log("playersInMarket",playersInMarket);
-                    // return this.playersService.listrequestedplayers(sess.data.team_id,sess.data.)
-                     res.json(playersInMarket);
+                    
+                     return this.playersService.listrequestedplayers(sess.data.team_id)
+                            .then((invitedPlayers)=>{
+                                let non_request = playersInMarket.filter((player)=>{
+                                    let not_match = true;
+                                    for(let i=0;i<invitedPlayers.length;i++){    
+                                        if(player.email == invitedPlayers[i].playerEmail){   
+                                            not_match = false;
+                                        }
+                                            
+                                    }  
+                                    return not_match;     
+                                });
+                                let on_request = playersInMarket.filter((player)=>{
+                                    let not_match = false;
+                                    for(let i=0;i<invitedPlayers.length;i++){    
+                                        if(player.email == invitedPlayers[i].playerEmail){   
+                                            not_match = true;
+                                        }
+                                            
+                                    }  
+                                    return not_match;     
+                                });
+                                res.json({non_request : non_request,
+                                          on_request : on_request});
+                            })
+                    
                 })
                 .catch(err=>console.log(err));
 
