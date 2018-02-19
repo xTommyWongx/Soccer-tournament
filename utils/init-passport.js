@@ -72,17 +72,12 @@ module.exports = (app) => {
                 bcrypt.compare(password, user[0].password, (err, match) => {
                     if (err) throw err;
                     if (match) {
-                        console.log('user[0] is', user[0]);
                         return done(null, { user: user[0] });
                     }
-
                     if (!match)
                         return done(null, false, { message: "Incorrect password" });
                 })
-
-
             })
-
     }));
 
 
