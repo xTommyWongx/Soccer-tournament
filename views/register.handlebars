@@ -1,9 +1,9 @@
-<div class="row text-white" id="register">
+<div class="row text-white mb-3" id="register">
     <div class="col-lg-8 m-auto">
         <div class="text-center">
             Registration
         </div>
-        <form action="/api/players/" method="POST" class="loginFrame">
+        <form action="/api/players" method="POST" class="loginFrame">
             <div class="form-row">
                 <div class="from-group col-md-6">
                     <label for="fristName">First Name</label>
@@ -21,7 +21,8 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" name="password" title="(at least 6 characters, no spaces)" pattern="\S{6,}">
+                    <input type="password" class="form-control" placeholder="Password" name="password" title="(at least 6 characters, no spaces)"
+                        pattern="\S{6,}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="confirmPassword">Confirm Password</label>
@@ -33,9 +34,7 @@
                 <label for="email">Email</label>
                 <input type="email" class="form-control" placeholder="Email" name="email" value="{{email}}" required aria-required="true">
             </div>
-
-
-            
+ 
             <div class="form-group">
                 <label for="location">Location</label>
                 <select name="location" name="location" class="form-control">
@@ -45,8 +44,23 @@
                     <option value="Sheung Wan">Sheung Wan</option>
                 </select>
             </div>
-            <br>
-            <input type="submit" class="btn btn-info btn-block" value="Submit">
+            <div>I'm ....</div>
+            <div class="form-row">
+                <div class="form-group col-sm-4">
+                    <input type="radio" id="player" name="role" value="player" checked>
+                    <label for="player">Player</label>
+                </div>
+                 <div class="form-group col-sm-4">
+                    <input type="radio" id="manager" name="role" value="manager" >
+                    <label for="manager">Manager</label>
+                </div>
+                <div class="form-group col-sm-4">
+                    <input type="radio" id="organizer" name="role" value="organizer" >
+                    <label for="organizer">Organizer</label>
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-danger btn-block" value="Submit">
         </form>
     </div>
 </div>

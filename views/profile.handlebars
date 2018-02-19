@@ -3,7 +3,11 @@
 <div class="row  text-white text-center">
     <div class="col-md-6 mx-auto">
         <div class="frame">
+            {{#if user.user.img}}
             <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid">
+            {{else}}
+            <img src="/img/kakashi.jpg" alt="profile picture" id="profile-pic" class="img-fluid">
+            {{/if}}
         </div>
         <br>
         <br>
@@ -12,11 +16,9 @@
                 <label for="file-upload" class="custom-file-upload">
                     <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
                 </label>
-                <input id="file-upload" type="file" name="profileimg" accept="image/*" capture/>&nbsp
+                <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
 
                 <input type="submit" class="btn btn-success save" value="Save">
-
-
             </div>
         </form>
     </div>

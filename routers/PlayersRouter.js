@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
-
+const sess = require('../ViewRouter').sess;
 // Set The Storage Engine
 const storage = multer.diskStorage({
     destination: './public/uploads/',
@@ -41,12 +41,13 @@ module.exports = class PlayersRouter {
     }
     router() {
         let router = express.Router();
-        router.get("/", this.get.bind(this));
+        router.get("/", this.get.bind(this)); // get list of players in market
         router.post("/", this.post.bind(this)); // register new user
         router.put("/:id", this.put.bind(this));
         router.patch("/:id", this.patch.bind(this));
         router.delete("/:id", this.delete.bind(this));
         router.post("/uploadPic", this.uploadPic.bind(this));// upload profile pic
+        router.get("/leaveTeam",this.leaveTeam.bind(this)); // leave the current team
 
         return router;
     }
@@ -70,33 +71,59 @@ module.exports = class PlayersRouter {
                     let file = `/uploads/${req.file.filename}`;
                     return this.playersService.update(req.user, file)
                         .then((user) => {
-                            console.log('data,,', user[0]);
-                            req.flash('success_msg', 'Image upload successful');
+                            // update user info in the session
                             req.session.passport.user.user = user[0];
-
-                            req.session.save(function (err) {
-                                req.session.reload(function (err) {
-                                    res.render('profile');
-                                });
-                            });
-
+                            req.flash('success_msg', 'Image upload successful'); 
+                            res.redirect('/profile');
                         })
                         .catch((err) => {
                             console.log(err);
-
-                        });
+                       });
                 }
             }
         });
     }
-
+    // get all players in the market Plus players who r in requests table with the same manager
     get(req, res) {
+        console.log("sess test",sess.data.teamname);
+        console.log("get");
+        return this.playersService.list()
+                .then((playersInMarket)=>{
+                    
+                     return this.playersService.listrequestedplayers(sess.data.team_id)
+                            .then((invitedPlayers)=>{
+                                let non_request = playersInMarket.filter((player)=>{
+                                    let not_match = true;
+                                    for(let i=0;i<invitedPlayers.length;i++){    
+                                        if(player.email == invitedPlayers[i].playerEmail){   
+                                            not_match = false;
+                                        }
+                                            
+                                    }  
+                                    return not_match;     
+                                });
+                                let on_request = playersInMarket.filter((player)=>{
+                                    let not_match = false;
+                                    for(let i=0;i<invitedPlayers.length;i++){    
+                                        if(player.email == invitedPlayers[i].playerEmail){   
+                                            not_match = true;
+                                        }
+                                            
+                                    }  
+                                    return not_match;     
+                                });
+                                res.json({non_request : non_request,
+                                          on_request : on_request});
+                            })
+                    
+                })
+                .catch(err=>console.log(err));
 
     }
 
     // register new user
     post(req, res) {
-        console.log("req body ", req.body);
+        // console.log("req body ", req.body);
         let errors = [];
 
         if (req.body.password !== req.body.confirmPassword) {
@@ -127,6 +154,17 @@ module.exports = class PlayersRouter {
                     res.redirect('/register')
                 });
         }
+    }
+
+    leaveTeam(req, res){
+        console.log("exit team");
+        //  console.log(req.user.user.email);
+        return this.playersService.exitTeam(req.user.user.email)
+                    .then((user)=>{
+                        req.session.passport.user.user = user[0];
+                        res.render('dashboard');
+                    })
+                    .catch(err => console.log(err));
     }
 
     put(req, res) {
