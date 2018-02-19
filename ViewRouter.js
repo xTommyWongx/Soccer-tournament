@@ -102,7 +102,7 @@ module.exports = class ViewRouter {
         } 
             else if (req.user.user.manager)//load manager's dashboard
         {
-            // get list of players from manager's team
+            // get list of players from manager's team//
             this.knex('players').select().where('team_id', req.user.user.team_id)
                 .then((players) => {
                     res.render('dashboard', { players: players});
