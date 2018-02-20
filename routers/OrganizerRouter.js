@@ -17,7 +17,9 @@ module.exports = class OrganizerRouter {
 
     }
     post(req,res){
-
+        console.log(req.body);
+        this.organizerService.create(req.body, req.user.user.id)
+            .then(() => res.render('createTournament') );
     }
     put(req,res){
 
