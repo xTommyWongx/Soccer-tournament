@@ -1,14 +1,14 @@
 exports.up = function(knex, Promise) {
-    return knex.schema.createTable("tournaments",(tournamentsTable)=>{
-        tournamentsTable.increments();
-        tournamentsTable.integer("category_id").unsigned();
-        tournamentsTable.foreign("category_id").references("categories.id");
-        tournamentsTable.integer("number_of_team");
-        tournamentsTable.integer("number_of_player").unsigned();
-        tournamentsTable.foreign("number_of_player").references("numberOfPlayer.id");
-        tournamentsTable.integer("organizer_id").unsigned();
-        tournamentsTable.foreign("organizer_id").references("players.id");
-        tournamentsTable.timestamps(false,true);
+    return knex.schema.createTable("tournaments",(table)=>{
+        table.increments();
+        table.integer("category_id").unsigned();
+        table.foreign("category_id").references("categories.id");
+        table.integer("number_of_teams");
+        table.integer("number_of_player").unsigned();
+        table.foreign("number_of_player").references("numberOfPlayers.id");
+        table.integer("organizer_id").unsigned();
+        table.foreign("organizer_id").references("players.id");
+        table.timestamps(false,true);
     })
   };
   
