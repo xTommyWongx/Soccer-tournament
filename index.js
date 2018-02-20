@@ -2,8 +2,8 @@
 require('dotenv').config();
 // const REDIS_HOST = process.env.REDIS_HOST || 'localhost';
 // const REDIS_PORT = process.env.REDIS_PORT || 6379
-const NODE_ENV = process.env.NODE_ENV || 'development' ;
-const knexFile = require('./knexfile')[NODE_ENV];
+// const NODE_ENV = process.env.NODE_ENV || 'staging' ;
+const knexFile = require('./knexfile')['staging'];
 const knex = require('knex')(knexFile);
 const bodyParse = require('body-parser');
 
