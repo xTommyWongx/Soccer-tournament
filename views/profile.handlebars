@@ -1,35 +1,101 @@
-<div class="row py-3">
-</div>
-<div class="row  text-white text-center">
-    <div class="col-md-6 mx-auto">
-        <div class="frame">
-            {{#if user.user.img}}
-            <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid">
-            {{else}}
-            <img src="/img/kakashi.jpg" alt="profile picture" id="profile-pic" class="img-fluid">
-            {{/if}}
-        </div>
-        <br>
-        <br>
-        <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="file-upload" class="custom-file-upload">
-                    <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
-                </label>
-                <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
+<section class="playerPage">
+    <div class="playerContainer container-fluid">
+        <div class="row">
+            <div class="imgContainer col-lg-4 col-md-4 col-sm-3">
+                <div class="playerImg">
+                    {{#if user.user.img}}
+                    <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
+                    <img src="/img/kakashi.jpg" alt="profile picture" id="profile-pic" class="img-fluid"> {{/if}}
+                </div>
+                <br>
+                <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file-upload" class="custom-file-upload">
+                            <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
+                        </label>
+                        <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
 
-                <input type="submit" class="btn btn-success save" value="Save">
+                        <input type="submit" class="btn savebtn text-white" value="Save">
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="playerDetails col-lg-4 col-md-4 col-sm-5">
+                <div class="playerNumber font-weight-bold">10</div>
+                <h2>
+                    <div class="name font-weight-bold">Sergio Aguero</div>
+                </h2>
+            </div>
+            <div class="playerNumberLrg col-lg-4 col-md-4 col-sm-4">10</div>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col mx-auto">
 
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-8 mx-auto">
+    <div class="playerInfo container-fluid">
+        <div class="row">
+            <div class="adSpace col-lg-4 col-md-4">
+            </div>
+            <div class="personalLists col-lg-8 col-md-8">
+                <h3 class="subheading font-weight-bold">League Record</h3>
 
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Club</div>
+                        <div class="info">Manchester City</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Position</div>
+                        <div class="info">Forward</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Appearances</div>
+                        <div class="info">203</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Goals</div>
+                        <div class="info">143</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Assists</div>
+                        <div class="info">34</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
+
+    <div class="playerInfo1 container-fluid">
+        <div class="row">
+            <div class="adSpace col-lg-4 col-md-4">
+            </div>
+            <div class="personalLists col-lg-8 col-md-8">
+                <h3 class="subheading font-weight-bold">Personal Details</h3>
+
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Date of Birth</div>
+                        <div class="info">02/06/1988</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Height</div>
+                        <div class="info">173cm</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Weight</div>
+                        <div class="info">70kg</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

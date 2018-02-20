@@ -1,5 +1,6 @@
 #navbarCollapse li {
-    box-shadow: 1px 2px 4px  rgb(4, 5, 5);
+    box-shadow: 3px 3px 7px  rgb(24, 154, 180);
+    border: 0.3px solid white;
     outline: none;
     border-radius: 10px;
 }
@@ -8,15 +9,20 @@
     transform: translateY(2px);
 }
 
+.navbar-nav {
+    margin-left: 45px;
+}
 
 #navbarCollapse a{
     color: #fff;
 }
+
+/*
 body {
     background: url('/img/football-stadium.jpg');
-    
-    
 }
+    */    
+    
 .teamlistbutton{
    
     display: flex;
@@ -34,13 +40,14 @@ body {
 
 /* profile upload buttom */
 .custom-file-upload {
-    border: 1px solid rgb(54, 53, 53);
     border-radius: 20px;
-    box-shadow: 0 3px  #282929;
     display: inline-block;
     padding: 6px 12px;
     height: 40px;
     cursor: pointer;
+    background-color: #343a40;
+    box-shadow: 3px 3px 7px  rgb(24, 154, 180);
+    border: 0.5px solid white;
 }
 .custom-file-upload:active {
     box-shadow: 0 1px #282929;
@@ -53,7 +60,8 @@ body {
 /* profile upload end */
 
 .navbar {
-    box-shadow: 0 2px 2px #333;
+    box-shadow: 0 2px 2px  #282929;
+    background-color: #343a40!important;
 }
 
 #navbarCollapse li:hover {
@@ -108,62 +116,9 @@ hr {
     border-radius: 20px;
 }
 
-#profile-pic {
-    max-width: 320px;
-}
-/* profile pic */
-img {
-    border-radius: 10px;
-  }
-  #cloudIcon {
-      color: #fff;
-  }
-  /* profile img save button */
-  .save {
-    width: 150px;
-    height: 40px;
-    box-shadow: 0 2px 1px #050505;
-    outline: none;
-    border-radius: 20px;
-    color: #fff;
-  }
-  .save:active {
-    box-shadow: 0 1px #282929;
-    transform: translateY(2px);
-}
-
-  /* profile picture frame */
-  .frame {
-    background-color:rgb(41, 139, 21);
-    border:solid 1vmin rgba(30, 122, 18, 0.897);
-    border-bottom-color:rgb(28, 133, 89);
-    border-left-color:rgb(28, 133, 89);
-    border-radius:10px;
-    border-right-color:rgb(28, 133, 51);
-    border-top-color:rgb(28, 133, 89);
-    box-shadow:0 0 5px 0 rgb(59, 58, 58) inset, 0 5px 10px 5px rgba(0,0,0,.25);
-    box-sizing:border-box;
-    display:inline-block;
-    position:relative;
-    text-align:center;
-  }
-   .frame:before {
-      border-radius:10px;
-      bottom:-1vmin;
-      box-shadow:0 2px 5px 0 rgba(0,0,0,.25) inset;
-      content:"";
-      left:-1vmin;
-      position:absolute;
-      right:-1vmin;
-      top:-1vmin;
-    }
-
-    /* end of profile pic frame */
-
-
 /* login page */
 .loginFrame {
-    background-color:rgb(6, 106, 173);
+    background-color: #343a40!important;
     border:solid 1vmin rgba(39, 154, 221, 0.897);
     border-bottom-color:rgb(20, 147, 231);
     border-left-color:rgb(65, 157, 231);
@@ -271,3 +226,365 @@ th {
     background-color: #dddddd;
 } */
 /* end of list */
+
+
+
+/* profile page */
+#profile-pic {
+    max-width: 320px;
+}
+/* profile pic */
+img {
+    border-radius: 10px;
+  }
+  #cloudIcon {
+      color: #fff;
+  }
+  /* profile img save button */
+  .save {
+    width: 150px;
+    height: 40px;
+    box-shadow: 0 2px 1px #050505;
+    outline: none;
+    border-radius: 20px;
+    color: #fff;
+  }
+.savebtn{
+    background-color: rgb(24, 154, 180);
+    box-shadow: 3px 3px 7px  rgb(24, 154, 180);
+    border: 0.4px solid white;
+}
+
+  .save:active {
+    box-shadow: 0 1px #282929;
+    transform: translateY(2px);
+}
+.form-group {
+    margin-left: 55px;
+    margin-top:-15px;
+}
+
+  /* profile picture frame */
+  .frame {
+    background-color:rgb(41, 139, 21);
+    border:solid 1vmin rgba(30, 122, 18, 0.897);
+    border-bottom-color:rgb(28, 133, 89);
+    border-left-color:rgb(28, 133, 89);
+    border-radius:10px;
+    border-right-color:rgb(28, 133, 51);
+    border-top-color:rgb(28, 133, 89);
+    box-shadow:0 0 5px 0 rgb(59, 58, 58) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+    box-sizing:border-box;
+    display:inline-block;
+    position:relative;
+    text-align:center;
+  }
+   
+.frame:before {
+    border-radius:10px;
+    bottom:-1vmin;
+    box-shadow:0 2px 5px 0 rgba(0,0,0,.25) inset;
+    content:"";
+    left:-1vmin;
+    position:absolute;
+    right:-1vmin;
+    top:-1vmin;
+}
+
+  
+    /* end of profile pic frame */
+ h1, h2, h3, h4, h5, h6 {
+    font-family: "PremierSans-Bold", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: normal;
+    font-weight: normal;
+}
+    
+.row {
+    max-height: 300px;
+}
+    
+.playerContainer {
+    background-color: rgba(195, 214, 231, 0.336);
+    margin-bottom: 30px;
+}
+    
+.imgContainer {
+    max-height:auto;
+}
+
+.playerImg {
+    max-width: auto;
+     max-height: 100%;
+}
+   
+@media (max-width: 50.25em){
+    .playerImg {
+        max-height: 100px;
+    }
+    .imgContainer {
+         max-width: 120px;
+        }
+}
+    
+.playerDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -30px;
+}
+    
+@media (max-width: 50.25em){
+    .playerDetails {
+        font-size: 10px;
+        max-width: 200px;
+        margin-left: 0;
+    }
+    .name {
+        font-size: 12px;
+    }
+}
+    
+.playerNumberLrg {
+    right: -5rem;
+    top: 3rem;
+    font-size: 17rem;
+    position: absolute;
+    z-index: 0;
+    letter-spacing: -10px;
+    opacity: .8;
+    font-family: PremierSans-Bold,Arial,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: normal;
+}
+    
+@media (max-width: 56.25em){
+    .playerNumberLrg {
+        display: none;
+}}
+        
+@media (max-width: 63.9375em){
+    .playerNumberLrg {
+            right: -4rem;
+            bottom: -7rem;
+            font-size: 250px;
+}}
+        
+    /* playerInfo section */
+    .playerInfo {
+            position: relative;
+            margin-top: -3rem;
+            margin-bottom: 5rem;
+            margin-left: -2rem;
+            padding-left: 2rem;
+            padding-top: 2rem;
+            background: #fff;
+            z-index: 20;
+    }
+    
+    .playerInfo1 {
+            position: relative;
+            margin-bottom: 8rem;
+            margin-left: -2rem;
+            padding-left: 2rem;
+            background: #fff;
+            z-index: 20;
+    }
+    
+    .personalLists {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-top: 4px solid rgba(194, 192, 192, 0.808);
+    }
+    
+    @media (max-width: 63.9375em) {
+        .personalLists {
+            display: flex;
+            flex-direction: vertical;
+            font-size: 12px;
+        }
+    }
+    
+    .pdcol1 .pdcol2 .pdcol3 {
+        width: 33.33%;
+    }
+    
+
+    /* club page*/
+.clubContainer {
+    background-color: rgba(195, 214, 231, 0.336);
+    margin-bottom: 30px;
+}
+
+.badgeContainer {
+    max-height:270px;
+}
+
+@media (max-width: 50.25em){
+    .clubImg {
+        max-height: 100px;
+    }
+    .badgeContainer {
+        max-width: 120px;
+    }
+}
+
+.clubDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -30px;
+}
+@media (max-width: 50.25em){
+    .clubDetails {
+        font-size: 10px;
+        max-width: 200px;
+        margin-left: 0;
+    }
+    .clubName {
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 56.25em){
+    .staImg {
+        display: none;
+    }}
+    
+@media (max-width: 63.9375em){
+   .staImg {
+        right: -4rem;
+        bottom: -7rem;
+        font-size: 250px;
+    }}
+
+/* teamInfo section */
+.teamInfo {
+        position: relative;
+        margin-top: -1rem;
+        margin-bottom: 2rem;
+        margin-left: -2rem;
+        padding-left: 2rem;
+        padding-top: 2rem;
+        background: #fff;
+        z-index: 20;
+}
+
+.teamInfo1 {
+        position: relative;
+        margin-bottom: 8rem;
+        margin-left: -2rem;
+        padding-left: 2rem;
+        background: #fff;
+        z-index: 20;
+}
+
+.personalLists {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 4px solid rgba(194, 192, 192, 0.808);
+}
+
+@media (max-width: 63.9375em) {
+    .personalLists {
+        display: flex;
+        flex-direction: vertical;
+        font-size: 12px;
+    }
+}
+
+.pdcol {
+    border-right: 1px solid rgba(194, 192, 192, 0.808);
+}
+
+ul {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.label {
+    color: #76766f;
+    width: 40%;
+    vertical-align: middle;
+}
+.info {
+    display: inline-block;
+    margin-right: -4px;
+    width: 50%;
+}
+
+li {
+    border-bottom: 1px solid rgba(232, 232, 232, 0.808);
+}
+
+li {
+    line-height: 1.4;
+    padding: 0.5rem 1rem;
+}
+
+@media (max-width: 63.9375em){
+ul {
+    width: 100%;
+    border: none;
+}}
+
+.clubImg {
+    max-height: 220px;
+}
+
+.staImg {
+    max-height: 240px;
+}
+
+
+/* Style all font awesome icons */
+/*
+.fa {
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    background-color: white;
+}
+*/
+
+/* Add a hover effect if you want */
+.fa:hover {
+    opacity: 0.7;
+}
+
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+    color: #3B5998;
+}
+
+/* Twitter */
+.fa-twitter {
+   color:  #55ACEE;
+}
+
+/* Youtube */
+.fa-youtube {
+    color: rgb(247, 7, 7);
+}
+
+/* Instagaram */
+.fa-instagram {
+    color: rgb(247, 7, 215);
+}
+
+.socialList {
+    list-style-type: none;
+    border-bottom: none;
+}
+
+.socialOptions {
+    border-right: none;
+    display: flex;
+}
