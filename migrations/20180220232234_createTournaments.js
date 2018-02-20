@@ -4,8 +4,8 @@ exports.up = function(knex, Promise) {
         table.integer("category_id").unsigned();
         table.foreign("category_id").references("categories.id");
         table.integer("number_of_teams");
-        table.integer("number_of_player").unsigned();
-        table.foreign("number_of_player").references("numberOfPlayers.id");
+        table.integer("number_of_player_id").unsigned();
+        table.foreign("number_of_player_id").references("numberOfPlayers.id");
         table.integer("organizer_id").unsigned();
         table.foreign("organizer_id").references("players.id");
         table.timestamps(false,true);

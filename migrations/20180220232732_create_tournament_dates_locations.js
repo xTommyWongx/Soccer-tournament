@@ -1,4 +1,4 @@
-  exports.up = function(knex, Promise) {
+exports.up = function(knex, Promise) {
     return knex.schema.createTable("tournamnets_dates_locations",(table)=>{
         table.increments();
         table.date("date");
