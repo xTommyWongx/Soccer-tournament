@@ -61,7 +61,7 @@ body {
 
 .navbar {
     box-shadow: 0 2px 2px  #282929;
-    background-color: #343a40!important;
+    background: linear-gradient(-45deg,rgb(104, 115, 121),#3e4449,rgb(60, 73, 80));
 }
 
 #navbarCollapse li:hover {
@@ -105,10 +105,13 @@ hr {
 #register {
     font-family: 'Times New Roman', Times, serif;
     font-size: 1em;
+    background: url('/img/fifa-background.jpg');
+    margin-top: -8px;
+    background-size: cover;
     
 }
 #register form{   
-    background: linear-gradient(-45deg,rgb(72, 178, 240),rgb(1, 111, 184),rgb(75, 188, 240));
+    background: linear-gradient(-45deg,rgb(72, 178, 240),#32587e,rgb(75, 188, 240));
     padding-top: 20px;
     padding-bottom: 50px;
     padding-left: 40px;
@@ -118,16 +121,24 @@ hr {
 
 /* login page */
 .loginFrame {
-    background-color: #343a40!important;
+    background-color: rgba(39, 154, 221)!important;
     border:solid 1vmin rgba(39, 154, 221, 0.897);
-    border-bottom-color:rgb(20, 147, 231);
-    border-left-color:rgb(65, 157, 231);
+    border-bottom-color:#1a65af;
+    border-left-color:rgb(61, 87, 109);
     border-radius:10px;
-    border-right-color:rgb(33, 158, 216);
-    border-top-color:rgb(17, 132, 199);
-    box-shadow: 2px 5px 8px  #050505;
+    border-right-color:rgb(25, 128, 175);
+    border-top-color:rgb(43, 90, 117);
+    box-shadow: 2px 5px 8px  rgb(24, 154, 180);
     outline: none;
     box-sizing:border-box;
+}
+
+.loginBody{
+    background: url('/img/fifa1-background.jpg');
+    margin-top: -8px;
+    height: 100vh;
+    background-position-y: -170px;
+    background-size: cover;
 }
 
 .loginBody {
@@ -142,7 +153,6 @@ hr {
     -webkit-box-pack: center;
     justify-content: center;
     padding-bottom: 40px; */
-    margin-top: 50px;
     /* z-index: 3; */
   }
 .form-signin {
@@ -150,7 +160,7 @@ hr {
     max-width: 330px;
     padding: 20px;
     margin: 0 auto;  
-    background: linear-gradient(-45deg,rgb(72, 178, 240),rgb(1, 111, 184),rgb(75, 188, 240));
+    background: linear-gradient(-45deg,rgb(53, 100, 128),#356ba0,rgb(53, 100, 128));
     border-radius: 20px; 
   }
   .form-signin .checkbox {
@@ -259,9 +269,9 @@ img {
     box-shadow: 0 1px #282929;
     transform: translateY(2px);
 }
-.form-group {
+.form-group1 {
     margin-left: 55px;
-    margin-top:-15px;
+    margin-top:-20px;
 }
 
   /* profile picture frame */
@@ -299,7 +309,7 @@ img {
     font-weight: normal;
 }
     
-.row {
+.row{
     max-height: 300px;
 }
     
@@ -309,12 +319,11 @@ img {
 }
     
 .imgContainer {
-    max-height:auto;
+    max-height: 270px;
 }
 
 .playerImg {
-    max-width: auto;
-     max-height: 100%;
+    max-height: 220px;
 }
    
 @media (max-width: 50.25em){
@@ -371,7 +380,7 @@ img {
     /* playerInfo section */
     .playerInfo {
             position: relative;
-            margin-top: -3rem;
+            margin-top: -2rem;
             margin-bottom: 5rem;
             margin-left: -2rem;
             padding-left: 2rem;
@@ -587,4 +596,91 @@ ul {
 .socialOptions {
     border-right: none;
     display: flex;
+}
+
+/* Tournament Page */
+.tourneyContainer1 {
+    background-color: rgba(195, 214, 231, 0.336);
+    max-height:270px;
+    padding-bottom: 20px;
+    margin-top: -5px;
+}
+
+.tourneyContainer2 {
+    background-color: rgba(231, 196, 195, 0.336);
+    max-height:270px;
+    padding-bottom: 20px;
+    margin-top: -5px;
+}
+.tourneyContainer3 {
+    background-color: rgba(215, 231, 195, 0.336);
+    max-height:270px;
+    padding-bottom: 20px;
+    margin-top: -5px;
+}
+.tourneyContainer4 {
+    background-color: rgba(218, 195, 231, 0.336);
+    max-height:270px;
+    padding-bottom: 20px;
+    margin-top: -5px;
+}
+
+@media (max-width: 50.25em){
+    .troImg {
+        max-height: 100px;
+    }
+}
+
+.tourneyDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -30px;
+}
+@media (max-width: 50.25em){
+    .tourneyDetails {
+        font-size: 10px;
+        max-width: 200px;
+        margin-left: 0;
+    }
+}
+
+.tourneyLists {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 4px solid rgba(194, 192, 192, 0.808);
+}
+
+@media (max-width: 63.9375em) {
+    .tourneyLists {
+        display: flex;
+        flex-direction: vertical;
+        font-size: 12px;
+    }
+}
+
+
+.pdcol {
+    border-right: 1px solid rgba(194, 192, 192, 0.808);
+}
+
+ul {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.label {
+    color: #76766f;
+    width: 40%;
+    vertical-align: middle;
+}
+
+.tourlist {
+    border-bottom: 1px solid rgba(232, 232, 232, 0.808);
+    line-height: 1.4;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
 }
