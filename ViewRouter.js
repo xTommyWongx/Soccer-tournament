@@ -116,17 +116,18 @@ module.exports = class ViewRouter {
         if (req.user.user.organizer) {
             return this.knex('players').select().where('email', req.user.user.email)
                     .then((organizer) => {
-                        // console.log(organizer[0].id)
                         return this.knex('tournaments').select()
                             .where('organizer_id', organizer[0].id)
+                            .innerJoin('categories', 'tournaments.category_id', 'categories.id')
+                            .innerJoin('numberOfPlayers', 'tournaments.number_of_player_id', 'numberOfPlayers.id')
                             .innerJoin('tournamnets_dates_locations', function() {
-                                this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
-                            })
-                            .then((organizerTournament) => {
-                                console.log(organizerTournament)
-                                res.render('tournaments', {organizerTournament: organizerTournament})
-                            })
+                                    this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
+                                })
                     })
+                    .then((organizerTournament) => {
+                            console.log(organizerTournament)
+                            res.render('tournaments', {organizerTournament: organizerTournament})
+                        })
         }
     }
 }

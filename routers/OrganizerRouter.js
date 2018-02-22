@@ -18,10 +18,16 @@ module.exports = class OrganizerRouter {
     }
     post(req,res){
         this.organizerService.create(req.body, req.user.user.id)
-            .then(() => {
-                req.flash('success_msg', 'You have created new tournament!');                
-                res.redirect('/profile')
-            });
+            .then((msg) => {
+                if (msg === 'Tournament name already in use!' ) {
+                    req.flash('error_msg', 'Tournament name already in use');
+                    res.redirect('/createTournament')
+                } else {
+                    req.flash('success_msg', 'You have created new tournament!');                
+                    res.redirect('/tournaments')
+                }
+            })
+            .catch((err) => console.log(err));
     }
     put(req,res){
 
