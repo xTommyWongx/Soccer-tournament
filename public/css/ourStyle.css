@@ -13,6 +13,10 @@
     margin-left: 45px;
 }
 
+.mobOne {
+    margin-left:none;
+}
+
 #navbarCollapse a{
     color: #fff;
 }
@@ -243,6 +247,13 @@ th {
 #profile-pic {
     max-width: 320px;
 }
+
+@media (max-width: 56.25em){
+    #profile-pic {
+        max-width: 180px;
+    }
+}
+
 /* profile pic */
 img {
     border-radius: 10px;

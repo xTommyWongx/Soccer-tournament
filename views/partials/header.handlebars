@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse text-center" id="navbarCollapse">
             {{#if user}}
-                <ul class="navbar-nav">
+                <ul class="navbar-nav mobOne">
                     <li class="nav-item btn-sm">
                         <a class="nav-link" href="/profile">Profile</a>
                     </li>&nbsp
@@ -23,7 +23,7 @@
                     </li>&nbsp
                     {{!-- Sign in as organizer --}}
                     {{#if user.user.organizer}}
-                        <li class="nav-item btn-sm btn-primary">
+                        <li class="nav-item btn-sm">
                             <a class="nav-link" href="/createTournament">Create Tournament</a>
                         </li>&nbsp
                     {{/if}}
