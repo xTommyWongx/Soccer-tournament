@@ -1,7 +1,8 @@
 <section class="playerPage">
     <div class="playerContainer container-fluid">
         <div class="row">
-            <div class="imgContainer col-lg-4 col-md-4 col-sm-3">
+            <div class="imgContainer col-lg-4 col-md-4">
+                <div class="container">
                 <div class="playerImg">
                     {{#if user.user.img}}
                     <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
@@ -18,14 +19,9 @@
                         <input type="submit" class="btn savebtn text-white" value="Save">
                     </div>
                 </form>
+                </div>
             </div>
-            <div class="playerDetails col-lg-4 col-md-4 col-sm-5">
-                <div class="playerNumber font-weight-bold">10</div>
-                <h2>
-                    <div class="name font-weight-bold">Sergio Aguero</div>
-                </h2>
-            </div>
-            <div class="playerNumberLrg col-lg-4 col-md-4 col-sm-4">10</div>
+           
         </div>
     </div>
 
@@ -39,31 +35,26 @@
                 <ul class="pdcol">
                     <li>
                         <div class="label">Club</div>
-                        <div class="info">Manchester City</div>
+                        <div class="info">{{user.user.teamname}}</div>
                     </li>
                 </ul>
                 <ul class="pdcol">
                     <li>
                         <div class="label">Position</div>
-                        <div class="info">Forward</div>
+                        <div class="info">{{user.user.position}}</div>
                     </li>
                 </ul>
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Appearances</div>
-                        <div class="info">203</div>
-                    </li>
-                </ul>
+                
                 <ul class="pdcol">
                     <li>
                         <div class="label">Goals</div>
-                        <div class="info">143</div>
+                        <div class="info">Not available</div>
                     </li>
                 </ul>
                 <ul class="pdcol">
                     <li>
                         <div class="label">Assists</div>
-                        <div class="info">34</div>
+                        <div class="info">Not available</div>
                     </li>
                 </ul>
             </div>

@@ -153,7 +153,14 @@ module.exports = class PlayersRouter {
                     if (err == "emailExists") {
                         req.flash('error_msg', 'Email already in use');
                     }
-                    res.redirect('/register')
+                    res.render('register', {
+                        errors: errors,
+                        firstname: req.body.firstname,
+                        lastname: req.body.lastname,
+                        username: req.body.username,
+                        email: req.body.email,
+                    });
+                    
                 });
         }
     }

@@ -36,6 +36,9 @@ module.exports = class ManagerService {
     getDetails(managerEmail){
         return this.knex.select().from('players')
                     .innerJoin('teams','players.team_id','teams.id')
-                    .where('email',managerEmail);
+                    .where('email',managerEmail)
+                    .then((data)=>{
+                        return data;
+                    }).catch(err => console.log(err));
     }
 }

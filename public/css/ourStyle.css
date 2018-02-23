@@ -335,7 +335,7 @@ img {
 }
     
 .imgContainer {
-    max-height: 270px;
+    height: 450px;
 }
 
 .playerImg {

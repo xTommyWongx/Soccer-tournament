@@ -41,7 +41,7 @@ module.exports = class ViewRouter {
     }
     // show join request
     loadDashboard(req, res) {
-        console.log(req.user.user.manager);
+        
         console.log("email ",req.user.user.email);
         if (req.user.user.player)//load player's dashboard
         {
