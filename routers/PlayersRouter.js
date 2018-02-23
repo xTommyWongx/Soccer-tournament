@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
-const sess = require('../ViewRouter').sess;
+// const sess = require('../ViewRouter').sess;
 // Set The Storage Engine
 const storage = multer.diskStorage({
     destination: './public/uploads/',
@@ -85,12 +85,14 @@ module.exports = class PlayersRouter {
     }
     // get all players in the market Plus players who r in requests table with the same manager
     get(req, res) {
-        console.log("sess test",sess.data.teamname);
-        console.log("get");
+        // console.log("sess test",sess.data.teamname);
+        // console.log("get");
+        
+        console.log("team_id",req.user.user.team_id);
         return this.playersService.list()
                 .then((playersInMarket)=>{
                     
-                     return this.playersService.listrequestedplayers(sess.data.team_id)
+                     return this.playersService.listrequestedplayers(req.user.user.team_id)
                             .then((invitedPlayers)=>{
                                 let non_request = playersInMarket.filter((player)=>{
                                     let not_match = true;

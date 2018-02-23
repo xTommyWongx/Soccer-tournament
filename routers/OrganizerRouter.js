@@ -17,7 +17,11 @@ module.exports = class OrganizerRouter {
 
     }
     post(req,res){
-
+        this.organizerService.create(req.body, req.user.user.id)
+            .then(() => {
+                req.flash('success_msg', 'You have created new tournament!');                
+                res.redirect('/profile')
+            });
     }
     put(req,res){
 

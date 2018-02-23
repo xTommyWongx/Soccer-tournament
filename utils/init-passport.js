@@ -88,6 +88,7 @@ module.exports = (app) => {
     });
 
     passport.deserializeUser((user, done) => {
+        console.log("deserialize user called",user);
         done(null, user);
     });
 

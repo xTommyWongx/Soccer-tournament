@@ -18,7 +18,7 @@ module.exports = class ViewRouter {
         router.get('/dashboard', isLoggedIn, this.loadDashboard.bind(this));
         router.get('/createTeam', isLoggedIn, (req, res) => res.render("createTeam"));
         router.get('/teams', isLoggedIn, this.teamlist.bind(this)); //get teams list for team page
-        router.get('/tournaments', (req, res) => res.render("tournaments"));
+        router.get('/tournaments', isLoggedIn, this.tournamentList.bind(this));  //list all tournaments based on loggin as a manager or organizer
         router.get('/createTournament', isLoggedIn, (req, res) => res.render("createTournament")); 
         router.get('/register', isNotLoggedIn, (req, res) => res.render("register"));
         
@@ -73,6 +73,26 @@ module.exports = class ViewRouter {
                 .then((players) => {
                     res.render('dashboard', { players: players});
                 })
+        }
+    }
+
+    // List all tournaments based on loggin as a manager or organizer
+    tournamentList(req, res) {
+        //load organizer's tournament
+        if (req.user.user.organizer) {
+            return this.knex('players').select().where('email', req.user.user.email)
+                    .then((organizer) => {
+                        // console.log(organizer[0].id)
+                        return this.knex('tournaments').select()
+                            .where('organizer_id', organizer[0].id)
+                            .innerJoin('tournamnets_dates_locations', function() {
+                                this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
+                            })
+                            .then((organizerTournament) => {
+                                console.log(organizerTournament)
+                                res.render('tournaments', {organizerTournament: organizerTournament})
+                            })
+                    })
         }
     }
 }

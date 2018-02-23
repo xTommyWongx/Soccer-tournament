@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const expressSession = require('express-session');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const hb = require('express-handlebars');
 const flash = require('connect-flash');
@@ -8,6 +9,7 @@ const path = require('path');
 
 
 module.exports = () => {
+    // let client = redis.createClient();
     let app = express();
     app.engine('handlebars', hb({ defaultLayout: 'main' }));
     app.set('view engine', 'handlebars');
@@ -15,8 +17,14 @@ module.exports = () => {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(expressSession({
-        secret: 'superSecret'
+        secret: 'superSecret',
+        
+    //     store: new redisStore({ host: 'localhost', port: 6379, client: client,ttl :  260}),
+    // saveUninitialized: false,
+    // resave: false
+
     }));
+    app.use(cors());
 
     let sess;
 
