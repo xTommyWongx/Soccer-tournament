@@ -125,8 +125,12 @@ module.exports = class ViewRouter {
                                 })
                     })
                     .then((organizerTournament) => {
-                            console.log(organizerTournament)
-                            res.render('tournaments', {organizerTournament: organizerTournament})
+                        // console.log(organizerTournament)
+                        organizerTournament.forEach((elem) => {
+                            return elem.date = new Date(elem.date).toISOString().substring(0,10);
+                        })
+
+                        res.render('tournaments', {organizerTournament: organizerTournament})
                         })
         }
     }
