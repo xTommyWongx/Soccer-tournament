@@ -8,9 +8,18 @@
     box-shadow: 0 1px #333;
     transform: translateY(2px);
 }
+/* logo */
+.logo {
+    max-height: 40px;
+}
+
 
 .navbar-nav {
     margin-left: 45px;
+}
+
+.mobOne {
+    margin-left:none;
 }
 
 #navbarCollapse a{
@@ -243,6 +252,13 @@ th {
 #profile-pic {
     max-width: 320px;
 }
+
+@media (max-width: 56.25em){
+    #profile-pic {
+        max-width: 180px;
+    }
+}
+
 /* profile pic */
 img {
     border-radius: 10px;
