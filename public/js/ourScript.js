@@ -55,20 +55,30 @@ window.onload = function () {
             if (counter % 2 == 1) {
                 counter++;
                 playerMarket.innerHTML = "Hide players";
-                fetch('/api/players')
-                    .then((response) => {
-                        return response.json();
-                    })
-                    .then((data) => {
-                        console.log("daaataaaa", data);
-                        loadPlayerMarket(data);
-                    })
-                    .then(() => {
-                        sendRequestToJoin();
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    })
+
+                let xhrPromise = function(){
+                    return new Promise((resolve, reject)=>{
+                        let xhr = new XMLHttpRequest();
+                        xhr.open('GET','/api/players',true);
+                        xhr.onreadystatechange = function(){
+                            if(this.readyState == 4 && this.status == 200){
+                                console.log(this.responseText);
+                            resolve(this.responseText);
+                            }
+                        }
+                        xhr.send();
+                    })                
+                };
+                xhrPromise().then((response)=>{
+                    console.log("response",response);
+                    return JSON.parse(response);
+                }).then((data)=>{
+                    loadPlayerMarket(data);
+                }).then(()=>{
+                    sendRequestToJoin();
+                }).catch((err)=>{
+                    console.log(err);
+                });
             } else {
                 counter++;
                 playerMarket.innerHTML = "Show available players";
@@ -89,20 +99,24 @@ window.onload = function () {
                     e.preventDefault();
 
                     if (sendRequest[i].querySelector('#message').value == "Invite to join") {
-
+                        console.log("invite to join");
                         const data = new URLSearchParams();
                         for (const pair of new FormData(sendRequest[i])) {
                             data.append(pair[0], pair[1]);
                         }
-                        fetch("/sendRequest/", {
-                            method: 'POST',
-                            body: data
-                        }).then((response) => {
-                            sendRequest[i].querySelector('#message').value = "Cancel request";
-                            sendRequest[i].querySelector('#message').classList.remove("btn-primary");
-                            sendRequest[i].querySelector('#message').classList.add("btn-danger");
-                            console.log(response);
-                        }).catch((err) => console.log(err));
+                        let xhrSend = new XMLHttpRequest();
+                            xhrSend.open('POST','api/requests/sendRequest',true);
+                            xhrSend.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                  console.log(this.responseText);
+                                    sendRequest[i].querySelector('#message').value = "Cancel request";
+                                    sendRequest[i].querySelector('#message').classList.remove("btn-primary");
+                                    sendRequest[i].querySelector('#message').classList.add("btn-danger");
+                                }
+                              };
+                            xhrSend.send(data);
+
+                
                     }
                     // cancel request to join
                     else {
@@ -112,16 +126,17 @@ window.onload = function () {
                             data.append(pair[0], pair[1]);
                         }
                         console.log("cancel request", sendRequest[i]);
-                        fetch("/cancelRequest/", {
-                            method: 'POST',
-                            body: data
-                        }).then((response) => {
-                            sendRequest[i].querySelector('#message').value = "Invite to join";
-                            sendRequest[i].querySelector('#message').classList.remove("btn-danger");
-                            sendRequest[i].querySelector('#message').classList.add("btn-primary");
-
-                        })
-                            .catch((err) => console.log(err));
+                        let xhrCancel = new XMLHttpRequest();
+                            xhrCancel.open('POST','api/requests/cancelRequest/',true);
+                            xhrCancel.onreadystatechange = function(){
+                                if(this.readyState == 4 && this.status == 200){
+                                    sendRequest[i].querySelector('#message').value = "Invite to join";
+                                    sendRequest[i].querySelector('#message').classList.remove("btn-danger");
+                                    sendRequest[i].querySelector('#message').classList.add("btn-primary");
+                                }
+                            }
+                            xhrCancel.send(data);
+                       
                     }
                 })
             }

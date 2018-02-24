@@ -12,6 +12,10 @@
 .logo {
     max-height: 40px;
 }
+.banner {
+    height: 270px;
+    background: rgba(195, 214, 231, 0.336);
+}
 
 
 .navbar-nav {
@@ -121,7 +125,7 @@ hr {
     background-size: cover;
     
 }
-#register form{   
+#register {   
     background: linear-gradient(-45deg,rgb(72, 178, 240),#32587e,rgb(75, 188, 240));
     padding-top: 20px;
     padding-bottom: 50px;
@@ -203,7 +207,7 @@ hr {
       font-family: 'Times New Roman', Times, serif;
       color: #fff;
   }
-
+ 
   .teamslist {
       color: #fff;
       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -333,11 +337,11 @@ img {
     
 .playerContainer {
     background-color: rgba(195, 214, 231, 0.336);
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
     
 .imgContainer {
-    max-height: 270px;
+    height: 450px;
 }
 
 .playerImg {
