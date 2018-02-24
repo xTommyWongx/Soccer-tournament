@@ -1,4 +1,4 @@
-{{#if user.user.organizer}}
+
     {{#each organizerTournament}}
         <section class="tourneyPage">
             <div class="tourneyContainer1 container-fluid">
@@ -14,7 +14,7 @@
                             <ul class="pdcol">
                                 <li class="tourlist">
                                     <div class="label">Date</div>
-                                    <div class="info">{{date}}</div>
+                                    <div class="info">{{formatDate date 'MMMM Do YYYY'}}</div>
                                 </li>
                             </ul>
                             <ul class="pdcol">
@@ -38,7 +38,7 @@
                             <ul class="pdcol">
                                 <li class="tourlist">
                                     <div class="label">Prize</div>
-                                    <div class="info">Macbook Pro 15inch</div>
+                                    <div class="info">{{prize}}</div>
                                 </li>
                             </ul>
                         </div>
@@ -47,7 +47,7 @@
             </div>
         </section>
  {{/each}}
-{{/if}} 
+
     
     {{!-- <div class="tourneyContainer2 container-fluid">
         <div class="row">

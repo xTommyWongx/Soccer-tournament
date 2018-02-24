@@ -7,11 +7,20 @@ const hb = require('express-handlebars');
 const flash = require('connect-flash');
 const path = require('path');
 
+// Handlebars Helpers
+const {formatDate} = require('./helpersHbs');
 
 module.exports = () => {
     // let client = redis.createClient();
+
+   
     let app = express();
-    app.engine('handlebars', hb({ defaultLayout: 'main' }));
+    app.engine('handlebars', hb({ 
+        helpers : {
+            formatDate : formatDate
+        },
+        defaultLayout: 'main'
+     }));
     app.set('view engine', 'handlebars');
     app.use(express.static(path.join(__dirname,'../public')));
     app.use(bodyParser.urlencoded({ extended: false }));

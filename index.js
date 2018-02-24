@@ -28,6 +28,8 @@ const { PlayersService,
         RequestService,
         OrganizerService} = require('./services');
 
+
+
 let playersService = new PlayersService(knex);
 let teamsService = new TeamsService(knex);
 let managerService = new ManagerService(knex);
