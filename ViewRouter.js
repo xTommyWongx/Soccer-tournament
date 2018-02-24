@@ -122,7 +122,8 @@ module.exports = class ViewRouter {
                             .innerJoin('numberOfPlayers', 'tournaments.number_of_player_id', 'numberOfPlayers.id')
                             .innerJoin('tournamnets_dates_locations', function() {
                                     this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
-                                })
+                            })
+                            .orderBy('date', 'desc')
                     })
                     .then((organizerTournament) => {
                         // console.log(organizerTournament)
