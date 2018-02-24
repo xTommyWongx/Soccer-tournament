@@ -12,6 +12,10 @@
 .logo {
     max-height: 40px;
 }
+.banner {
+    height: 270px;
+    background: rgba(195, 214, 231, 0.336);
+}
 
 
 .navbar-nav {
@@ -331,7 +335,7 @@ img {
     
 .playerContainer {
     background-color: rgba(195, 214, 231, 0.336);
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
     
 .imgContainer {

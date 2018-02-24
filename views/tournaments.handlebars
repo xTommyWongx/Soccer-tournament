@@ -1,16 +1,23 @@
-
+ 
     {{#each organizerTournament}}
         <section class="tourneyPage">
-            <div class="tourneyContainer1 container-fluid">
+            <div class="tourneyContainer1 container-fluid ">
                 <div class="row">
-                    <div class="troContainer col-lg-4 col-md-4 col-sm-3">
+                    <div class="troContainer col-lg-4 col-md-4 col-sm-3 ">
                         <div class="trophyImg">
-                            <img class="troImg" src="/img/trophy1.jpg" alt="trophy1">
-                        </div>
+                            <img class="troImg" src="/img/trophy1.jpg" alt="trophy1">  
+                        </div>               
+                        <a href="" class="btn btn-success btn-sm mt-1">Join tournament</a>
                     </div>
-                    <div class="tourneyDetails col-lg-8 col-md-8 col-sm-9">
+                    <div class="tourneyDetails col-lg-8 col-md-8 col-sm-9 ">
                         <div class="tourneyLists">
                             <h3 class="subheading font-weight-bold">{{tournamentName}}</h3>
+                            <ul class="pdcol">
+                                <li class="tourlist">
+                                    <div class="label">Organizer</div>
+                                    <div class="info">{{username}}</div>
+                                </li>
+                            </ul>
                             <ul class="pdcol">
                                 <li class="tourlist">
                                     <div class="label">Date</div>
@@ -41,12 +48,14 @@
                                     <div class="info">{{prize}}</div>
                                 </li>
                             </ul>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </section>
  {{/each}}
+ 
 
     
     {{!-- <div class="tourneyContainer2 container-fluid">

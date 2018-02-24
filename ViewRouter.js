@@ -85,6 +85,7 @@ module.exports = class ViewRouter {
                 .then((organizer) => {
                     return this.knex('tournaments').select()
                         .where('organizer_id', organizer[0].id)
+                        .innerJoin('players','tournaments.organizer_id','players.id')
                         .innerJoin('categories', 'tournaments.category_id', 'categories.id')
                         .innerJoin('numberOfPlayers', 'tournaments.number_of_player_id', 'numberOfPlayers.id')
                         .innerJoin('tournamnets_dates_locations', function () {
@@ -99,6 +100,7 @@ module.exports = class ViewRouter {
             // load all the tournaments
 
             return this.knex('tournaments').select()
+                .innerJoin('players','tournaments.organizer_id','players.id')
                 .innerJoin('categories', 'tournaments.category_id', 'categories.id')
                 .innerJoin('numberOfPlayers', 'tournaments.number_of_player_id', 'numberOfPlayers.id')
                 .innerJoin('tournamnets_dates_locations', function () {
