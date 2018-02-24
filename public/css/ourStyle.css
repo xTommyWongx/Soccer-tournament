@@ -15,11 +15,13 @@
 
 
 .navbar-nav {
-    margin-left: 45px;
+    margin-left: 150px;
 }
 
-.mobOne {
-    margin-left:none;
+@media (max-width: 56.25em){
+.navbar-nav {
+    margin-left:0;
+}
 }
 
 #navbarCollapse a{
