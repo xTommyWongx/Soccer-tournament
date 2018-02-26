@@ -127,7 +127,7 @@ hr {
     background: linear-gradient(-90deg, rgb(23, 110, 168), rgb(9, 125, 192));
 }
 
-#register {
+#register{
     font-family: 'Times New Roman', Times, serif;
     font-size: 1em;
     background: url('/img/fifa-background.jpg');
@@ -135,7 +135,7 @@ hr {
     background-size: cover;
     
 }
-#register {   
+#register form {   
     background: linear-gradient(-45deg,rgb(72, 178, 240),#32587e,rgb(75, 188, 240));
     padding-top: 20px;
     padding-bottom: 50px;
