@@ -7,39 +7,40 @@
     {{!-- if manager already has team, then show team details and available players --}} 
     {{#if user.user.team_id}}
         <div class="row">
+            <div class="container d-block">
             <div class="col">
                 <div class="col text-center"><img src="/img/fifa-background.jpg" alt="" width="200px" height="200px"></div>
                 <br>
-                <div class="form-group backgroundForm">
-                    <div class="clubDetails">
-                        <label for="">Club name:&nbsp</label>
-                        <span><strong>{{user.user.teamname}}</strong></span>
-                        <hr>
-                        <span>Squad:</span>
-                        <table>
-                           <tr>
-                               <th>Name</th>
-                               <th>Position</th>
-                           </tr>
-                           {{#each players}}
-                            <tr>
-                                <td>{{username}}</td>
-                                <td>{{position}}</td>
-                            </tr>
-                           {{/each}}
-                        </table> 
+                <div class="form-group ">
+                    <div class="col-lg-8 col-md-8 ">
+                        <h2>Club :&nbsp<strong>{{user.user.teamname}}</strong></h2>
+                        <div class="personalLists ">
+                            <br><br>
+                        <h3 class="subheading font-weight-bold">Squad</h3>
+                        
+                        {{#each players}}
+                        <ul class="pdcol">
+                            <li>
+                                <div class="label">{{username}}</div>
+                                <div class="info">{{position}}</div>
+                            </li>
+                        </ul>
+                           
+                        {{/each}}
+                      
+                        
                     </div>
                 </div>
-                
+                </div>
+                {{!-- Available players details --}}
+                <button class="btn btn-danger" id="showPlayerMarket">Show available players</button>
+                    <br><br>
+                <div id="playerslist">
+                    {{!-- available players are displayed here --}}
+                </div>
             </div>
         </div>
-        {{!-- Available players details --}}
-        {{!-- <a href="/api/players" class="btn btn-danger fa">Show available players</a> --}}
-        <button class="btn btn-danger" id="showPlayerMarket">Show available players</button>
-        <br><br>
-        <div id="playerslist">
-            {{!-- available players are displayed here --}}
-        </div>
+        
     {{/if}}
 {{/if}}
 {{!-- End of manager block --}}
@@ -72,7 +73,7 @@
                             <p class="card-text">Club: {{teamName}}</p>
                         </div>
                         <div class="card-footer cardFooter p-1">
-                            <form action="/api/request/accept" method="POST">
+                            <form action="/api/requests/accept" method="POST">
                                 <input type="text" name="team_id" value={{team_id}} class="d-none">
                                 <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
                             </form>&nbsp&nbsp

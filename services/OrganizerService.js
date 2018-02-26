@@ -1,3 +1,4 @@
+
 module.exports = class OrganizerService {
     constructor(knex){
         this.knex = knex;
@@ -9,13 +10,14 @@ module.exports = class OrganizerService {
                 if ( result.length > 0 ) {
                     let err = "Tournament name already in use!";
                     // console.log(err)
-                    return err;
+                    throw err;
                 } else {
                     return this.knex('tournaments').insert({
                         tournamentName: tournament.nameOfTournament,
                         category_id: tournament.category,
                         number_of_teams: tournament.numberOfTeam,
                         number_of_player_id: tournament.numberOfPlayer,
+                        prize: tournament.prize,
                         organizer_id: organizerID
                         }, 'id')
                             // insert tournaments id to tournaments_teams join table
