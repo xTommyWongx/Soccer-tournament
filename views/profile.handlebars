@@ -8,7 +8,7 @@
                     <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
                     <img src="/img/kakashi.jpg" alt="profile picture" id="profile-pic" class="img-fluid"> {{/if}}
                 </div>
-                <br>
+                
                 <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
                     <div class="form-group1">
                         <label for="file-upload" class="custom-file-upload">
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="playerInfo container-fluid">
+    <div class="playerInfo ">
         <div class="row">
             <div class="adSpace col-lg-4 col-md-4">
             </div>
@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <div class="playerInfo1 container-fluid">
+    <div class="playerInfo1 ">
         <div class="row">
             <div class="adSpace col-lg-4 col-md-4">
             </div>

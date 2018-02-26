@@ -47,46 +47,56 @@
 
 {{!-- Players block --}}
 {{#if user.user.player}}
-<div class="row my-3">
-    <div class="col-md-7"> 
-        <div class="card text-white bg-success mb-3" >
-            <div class="card-header">Club : {{user.user.teamname}}</div>
-            <div class="card-body">
-                <h4 class="card-title">Your squad: </h4>
-                {{#each players}}
-                    <p class="card-text"> {{username}}</p>
-                {{/each}}
-            </div>
-        </div>   
-    </div>
-    
-    <div class="col-md-5">
-        {{#if user.user.team_id}}
-            <a href="/api/players/leaveTeam" class="btn btn-danger">Leave</a>
-        {{/if}}
-        {{#each requests}}
-            <div class="card player-card">
-                    
-                    <div class="card-block text-center">
-                        <p class="card-header cardHead">Request from <strong>{{managerName}}</strong></p>
-                        <div class="card-body cardBody">
-                            <p class="card-text">Club: {{teamName}}</p>
-                        </div>
-                        <div class="card-footer cardFooter p-1">
-                            <form action="/api/requests/accept" method="POST">
-                                <input type="text" name="team_id" value={{team_id}} class="d-none">
-                                <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
-                            </form>&nbsp&nbsp
-                             <form action="/api/request/reject" method="POST">
-                                <input type="text" name="team_id" value={{team_id}} class="d-none">
-                                <input type="text" name="playerEmail" value={{playerEmail}} class="d-none">
-                                <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
-                            </form>
-                        </div>  
-                    </div>
-                </div>       
-        {{/each}}
-    </div>
+<div class="banner text-center">
+    <img src="/img/clubLogo.png" alt="default club logo" width="200px" height="200px">
+    <hr style="width: 400px">
 </div>
+
+
+    <div class="playerInfo ">
+        <div class="row">
+            <div class="adSpace col-lg-4 col-md-4 text-center">
+                <h3 class="subheading font-weight-bold">Club: &nbsp &nbsp {{user.user.teamname}}</h3>
+                
+                {{#if user.user.team_id}}
+                    <a href="/api/players/leaveTeam" class="btn btn-danger btn-sm my-3">Leave the club</a>
+                 {{/if}}
+                {{#each requests}}
+                    <div class="card player-card">
+                        
+                        <div class="card-block text-center">
+                            <p class="card-header cardHead">Request from <strong>{{managerName}}</strong></p>
+                            <div class="card-body cardBody">
+                                <p class="card-text">Club: {{teamName}}</p>
+                            </div>
+                            <div class="card-footer cardFooter p-1">
+                                <form action="/api/requests/accept" method="POST">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
+                                </form>&nbsp&nbsp
+                                <form action="/api/request/reject" method="POST">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="text" name="playerEmail" value={{playerEmail}} class="d-none">
+                                    <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
+                                </form>
+                            </div>  
+                        </div>
+                    </div>       
+                {{/each}}
+
+            </div>
+            <div class="personalLists col-lg-8 col-md-8">
+                <h4 class="subheading font-weight-bold text-warning p-2">Squad</h4>
+             {{#each players}}
+             <ul class="pdcol">
+                    <li>
+                        <div class="label">{{username}}</div>
+                        <div class="info">{{position}}</div>
+                    </li>
+                </ul>
+            {{/each}}
+            </div>
+        </div>
+    </div>
 {{/if}}
 {{!-- End of player block --}}
