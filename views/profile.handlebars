@@ -1,65 +1,71 @@
 <section class="playerPage">
     <div class="playerContainer container-fluid">
         <div class="row">
-            <div class="imgContainer col-lg-4 col-md-4">
-                <div class="container">
-                <div class="playerImg">
-                    {{#if user.user.img}}
-                    <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
-                    <img src="/img/kakashi.jpg" alt="profile picture" id="profile-pic" class="img-fluid"> {{/if}}
+            <div class="box">
+                <div class="banner">
+                    <div class="container">
+                        <div id="clickImg">
+                            {{#if user.user.img}}
+                            <img src="{{user.user.img}}" id="profilepicture" alt="profile picture"  class="img-fluid profile-pic"> {{else}}
+                            <img src="/img/kakashi.jpg" alt="profile picture"  class="img-fluid profile-pic"> {{/if}}
+                        </div>
+                    
+                        
+                    </div>
                 </div>
                 
-                <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
-                    <div class="form-group1">
-                        <label for="file-upload" class="custom-file-upload">
-                            <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
-                        </label>
-                        <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
-
-                        <input type="submit" class="btn savebtn text-white" value="Save">
-                    </div>
-                </form>
-                </div>
             </div>
            
         </div>
     </div>
-
-    <div class="playerInfo ">
-        <div class="row">
-            <div class="adSpace col-lg-4 col-md-4">
-            </div>
-            <div class="personalLists col-lg-8 col-md-8">
-                <h3 class="subheading font-weight-bold">League Record</h3>
-
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Club</div>
-                        <div class="info">{{user.user.teamname}}</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Position</div>
-                        <div class="info">{{user.user.position}}</div>
-                    </li>
-                </ul>
-                
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Goals</div>
-                        <div class="info">Not available</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Assists</div>
-                        <div class="info">Not available</div>
-                    </li>
-                </ul>
-            </div>
+    <div class="row">
+        <div class="my-4">
+            <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data"> 
+                    <div class="form-group1">
+                        <label for="file-upload" class="custom-file-upload">
+                            <i class="fa fa-cloud-upload" id="cloudIcon">Change</i>
+                        </label>
+                        <input id="file-upload" type="file" name="profileimg" accept="image/*"/>&nbsp
+                        <input type="submit" class="btn savebtn text-white" value="Save">
+                    </div>
+            </form>
         </div>
     </div>
+    
+    <div class="row py-3">
+        <div class="adSpace col-lg-4 col-md-4">
+        </div>
+        <div class="personalLists col-lg-8 col-md-8">
+            <h3 class="subheading font-weight-bold">League Record</h3>
+
+            <ul class="pdcol">
+                <li>
+                    <div class="label">Club</div>
+                    <div class="info">{{user.user.teamname}}</div>
+                </li>
+            </ul>
+            <ul class="pdcol">
+                <li>
+                    <div class="label">Position</div>
+                    <div class="info">{{user.user.position}}</div>
+                </li>
+            </ul>
+            
+            <ul class="pdcol">
+                <li>
+                    <div class="label">Goals</div>
+                    <div class="info">Not available</div>
+                </li>
+            </ul>
+            <ul class="pdcol">
+                <li>
+                    <div class="label">Assists</div>
+                    <div class="info">Not available</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+   
 
     <div class="playerInfo1 ">
         <div class="row">

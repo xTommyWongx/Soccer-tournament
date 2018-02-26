@@ -30,17 +30,19 @@
     color: #fff;
 }
 
-/*
-body {
-    background: url('/img/football-stadium.jpg');
-}
-    */    
+.box {
+    display: flex;
+    direction: row;
+   
+   
+}  
     
 .teamlistbutton{
    
     display: flex;
     justify-content: space-between;
     align-items: center;
+    justify-content: center;
 }
 
 #message {
@@ -81,12 +83,22 @@ body {
     background-color: #000 !important;
     /* opacity: 0.5; */
 }
-
+.flex_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .btn {
     border-radius: 20px;
     outline: none;
 }
 /* card */
+.cardborder {
+    border: 1px solid #32587e;
+    display: inline-block;
+    padding:10px;
+}
 .card {
     border-radius: 20px !important;
     border: 0;
@@ -253,14 +265,9 @@ th {
 
 
 /* profile page */
-#profile-pic {
-    max-width: 320px;
-}
-
-@media (max-width: 56.25em){
-    #profile-pic {
-        max-width: 180px;
-    }
+.profile-pic {
+    max-width: 350px;
+    max-height: 270px;
 }
 
 /* profile pic */
@@ -320,6 +327,7 @@ img {
     right:-1vmin;
     top:-1vmin;
 }
+
 
   
     /* end of profile pic frame */

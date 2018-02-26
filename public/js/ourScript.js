@@ -2,6 +2,7 @@ window.onload = function () {
 
     // load players available in the market
     if (document.querySelector('#showPlayerMarket') != null) {
+        console.log("show players");
         let playerListTemplate = Handlebars.compile(`
         {{#each on_request}}   
             <div class="card player-card">
@@ -144,6 +145,54 @@ window.onload = function () {
 
     }
     // end of loading players in market..
+
+    // organizer's accept and reject functions
+    if(document.querySelector('.accept') !== null){
+        console.log("requests are here")
+        let accept = document.querySelectorAll('.accept');
+        let reject = document.querySelectorAll('.reject');
+        let helper = document.querySelectorAll('.helper');
+        
+        for(let i=0;i<accept.length;i++){
+            accept[i].addEventListener('submit',function(e){
+                e.preventDefault();
+                console.log("you clicked me");
+                const data = new URLSearchParams();
+                for (const pair of new FormData(accept[i])) {
+                data.append(pair[0], pair[1]);
+                }
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST','api/organizers/accept/',true);
+                xhr.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        console.log(this.responseText);
+                        helper[i].innerHTML = "";
+                    }
+                }
+                xhr.send(data);
+            })
+        }
+        for(let i=0;i<reject.length;i++){
+            reject[i].addEventListener('submit',function(e){
+                e.preventDefault();
+                const data = new URLSearchParams();
+                for (const pair of new FormData(reject[i])) {
+                data.append(pair[0], pair[1]);
+                }
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST','api/organizers/reject/',true);
+                xhr.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        console.log(this.responseText);
+                        helper[i].innerHTML = "";
+
+                    }
+                }
+                xhr.send(data);
+            })
+        }
+        
+    }
 
 }
 

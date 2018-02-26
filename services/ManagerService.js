@@ -41,4 +41,19 @@ module.exports = class ManagerService {
                         return data;
                     }).catch(err => console.log(err));
     }
+    req_to_join_tournament(teamname,team_id,tournament_id,organizer_id,tournament_name){
+        return this.knex('requestTournament').insert({
+                                                        teamname: teamname,
+                                                        team_id: team_id,
+                                                        tournament_id: tournament_id,
+                                                        organizer_id: organizer_id,
+                                                        tournament_name: tournament_name
+                                                    });
+    }
+    cancel_join_tournament(team_id,tournament_id){
+        return this.knex('requestTournament').where({
+                team_id: team_id,
+                tournament_id: tournament_id
+            }).del();
+    }
 }

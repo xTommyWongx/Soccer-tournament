@@ -7,40 +7,43 @@
     {{!-- if manager already has team, then show team details and available players --}} 
     {{#if user.user.team_id}}
         <div class="row">
-            <div class="container d-block">
-            <div class="col">
-                <div class="col text-center"><img src="/img/fifa-background.jpg" alt="" width="200px" height="200px"></div>
+           
+            <div class="col-lg-12 banner">
+                <div class=" text-center"><img src="/img/clubLogo.png" alt="" width="200px" height="200px"></div>
                 <br>
-                <div class="form-group ">
-                    <div class="col-lg-8 col-md-8 ">
-                        <h2>Club :&nbsp<strong>{{user.user.teamname}}</strong></h2>
-                        <div class="personalLists ">
-                            <br><br>
-                        <h3 class="subheading font-weight-bold">Squad</h3>
-                        
-                        {{#each players}}
-                        <ul class="pdcol">
-                            <li>
-                                <div class="label">{{username}}</div>
-                                <div class="info">{{position}}</div>
-                            </li>
-                        </ul>
-                           
-                        {{/each}}
-                      
-                        
-                    </div>
-                </div>
-                </div>
-                {{!-- Available players details --}}
-                <button class="btn btn-danger" id="showPlayerMarket">Show available players</button>
-                    <br><br>
-                <div id="playerslist">
-                    {{!-- available players are displayed here --}}
-                </div>
             </div>
         </div>
-        
+        <div class="row p-3">
+            <div class="col-lg-8 col-md-8 mx-auto">
+                    <div class="form-group">
+                        <h2>Club :&nbsp<strong>{{user.user.teamname}}</strong></h2>
+                        <div class="personalLists ">
+                                <br><br>
+                            <h3 class="subheading font-weight-bold">Squad</h3>
+                            
+                            {{#each players}}
+                            <ul class="pdcol">
+                                <li>
+                                    <div class="label">{{username}}</div>
+                                    <div class="info">{{position}}</div>
+                                </li>
+                            </ul>
+                            
+                            {{/each}}  
+                        </div>
+                    </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-md-12  text-center">
+                {{!-- Available players details --}}
+                <button class="btn btn-info" id="showPlayerMarket">Show available players</button>
+                <br><br>
+                <div id="playerslist">
+                {{!-- available players are displayed here --}}
+                </div>
+            </div>
+        </div>     
     {{/if}}
 {{/if}}
 {{!-- End of manager block --}}
@@ -100,3 +103,38 @@
     </div>
 {{/if}}
 {{!-- End of player block --}}
+
+{{!-- Organizer's block --}}
+{{#if user.user.organizer}}
+<div class="banner text-center" id="organizer-dashboard">
+    <img src="/img/clubLogo.png" alt="default club logo" width="200px" height="200px">
+    <hr style="width: 400px">
+</div>
+<br>
+<div class="container">  
+    <div class="flex_box">
+    {{#each requests}}
+        <div class="card helper" style="width: 20rem;">
+            <img class="mx-auto" src="/img/club.png" width="50px" height="100px" alt="Card image cap">
+            <div class="card-block">
+                <p class="card-title text-info text-center">Request to join {{tournament_name}}</p>
+                <p class="card-text text-center">This is a request from {{teamname}} to participate in {{tournament_name}}</p>
+                <div class=" cardFooter p-1">
+                    <form class="accept" >
+                        <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
+                        <input type="text" name="team_id" value={{team_id}} class="d-none">
+                        <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
+                    </form>&nbsp&nbsp
+                    <form class="reject">
+                        <input type="text" name="team_id" value={{team_id}} class="d-none">
+                        <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
+                        <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
+                    </form>
+                </div>
+            </div>  
+        </div>
+        <br><br>
+    {{/each}}
+   </div>
+</div>
+{{/if}}
