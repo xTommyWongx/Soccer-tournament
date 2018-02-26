@@ -94,23 +94,7 @@ module.exports = class ViewRouter {
                     })
                     .then((organizerTournament) => {
                         // console.log(organizerTournament)
-                        organizerTournament.forEach((elem) => {
-                            return elem.date = new Date(elem.date).toISOString().substring(0,10);
-                        })
-
                         res.render('tournaments', {organizerTournament: organizerTournament})
-                // .then((organizer) => {
-                //     return this.knex('tournaments').select()
-                //         .where('organizer_id', organizer[0].id)
-                //         .innerJoin('categories', 'tournaments.category_id', 'categories.id')
-                //         .innerJoin('numberOfPlayers', 'tournaments.number_of_player_id', 'numberOfPlayers.id')
-                //         .innerJoin('tournamnets_dates_locations', function () {
-                //             this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
-                //         })
-                // })
-                // .then((organizerTournament) => {
-                //     console.log(organizerTournament)
-                //     res.render('tournaments', { organizerTournament: organizerTournament })
                 })
         } else {
             // load all the tournaments
@@ -124,11 +108,7 @@ module.exports = class ViewRouter {
                 })
                 .orderBy('date', 'desc')
                 .then((organizerTournament) => {
-                    console.log(organizerTournament)
-                    organizerTournament.forEach((elem) => {
-                        return elem.date = new Date(elem.date).toISOString().substring(0,10);
-                    })
-
+                    // console.log(organizerTournament)
                     res.render('tournaments', { organizerTournament: organizerTournament })
                 })
         }
