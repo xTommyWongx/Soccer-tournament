@@ -103,6 +103,7 @@ module.exports = class ViewRouter {
                         .innerJoin('tournamnets_dates_locations', function () {
                             this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
                         })
+                       .orderBy('date', 'desc')
                 })
                 .then((organizerTournament) => {
                     console.log(organizerTournament)
@@ -119,6 +120,7 @@ module.exports = class ViewRouter {
                     this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
 
                 })
+                .orderBy('date', 'desc')
                 .then((organizerTournament) => {
                     console.log(organizerTournament)
                     return this.knex('requestTournament').select('tournament_id as tournament').where({
@@ -131,7 +133,6 @@ module.exports = class ViewRouter {
                     })
 
                 })
-
         }
     }
 }
