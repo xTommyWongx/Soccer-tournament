@@ -2,15 +2,38 @@
     <section class="tourneyPage">
         <div class="tourneyContainer1 container-fluid ">
             <div class="row">
-                <div class="troContainer col-lg-4 col-md-4 col-sm-3 ">
+                <div class="tourContainer col-lg-4 col-md-4 col-sm-4 ">
                     <div class="trophyImg">
                         <img class="troImg" src="/img/trophy1.jpg" alt="trophy1">  
-                    </div>
-                    <a href="" class="btn btn-primary btn-sm mt-1">Join tournament</a>
-                    <a href="/api/organizers/tournament/{{tournament_id}}/edit" class="btn btn-success btn-sm mt-1">Edit</a>
-                    <a href="" class="btn btn-danger btn-sm mt-1">Delete</a>
+                    </div> 
+                    
+                    {{#if ../user.user.manager}} 
+                        
+                        {{#check tournament_id ../requests }} 
+                        <form class="join_tournament">
+                            <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
+                            <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
+                            <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none" >
+                            <input type="submit" class="btn btn-danger btn-sm mt-1" value="Cancel request" id="input">
+                        </form> 
+                            {{else}}
+                        <form class="join_tournament">
+                            <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
+                            <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
+                            <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none" >
+                            <input type="submit" class="btn btn-success btn-sm mt-1" value="Join tournament" id="input">
+                        </form> 
+
+                        {{/check}} 
+                                    
+                    {{/if}}
+
+                    {{#if ../user.user.organizer}}
+                        <a href="/api/organizers/tournament/{{tournament_id}}/edit" class="btn btn-success btn-sm mt-1">Edit</a>
+                        <a href="" class="btn btn-danger btn-sm mt-1">Delete</a>
+                    {{/if}}
                 </div>
-                <div class="tourneyDetails col-lg-8 col-md-8 col-sm-9 ">
+                <div class="tourneyDetails col-lg-8 col-md-8 col-sm-8 ">
                     <div class="tourneyLists">
                         <h3 class="subheading font-weight-bold">{{tournamentName}}</h3>
                         <ul class="pdcol">
@@ -55,137 +78,8 @@
             </div>
         </div>
     </section>
-{{/each}}
+ {{/each}}
+ 
+
     
-{{!-- <div class="tourneyContainer2 container-fluid">
-    <div class="row">
-        <div class="imgContainer col-lg-4 col-md-4 col-sm-3">
-            <div class="trophyImg">
-                <img class="troImg" src="/img/trophy2.jpg" alt="trophy1">
-            </div>
-        </div>
-        <div class="tourneyDetails col-lg-8 col-md-8 col-sm-9">
-            <div class="tourneyLists">
-                <h3 class="subheading font-weight-bold">Tournament Name</h3>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Date</div>
-                        <div class="info">March 27 2018</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Location</div>
-                        <div class="info">Central</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Number of Teams</div>
-                        <div class="info">16</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Number of players on field</div>
-                        <div class="info">7</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Prize</div>
-                        <div class="info">Macbook Pro 15inch</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="tourneyContainer3 container-fluid">
-    <div class="row">
-        <div class="imgContainer col-lg-4 col-md-4 col-sm-3">
-            <div class="trophyImg">
-                <img class="troImg" src="/img/trophy3.jpg" alt="trophy1">
-            </div>
-        </div>
-        <div class="tourneyDetails col-lg-8 col-md-8 col-sm-9">
-            <div class="tourneyLists">
-                <h3 class="subheading font-weight-bold">Tournament Name</h3>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Date</div>
-                        <div class="info">March 27 2018</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Location</div>
-                        <div class="info">Central</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Number of Teams</div>
-                        <div class="info">16</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Number of players on field</div>
-                        <div class="info">7</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Prize</div>
-                        <div class="info">Macbook Pro 15inch</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="tourneyContainer4 container-fluid">
-    <div class="row">
-        <div class="imgContainer col-lg-4 col-md-4 col-sm-3">
-            <div class="trophyImg">
-                <img class="troImg" src="/img/trophy4.jpg" alt="trophy1">
-            </div>
-        </div>
-        <div class="tourneyDetails col-lg-8 col-md-8 col-sm-9">
-            <div class="tourneyLists">
-                <h3 class="subheading font-weight-bold">Tournament Name</h3>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Date</div>
-                        <div class="info">March 27 2018</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Location</div>
-                        <div class="info">Central</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Number of Teams</div>
-                        <div class="info">16</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Number of players on field</div>
-                        <div class="info">7</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li class="tourlist">
-                        <div class="label">Prize</div>
-                        <div class="info">Macbook Pro 15inch</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div> --}}
+    

@@ -71,6 +71,18 @@ module.exports = class ViewRouter {
                     res.render('dashboard', { players: players });
                 })
         }
+        else if(req.user.user.organizer){ // load organizer's dashboard
+            return this.knex('requestTournament').select()
+                        .where('organizer_id',req.user.user.id)
+                        .then((requests)=>{ 
+                            console.log("requests to join tournaments",requests);
+                            res.render('dashboard',{ requests : requests});
+
+                        }).catch(err=>{
+                            console.log(err);
+                            res.send(err);
+                        })
+        }
     }
 
     // List all tournaments based on loggin as a manager or organizer
@@ -87,7 +99,7 @@ module.exports = class ViewRouter {
                         .innerJoin('tournamnets_dates_locations', function () {
                             this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
                         })
-                       .orderBy('date', 'desc')
+                       .orderBy('date', 'asc')
                 })
                 .then((organizerTournament) => {
                     // console.log(organizerTournament)
@@ -104,10 +116,18 @@ module.exports = class ViewRouter {
                     this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
 
                 })
-                .orderBy('date', 'desc')
+                .orderBy('date', 'asc')
                 .then((organizerTournament) => {
                     // console.log(organizerTournament)
-                    res.render('tournaments', { organizerTournament: organizerTournament })
+                    return this.knex('requestTournament').select('tournament_id as tournament').where({
+                        team_id: req.user.user.team_id
+                    }).then((requests)=>{
+                        console.log('requests',requests);
+                        res.render('tournaments', { organizerTournament: organizerTournament,
+                                                    requests : requests
+                                                    });
+                    })
+
                 })
         }
     }

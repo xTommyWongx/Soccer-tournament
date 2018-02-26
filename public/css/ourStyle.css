@@ -8,6 +8,12 @@
     box-shadow: 0 1px #333;
     transform: translateY(2px);
 }
+
+/* highlighting tab */
+#menu a:active {
+    color: rgb(24, 154, 180);
+}
+
 /* logo */
 .logo {
     max-height: 40px;
@@ -19,23 +25,24 @@
 
 
 .navbar-nav {
-    margin-left: 45px;
+    margin-left: 150px;
 }
 
-.mobOne {
-    margin-left:none;
+@media (max-width: 56.25em){
+.navbar-nav {
+    margin-left:0;
+}
 }
 
 #navbarCollapse a{
     color: #fff;
 }
 
-/*
-body {
+
+/* body {
     background: url('/img/football-stadium.jpg');
 }
-    */    
-    
+   */ 
 .teamlistbutton{
    
     display: flex;
@@ -66,6 +73,11 @@ body {
     box-shadow: 0 1px #282929;
     transform: translateY(2px);
 }
+@media (max-width: 56.25em){
+    .custom-file-upload {
+        height: 29px;
+    }
+}
 
 #file-upload{
     display: none;
@@ -86,6 +98,13 @@ body {
     border-radius: 20px;
     outline: none;
 }
+/* tournament save button for mobile*/
+@media (max-width: 63.9375em){
+    .tbtn {
+        margin-left: 20px;
+    }
+}
+
 /* card */
 .card {
     border-radius: 20px !important;
@@ -115,15 +134,20 @@ hr {
     background: linear-gradient(-90deg, rgb(23, 110, 168), rgb(9, 125, 192));
 }
 
-#register {
+#register{
     font-family: 'Times New Roman', Times, serif;
     font-size: 1em;
     background: url('/img/fifa-background.jpg');
     margin-top: -8px;
     background-size: cover;
-    
 }
-#register {   
+.conBack{
+    background: url('/img/fifa-background.jpg');
+    background-size: cover;
+    height: 20px;
+    margin-top: -17px;
+}
+#register form {   
     background: linear-gradient(-45deg,rgb(72, 178, 240),#32587e,rgb(75, 188, 240));
     padding-top: 20px;
     padding-bottom: 50px;
@@ -253,25 +277,25 @@ th {
 
 
 /* profile page */
+
+/* picture iamge */
 #profile-pic {
     max-width: 320px;
 }
-
 @media (max-width: 56.25em){
     #profile-pic {
-        max-width: 180px;
+        max-width: 145px;
     }
 }
-
-/* profile pic */
 img {
     border-radius: 10px;
   }
   #cloudIcon {
       color: #fff;
   }
-  /* profile img save button */
-  .save {
+
+/* profile img save button */
+.save {
     width: 150px;
     height: 40px;
     box-shadow: 0 2px 1px #050505;
@@ -284,18 +308,29 @@ img {
     box-shadow: 3px 3px 7px  rgb(24, 154, 180);
     border: 0.4px solid white;
 }
-
+@media (max-width: 56.25em){
+    .savebtn{
+        height:29px;
+        font-size: 10px;
+    }
+}
   .save:active {
     box-shadow: 0 1px #282929;
     transform: translateY(2px);
 }
 .form-group1 {
     margin-left: 55px;
-    margin-top:-20px;
+    margin-top:2px;
 }
+@media (max-width: 56.25em){
+    .form-group1 {
+        margin-left: -7px;
+        margin-top: 31px;
+        font-size: 10px;
+}}
 
   /* profile picture frame */
-  .frame {
+ /* .frame {
     background-color:rgb(41, 139, 21);
     border:solid 1vmin rgba(30, 122, 18, 0.897);
     border-bottom-color:rgb(28, 133, 89);
@@ -320,7 +355,7 @@ img {
     right:-1vmin;
     top:-1vmin;
 }
-
+*/
   
     /* end of profile pic frame */
  h1, h2, h3, h4, h5, h6 {
@@ -332,7 +367,13 @@ img {
 .row{
     max-height: 300px;
 }
-    
+
+@media (max-width: 63.9375em){
+    .row {
+        max-height:500px;
+    }
+}    
+
 .playerContainer {
     background-color: rgba(195, 214, 231, 0.336);
     /* margin-bottom: 30px; */
@@ -342,6 +383,12 @@ img {
     height: 450px;
 }
 
+@media (max-width: 56.25em){
+    .imgContainer {
+        max-width: 250px;
+        height:200px;
+}}
+
 .playerImg {
     max-height: 220px;
 }
@@ -350,9 +397,6 @@ img {
     .playerImg {
         max-height: 100px;
     }
-    .imgContainer {
-         max-width: 120px;
-        }
 }
     
 .playerDetails {
@@ -365,8 +409,7 @@ img {
 @media (max-width: 50.25em){
     .playerDetails {
         font-size: 10px;
-        max-width: 200px;
-        margin-left: 0;
+        max-width: 150px;
     }
     .name {
         font-size: 12px;
@@ -398,17 +441,23 @@ img {
 }}
         
     /* playerInfo section */
-    .playerInfo {
-            position: relative;
-            margin-top: -2rem;
-            margin-bottom: 5rem;
-            margin-left: -2rem;
-            padding-left: 2rem;
-            padding-top: 2rem;
-            background: #fff;
-            z-index: 20;
+.playerInfo {
+        position: relative;
+        margin-top: -2rem;
+        margin-bottom: 5rem;
+        margin-left: -2rem;
+        padding-left: 2rem;
+        padding-top: 2rem;
+        background: #fff;
+        z-index: 20;
+}
+@media (max-width: 56.25em){
+    .playerInfo{
+        padding-top:1rem;
+        margin-bottom: 3rem;
     }
-    
+}
+
     .playerInfo1 {
             position: relative;
             margin-bottom: 8rem;
@@ -448,12 +497,16 @@ img {
     max-height:270px;
 }
 
+.clubImg {
+    max-height: 220px;
+}
 @media (max-width: 50.25em){
     .clubImg {
         max-height: 100px;
     }
     .badgeContainer {
-        max-width: 120px;
+        max-width: 175px;
+        height: 200px;
     }
 }
 
@@ -498,7 +551,11 @@ img {
         background: #fff;
         z-index: 20;
 }
-
+@media (max-width: 56.25em){
+    .teamInfo{
+        padding-top: 0;
+    }
+}
 .teamInfo1 {
         position: relative;
         margin-bottom: 8rem;
@@ -558,10 +615,6 @@ ul {
     width: 100%;
     border: none;
 }}
-
-.clubImg {
-    max-height: 220px;
-}
 
 .staImg {
     max-height: 240px;
@@ -625,6 +678,12 @@ ul {
     padding-bottom: 20px;
     margin-top: -5px;
 }
+@media (max-width: 63.9375em){
+    .tourneyContainer1 {
+        max-height: 500px;
+    }
+}
+
 
 .tourneyContainer2 {
     background-color: rgba(231, 196, 195, 0.336);
@@ -646,8 +705,21 @@ ul {
 }
 
 @media (max-width: 50.25em){
+    .tourContainer {
+        font-size: 10px;
+        max-width: 150px;
+        margin-left: 110px;
+    }
+}
+
+.troImg {
+    margin-top: 20px;
+}
+
+@media (max-width: 50.25em){
     .troImg {
         max-height: 100px;
+        margin-top: 20px;
     }
 }
 
@@ -659,9 +731,9 @@ ul {
 }
 @media (max-width: 50.25em){
     .tourneyDetails {
-        font-size: 10px;
-        max-width: 200px;
-        margin-left: 0;
+        font-size: 7px;
+        margin-left: 10px;
+        margin-top: 5px;
     }
 }
 
@@ -670,13 +742,14 @@ ul {
     flex-direction: column;
     justify-content: space-between;
     border-top: 4px solid rgba(194, 192, 192, 0.808);
+    font-size: 14px;
 }
 
 @media (max-width: 63.9375em) {
     .tourneyLists {
         display: flex;
         flex-direction: vertical;
-        font-size: 12px;
+        font-size: 9px;
     }
 }
 

@@ -9,8 +9,9 @@ module.exports = class OrganizerRouter {
         let router = express.Router();
         router.get('/tournament/:id/edit',this.get.bind(this));
         router.post('/tournament',this.post.bind(this));
+        router.post('/accept',this.accept.bind(this));
+        router.post('/reject',this.reject.bind(this));
         router.put('/tournament/:id',this.put.bind(this));
-
         router.delete('/:id',this.delete.bind(this));
         router.patch('/:id',this.patch.bind(this));
         return router;
@@ -45,9 +46,29 @@ module.exports = class OrganizerRouter {
     delete(req,res){
 
     }
-    patch(req,res){
-        
+    patch(req, res){
+
+    }
+    accept(req, res){
+        console.log("accept",req.body);
+        this.organizerService.accept(req.body.team_id, req.body.tournament_id)
+            .then((data)=>{
+                return this.organizerService.deleteRequests(req.body.team_id, req.body.tournament_id)
+            }).then(()=>{
+                res.send();
+            }).catch((err)=>{
+                console.log(err);
+                res.send(err);
+            })
+
+    }
+    reject(req, res){
+        this.organizerService.deleteRequests(req.body.team_id, req.body.tournament_id)
+            .then(()=>{
+                res.send();
+            }).catch((err)=>{
+                console.log(err);
+                res.send(err);
+            })
     }
 }
-
-// value="{{organizerTournament.tournamentName}}
