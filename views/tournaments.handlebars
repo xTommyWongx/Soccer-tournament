@@ -1,3 +1,11 @@
+{{#unless organizerTournament}}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>NO TOURNAMENT!</h1>
+        </div>
+    </div>
+{{/unless}} 
+
 {{#each organizerTournament}}
     <section class="tourneyPage">
         <div class="tourneyContainer1 container-fluid ">
@@ -30,7 +38,9 @@
 
                     {{#if ../user.user.organizer}}
                         <a href="/api/organizers/tournament/{{tournament_id}}/edit" class="btn btn-success btn-sm mt-1">Edit</a>
-                        <a href="" class="btn btn-danger btn-sm mt-1">Delete</a>
+                        <form id="tournament-delete" action="/api/organizers/tournament/{{tournament_id}}?_method=DELETE" method="POST">
+                            <button class="btn btn-danger btn-sm mt-1">Delete</button>
+                        </form>
                     {{/if}}
                 </div>
                 <div class="tourneyDetails col-lg-8 col-md-8 col-sm-8 ">
@@ -79,7 +89,7 @@
         </div>
     </section>
  {{/each}}
- 
 
-    
+
+
     

@@ -1,5 +1,4 @@
 const express = require('express');
-// const isOrangizer = require('../utils/')
 
 module.exports = class OrganizerRouter {
     constructor(organizerService) {
@@ -12,7 +11,7 @@ module.exports = class OrganizerRouter {
         router.post('/accept',this.accept.bind(this));
         router.post('/reject',this.reject.bind(this));
         router.put('/tournament/:id',this.put.bind(this));
-        router.delete('/:id',this.delete.bind(this));
+        router.delete('/tournament/:id',this.delete.bind(this));
         router.patch('/:id',this.patch.bind(this));
         return router;
     }
@@ -44,7 +43,9 @@ module.exports = class OrganizerRouter {
             .catch((err) => console.log(err))
     }
     delete(req,res){
-
+        return this.organizerService.delete(req)
+            .then(() => console.log('deleted!!!'))
+            .then(() => res.redirect('/tournaments'))            
     }
     patch(req, res){
 

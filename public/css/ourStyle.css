@@ -777,6 +777,10 @@ ul {
     display: flex;
     justify-content: space-between;
 }
+
+#tournament-delete {
+    display: inline-block;
+}
 /* end of Tournament*/
 
 /* teams listing page */

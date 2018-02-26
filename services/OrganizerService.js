@@ -37,8 +37,31 @@ module.exports = class OrganizerService {
                 }
             })
     }
-    delete(tournamentID){
+    delete(req){
+        return this.knex('tournamnets_teams').where('tournamnets_teams.tournament_id', req.params.id)
+            // check if there is tournament_id on tournaments_teams table
+            .then((result) => {
+                if (result.length > 0) {
+                    return this.knex('tournamnets_teams')
+                        .where('tournamnets_teams.tournament_id', req.params.id)
+                        .del();
+                }
 
+                return;
+            })
+            // delete tournament_id on tournaments_dates_locations table
+            .then(() => {
+                return this.knex('tournamnets_dates_locations')
+                    .where('tournamnets_dates_locations.tournament_id', req.params.id)
+                    .del();
+            })
+            // delete tournament on tournament table
+            .then(() => {
+                return this.knex('tournaments')
+                    .where('tournaments.id', req.params.id)
+                    .del();
+            })
+            .catch((err) => console.loog(err));
     }
     update(req){
         return this.knex('tournaments').where('tournaments.id', req.params.id)
