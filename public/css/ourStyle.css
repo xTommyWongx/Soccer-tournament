@@ -98,6 +98,13 @@
     border-radius: 20px;
     outline: none;
 }
+/* tournament save button for mobile*/
+@media (max-width: 63.9375em){
+    .tbtn {
+        margin-left: 20px;
+    }
+}
+
 /* card */
 .card {
     border-radius: 20px !important;
@@ -355,7 +362,13 @@ img {
 .row{
     max-height: 300px;
 }
-    
+
+@media (max-width: 63.9375em){
+    .row {
+        max-height:500px;
+    }
+}    
+
 .playerContainer {
     background-color: rgba(195, 214, 231, 0.336);
     /* margin-bottom: 30px; */
@@ -660,6 +673,12 @@ ul {
     padding-bottom: 20px;
     margin-top: -5px;
 }
+@media (max-width: 63.9375em){
+    .tourneyContainer1 {
+        max-height: 500px;
+    }
+}
+
 
 .tourneyContainer2 {
     background-color: rgba(231, 196, 195, 0.336);
@@ -684,7 +703,7 @@ ul {
     .tourContainer {
         font-size: 10px;
         max-width: 150px;
-        margin-left: 0;
+        margin-left: 110px;
     }
 }
 
@@ -708,8 +727,8 @@ ul {
 @media (max-width: 50.25em){
     .tourneyDetails {
         font-size: 7px;
-        max-width: 200px;
         margin-left: 10px;
+        margin-top: 5px;
     }
 }
 
