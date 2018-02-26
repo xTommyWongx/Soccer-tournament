@@ -1,11 +1,7 @@
 
 const express = require('express');
 const passport = require('passport');
-const isLoggedIn = require('./utils/guard').isLoggedIn;
-const isNotLoggedIn = require('./utils/guard').isNotLoggedIn;
-
-
-
+const {isLoggedIn, isNotLoggedIn, isOrganizer} = require('./utils/guard');
 
 module.exports = class ViewRouter {
     constructor(knex) {
@@ -20,7 +16,7 @@ module.exports = class ViewRouter {
         router.get('/createTeam', isLoggedIn, (req, res) => res.render("createTeam"));
         router.get('/teams', isLoggedIn, this.teamlist.bind(this)); //get teams list for team page
         router.get('/tournaments', isLoggedIn, this.tournamentList.bind(this));  //list all tournaments based on loggin as a manager or organizer
-        router.get('/createTournament', isLoggedIn, (req, res) => res.render("createTournament"));
+        router.get('/createTournament', isOrganizer, (req, res) => res.render("createTournament"));
         router.get('/register', isNotLoggedIn, (req, res) => res.render("register"));
 
 
@@ -94,7 +90,7 @@ module.exports = class ViewRouter {
                        .orderBy('date', 'desc')
                 })
                 .then((organizerTournament) => {
-                    console.log(organizerTournament)
+                    // console.log(organizerTournament)
                     res.render('tournaments', { organizerTournament: organizerTournament })
                 })
         } else {

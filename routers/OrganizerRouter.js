@@ -1,4 +1,5 @@
 const express = require('express');
+// const isOrangizer = require('../utils/')
 
 module.exports = class OrganizerRouter {
     constructor(organizerService) {
@@ -6,15 +7,20 @@ module.exports = class OrganizerRouter {
     }
     router(){
         let router = express.Router();
-        router.get('/',this.get.bind(this));
-        router.post('/',this.post.bind(this));
-        router.put('/:id',this.put.bind(this));
+        router.get('/tournament/:id/edit',this.get.bind(this));
+        router.post('/tournament',this.post.bind(this));
+        router.put('/tournament/:id',this.put.bind(this));
+
         router.delete('/:id',this.delete.bind(this));
         router.patch('/:id',this.patch.bind(this));
         return router;
     }
     get(req,res){
-
+        return this.organizerService.list(req, res)
+            .then((cb) => {
+                res.render('editTournament', { organizerService: cb[0] });
+            })
+            .catch((err) => console.log(err));
     }
     post(req,res){
         this.organizerService.create(req.body, req.user.user.id)
@@ -32,7 +38,9 @@ module.exports = class OrganizerRouter {
             });
     }
     put(req,res){
-
+        return this.organizerService.update(req)
+            .then(() => res.redirect('/tournaments'))
+            .catch((err) => console.log(err))
     }
     delete(req,res){
 
@@ -41,3 +49,5 @@ module.exports = class OrganizerRouter {
         
     }
 }
+
+// value="{{organizerTournament.tournamentName}}
