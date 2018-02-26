@@ -777,3 +777,66 @@ ul {
     display: flex;
     justify-content: space-between;
 }
+/* end of Tournament*/
+
+/* teams listing page */
+.teamContainer1 {
+    background-color: rgba(231, 195, 216, 0.336);
+    max-height:270px;
+    padding-bottom: 20px;
+    margin-top: -5px;
+}
+@media (max-width: 63.9375em){
+    .teamContainer1 {
+        max-height: 500px;
+    }
+}
+@media (max-width: 50.25em){
+    .teamContainer {
+        font-size: 10px;
+        max-width: 150px;
+        margin-left: 110px;
+    }
+}
+
+.teamImg {
+    margin-top: 8px;
+    max-height: 200px;
+}
+
+@media (max-width: 50.25em){
+    .teamImg {
+        max-height: 100px;
+        margin-top: 20px;
+    }
+}
+.teamDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -30px;
+}
+@media (max-width: 50.25em){
+    .teamDetails {
+        font-size: 7px;
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+}
+
+.teamLists {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 4px solid rgba(194, 192, 192, 0.808);
+    font-size: 14px;
+}
+
+@media (max-width: 63.9375em) {
+    .teamLists {
+        display: flex;
+        flex-direction: vertical;
+        font-size: 9px;
+    }
+}
+
