@@ -1,53 +1,37 @@
- {{#each organizerTournament}}
-<section class="tourneyPage">
-    <div class="tourneyContainer1 container-fluid ">
-        <div class="row">
-            <div class="tourContainer col-lg-4 col-md-4 col-sm-4 ">
-                <div class="trophyImg">
-                    <img class="troImg" src="/img/trophy1.jpg" alt="trophy1">
-                </div>
-                <a href="" class="btn savebtn text-white btn-sm mt-1 tbtn">Join Tournament</a>
-            </div>
-            <div class="tourneyDetails col-lg-8 col-md-8 col-sm-8 ">
-                <div class="tourneyLists">
-                    <h3 class="subheading font-weight-bold">{{tournamentName}}</h3>
-                    <ul class="pdcol">
-                        <li class="tourlist">
-                            <div class="label">Organizer</div>
-                            <div class="info">{{username}}</div>
-                        </li>
-                    </ul>
-                    <ul class="pdcol">
-                        <li class="tourlist">
-                            <div class="label">Date</div>
-                            {{!--
-                            <div class="info">{{formatDate date 'MMMM Do YYYY'}}</div> --}}
-                        </li>
-                    </ul>
-                    <ul class="pdcol">
-                        <li class="tourlist">
-                            <div class="label">Location</div>
-                            <div class="info">{{location}}</div>
-                        </li>
-                    </ul>
-                    <ul class="pdcol">
-                        <li class="tourlist">
-                            <div class="label">Number of Teams</div>
-                            <div class="info">{{number_of_teams}}</div>
-                        </li>
-                    </ul>
-                    <ul class="pdcol">
-                        <li class="tourlist">
-                            <div class="label">Number of players on field</div>
-                            <div class="info">{{number}}</div>
-                        </li>
-                    </ul>
-                    <ul class="pdcol">
-                        <li class="tourlist">
-                            <div class="label">Prize</div>
-                            <div class="info">{{prize}}</div>
-                        </li>
-                    </ul>
+ {{!-- {{#if user.user.organizer}}
+ <div class="row">
+     <div class="col banner text-center">
+         <img src="/img/trophy.png" width="200px" height="200px">
+         <p class="py-2 text-info">My Tournaments</p>
+     </div>
+ 
+ </div>
+ {{/if}} --}}
+{{#each organizerTournament}}
+    <section class="tourneyPage">
+        <div class="tourneyContainer1 container-fluid ">
+            <div class="row">
+                <div class="tourContainer col-lg-4 col-md-4 col-sm-4 ">
+                    <div class="trophyImg">
+                        <img class="troImg" src="/img/trophy1.jpg" alt="trophy1">  
+                    </div> 
+                    
+                    {{#if ../user.user.manager}} 
+                        
+                        {{#check tournament_id ../requests }} 
+                        <form class="join_tournament">
+                            <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
+                            <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
+                            <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none" >
+                            <input type="submit" class="btn btn-danger btn-sm mt-1" value="Cancel request" id="input">
+                        </form> 
+                            {{else}}
+                        <form class="join_tournament">
+                            <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
+                            <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
+                            <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none" >
+                            <input type="submit" class="btn btn-success btn-sm mt-1" value="Join tournament" id="input">
+                        </form> 
 
                         {{/check}} 
                                     

@@ -140,7 +140,12 @@ hr {
     background: url('/img/fifa-background.jpg');
     margin-top: -8px;
     background-size: cover;
-    
+}
+.conBack{
+    background: url('/img/fifa-background.jpg');
+    background-size: cover;
+    height: 20px;
+    margin-top: -17px;
 }
 #register form {   
     background: linear-gradient(-45deg,rgb(72, 178, 240),#32587e,rgb(75, 188, 240));
