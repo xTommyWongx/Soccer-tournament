@@ -12,7 +12,6 @@ module.exports = class OrganizerRouter {
         router.post('/reject',this.reject.bind(this));
         router.put('/tournament/:id',this.put.bind(this));
         router.delete('/tournament/:id',this.delete.bind(this));
-        router.patch('/:id',this.patch.bind(this));
         return router;
     }
     get(req,res){
@@ -20,7 +19,10 @@ module.exports = class OrganizerRouter {
             .then((cb) => {
                 res.render('editTournament', { organizerService: cb[0] });
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.log(err);
+                res.send(err);
+            }); 
     }
     post(req,res){
         this.organizerService.create(req.body, req.user.user.id)
@@ -40,15 +42,19 @@ module.exports = class OrganizerRouter {
     put(req,res){
         return this.organizerService.update(req)
             .then(() => res.redirect('/tournaments'))
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                console.log(err);
+                res.send(err);
+            }); 
     }
     delete(req,res){
         return this.organizerService.delete(req)
             .then(() => console.log('deleted!!!'))
-            .then(() => res.redirect('/tournaments'))            
-    }
-    patch(req, res){
-
+            .then(() => res.redirect('/tournaments'))  
+            .catch((err) => {
+                console.log(err);
+                res.send(err);
+            });   
     }
     accept(req, res){
         console.log("accept",req.body);
