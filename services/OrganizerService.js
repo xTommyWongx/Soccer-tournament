@@ -21,9 +21,9 @@ module.exports = class OrganizerService {
                         organizer_id: organizerID
                         }, 'id')
                             // insert tournaments id to tournaments_teams join table
-                            .then((id) => { 
-                                return this.knex('tournamnets_teams').insert({ tournament_id: id[0] }, 'tournament_id');
-                            })
+                            // .then((id) => { 
+                            //     return this.knex('tournamnets_teams').insert({ tournament_id: id[0] }, 'tournament_id');
+                            // })
                             // insert date, location and tournament_id to tournaments_dates_locations join table            
                             .then((id) => {
                                 return this.knex('tournamnets_dates_locations').insert({
@@ -46,5 +46,18 @@ module.exports = class OrganizerService {
     }
     list(){
         
+    }
+    accept(team_id,tournament_id){
+        return this.knex('tournamnets_teams').insert({
+            team_id: team_id,
+            tournament_id: tournament_id
+        });
+    }
+    deleteRequests(team_id, tournament_id){
+        return this.knex('requestTournament')
+                    .where({
+                        team_id: team_id,
+                        tournament_id: tournament_id
+                    }).del();
     }
 }

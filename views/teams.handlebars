@@ -8,16 +8,7 @@
                     <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
                 </div>
                 <br>
-                <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
-                    <div class="form-group1">
-                        <label for="file-upload" class="custom-file-upload">
-                            <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
-                        </label>
-                        <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
-
-                        <input type="submit" class="btn savebtn text-white" value="Save">
-                    </div>
-                </form>
+                
             </div>
             <div class="clubDetails col-lg-4 col-md-4 col-sm-6">
                 <h1>
@@ -57,86 +48,17 @@
             </div>
         </div>
     </div>
-
-    <div class="teamInfo container-fluid">
-        <div class="row">
-            <div class="adSpace col-lg-4 col-md-4">
-            </div>
-            <div class="personalLists col-lg-8 col-md-8">
-                <h3 class="subheading font-weight-bold">Fixtures</h3>
-
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Date</div>
-                        <div class="info">Manchester City</div>
-                        <div class="info">Manchester United</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Date</div>
-                        <div class="info">Real Madrid</div>
-                        <div class="info">Barcelona</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Date</div>
-                        <div class="info">Chelsea</div>
-                        <div class="info">Arsenal</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Date</div>
-                        <div class="info">Tottenham</div>
-                        <div class="info">Arsenal</div>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="teamInfo1 container-fluid">
-        <div class="row">
-            <div class="adSpace col-lg-4 col-md-4">
-            </div>
-            <div class="personalLists col-lg-8 col-md-8">
-                <h3 class="subheading font-weight-bold">Squad</h3>
-
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Aguero</div>
-                        <div class="info">Forward</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Messi</div>
-                        <div class="info">Forward</div>
-                    </li>
-                </ul>
-                <ul class="pdcol">
-                    <li>
-                        <div class="label">Son</div>
-                        <div class="info">Forward</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </section>
 
 <div class="row teamslist">
     <div class="col-md-12 mx-auto">
         <div class="text-center">
-            <span class="h2">Team list</span>
+            <span class="h2 text-info">Football Clubs</span>
         </div>
         <br>
         <div class="row">
             {{#each teams}}
-            <div class="col-md-5 mx-auto">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-8 mx-auto">
                 <a href="" class="btn btn-success teamlistbutton">{{teamname}}&nbsp
                     <img src="/img/rotatingSoccer.gif" width="20px" height="20px">
                 </a>
