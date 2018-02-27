@@ -869,3 +869,15 @@ ul {
     }
 }
 
+/* alert */
+#amess {
+    z-index: 1;
+    position:absolute;
+    left: 50%;
+    top:10%;
+    transform: translateX(-50%);
+    min-width: 600px;
+}
+body {
+    position:relative;
+}
