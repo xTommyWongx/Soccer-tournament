@@ -59,8 +59,14 @@
         <div class="row">
             {{#each teams}}
             <div class="col-lg-3 col-md-4 col-sm-6 col-8 mx-auto">
-                <a href="" class="btn btn-success teamlistbutton">{{teamname}}&nbsp
-                    <img src="/img/rotatingSoccer.gif" width="20px" height="20px">
+                
+                <a href="" class="btn btn-primary teamlistbutton">
+                     <div class="d-block py-3 text-center mybox" style="width: 18rem;">
+                            <img  src="/img/clubs.png" width="70px" height="70px" alt="Card image cap">
+                            <div >
+                                <h5 class="fa text-white"> {{teamname}}</h5>
+                            </div>
+                        </div>       
                 </a>
                 <br>
             </div>

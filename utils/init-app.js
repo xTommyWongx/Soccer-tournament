@@ -8,7 +8,7 @@ const flash = require('connect-flash');
 const path = require('path');
 
 // Handlebars Helpers
-const {formatDate, check} = require('./helpersHbs');
+const {formatDate, check, checkiftrue} = require('./helpersHbs');
 
 module.exports = () => {
     // let client = redis.createClient();
@@ -18,7 +18,8 @@ module.exports = () => {
     app.engine('handlebars', hb({ 
         helpers : {
             formatDate : formatDate,
-            check : check
+            check : check,
+            checkiftrue: checkiftrue
         },
         defaultLayout: 'main'
      }));

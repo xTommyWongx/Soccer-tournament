@@ -1,18 +1,26 @@
 {{!-- if user is manager show the following --}} 
 {{#if user.user.manager }} 
-    {{!-- but haven't formed any team yet, then show 'create team' --}} 
-    {{#unless user.user.team_id}}
-        <a href="/createTeam" class="btn btn-danger my-3">Create Team</a>
-    {{/unless}} 
-    {{!-- if manager already has team, then show team details and available players --}} 
-    {{#if user.user.team_id}}
-        <div class="row">
+<div class="row">
            
             <div class="col-lg-12 banner">
                 <div class=" text-center"><img src="/img/clubLogo.png" alt="" width="200px" height="200px"></div>
                 <br>
             </div>
+</div>
+    {{!-- but haven't formed any team yet, then show 'create team' --}} 
+    {{#unless user.user.team_id}}
+    <div class="row">
+        <div class="col-md-10 mx-auto text-center">
+            <a href="/createTeam" class="btn btn-danger btn-block btn-lg my-3 text-center">Create Team</a>
+
         </div>
+        
+    </div>
+        
+    {{/unless}} 
+    {{!-- if manager already has team, then show team details and available players --}} 
+    {{#if user.user.team_id}}
+        
         <div class="row p-3">
             <div class="col-lg-8 col-md-8 mx-auto">
                     <div class="form-group">
@@ -111,6 +119,7 @@
     <hr style="width: 400px">
 </div>
 <br>
+
 <div class="container">  
     <div class="flex_box">
     {{#each requests}}
@@ -136,5 +145,40 @@
         <br><br>
     {{/each}}
    </div>
+</div>
+
+ <div class="row">
+{{#each id}}
+
+     <div class="col-md-12 mx-auto text-center ">
+            <hr>
+            <span><h1 class="d-inline">{{tournamentName}}</h1><small>(tournament)</small></span>
+            <hr>
+            <p>Teams</p>
+    </div>
+    
+            {{#each ../tournaments}}
+           
+                <div class="col-md-10 mx-auto text-center new_flex">  
+                   
+                    {{#each this}}                       
+                        {{#checkiftrue ../../id tournament_id}}
+                        <div class="d-block py-3 text-center mybox" style="width: 18rem;">
+                            <img  src="/img/clubs.png" width="70px" height="70px" alt="Card image cap">
+                            <div >
+                                <h5 class="card-title text-white"> {{teamname}}</h5>
+                            </div>
+                        </div>                               
+                        {{/checkiftrue}}
+                    {{/each}}
+                    
+                </div>
+          
+            {{/each}}
+         <div class="col-md-10 mx-auto text-center py-2">
+            <button class="btn btn-info" disabled>Fixtures</button>
+         </div>   
+ 
+{{/each}}
 </div>
 {{/if}}

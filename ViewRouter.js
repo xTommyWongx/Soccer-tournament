@@ -75,17 +75,52 @@ module.exports = class ViewRouter {
                     res.render('dashboard', { players: players });
                 })
         }
-        else if(req.user.user.organizer){ // load organizer's dashboard
+        else if (req.user.user.organizer) { // load organizer's dashboard
             return this.knex('requestTournament').select()
-                        .where('organizer_id',req.user.user.id)
-                        .then((requests)=>{ 
-                            console.log("requests to join tournaments",requests);
-                            res.render('dashboard',{ requests : requests});
-
-                        }).catch(err=>{
-                            console.log(err);
-                            res.send(err);
-                        })
+                .where('organizer_id', req.user.user.id)
+                .then((requests) => {
+                    // console.log("requests to join tournaments",requests);
+                    // res.render('dashboard',{ requests : requests});
+                    return requests;
+                }).then((requests) => {
+                    return this.knex('tournaments').select('id','tournamentName')
+                        .where('organizer_id', req.user.user.id)
+                        .then((tournament_ids) => {
+                            console.log('tournament ids', tournament_ids);
+                            let self = this;
+                            let data = [];
+                            let len = tournament_ids.length;
+                            return call();
+                            function call(){
+                                if(len > 0){
+                                    len--;
+                                   return self.knex('tournamnets_teams').select()
+                                              .where('tournament_id',tournament_ids[len].id)
+                                              .innerJoin('tournaments','tournaments.id','tournament_id')
+                                              .innerJoin('teams','teams.id','team_id')
+                                    
+                                    .then((list) => {
+                                        // console.log("inside", list);
+                                          data.push(list);
+                                    }).then(()=>{
+                                       return call();
+                                    })
+                                }else{
+                                    console.log("data...",data);
+                                        console.log("requests..",requests);
+                                        res.render('dashboard', {
+                                            requests: requests,
+                                            tournaments: data,
+                                            id: tournament_ids
+                                        })
+                                }                                
+                            }
+                            
+                        })  
+                }).catch(err => {
+                    console.log(err);
+                    res.send(err);
+                })
         }
     }
 
@@ -97,13 +132,13 @@ module.exports = class ViewRouter {
                 .then((organizer) => {
                     return this.knex('tournaments').select()
                         .where('organizer_id', organizer[0].id)
-                        .innerJoin('players','tournaments.organizer_id','players.id')
+                        .innerJoin('players', 'tournaments.organizer_id', 'players.id')
                         .innerJoin('categories', 'tournaments.category_id', 'categories.id')
                         .innerJoin('numberOfPlayers', 'tournaments.number_of_player_id', 'numberOfPlayers.id')
                         .innerJoin('tournamnets_dates_locations', function () {
                             this.on('tournaments.id', '=', 'tournamnets_dates_locations.tournament_id')
                         })
-                       .orderBy('date', 'desc')
+                        .orderBy('date', 'desc')
                 })
                 .then((organizerTournament) => {
                     console.log(organizerTournament)
@@ -113,7 +148,7 @@ module.exports = class ViewRouter {
             // load all the tournaments
 
             return this.knex('tournaments').select()
-                .innerJoin('players','tournaments.organizer_id','players.id')
+                .innerJoin('players', 'tournaments.organizer_id', 'players.id')
                 .innerJoin('categories', 'tournaments.category_id', 'categories.id')
                 .innerJoin('numberOfPlayers', 'tournaments.number_of_player_id', 'numberOfPlayers.id')
                 .innerJoin('tournamnets_dates_locations', function () {
@@ -125,11 +160,12 @@ module.exports = class ViewRouter {
                     console.log(organizerTournament)
                     return this.knex('requestTournament').select('tournament_id as tournament').where({
                         team_id: req.user.user.team_id
-                    }).then((requests)=>{
-                        console.log('requests',requests);
-                        res.render('tournaments', { organizerTournament: organizerTournament,
-                                                    requests : requests
-                                                    });
+                    }).then((requests) => {
+                        console.log('requests', requests);
+                        res.render('tournaments', {
+                            organizerTournament: organizerTournament,
+                            requests: requests
+                        });
                     })
 
                 })
