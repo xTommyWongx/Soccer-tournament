@@ -731,7 +731,7 @@ ul {
 }
 @media (max-width: 50.25em){
     .tourneyDetails {
-        font-size: 7px;
+        font-size: 11px;
         margin-left: 10px;
         margin-top: 5px;
     }
@@ -749,7 +749,7 @@ ul {
     .tourneyLists {
         display: flex;
         flex-direction: vertical;
-        font-size: 9px;
+        font-size: 11px;
     }
 }
 
@@ -793,7 +793,7 @@ ul {
 }
 @media (max-width: 50.25em){
     .teamContainer {
-        font-size: 10px;
+        font-size: 11px;
         max-width: 150px;
         margin-left: 110px;
     }
@@ -807,7 +807,7 @@ ul {
 @media (max-width: 50.25em){
     .teamImg {
         max-height: 100px;
-        margin-top: 20px;
+        margin-top: 3px;
     }
 }
 .teamDetails {
@@ -818,7 +818,7 @@ ul {
 }
 @media (max-width: 50.25em){
     .teamDetails {
-        font-size: 7px;
+        font-size: 11px;
         margin-left: 10px;
         margin-top: 5px;
     }
@@ -836,7 +836,7 @@ ul {
     .teamLists {
         display: flex;
         flex-direction: vertical;
-        font-size: 9px;
+        font-size: 11px;
     }
 }
 
