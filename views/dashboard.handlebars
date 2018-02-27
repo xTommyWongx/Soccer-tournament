@@ -23,50 +23,17 @@
                     <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
                     <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
                 </div>
-                <br>
-                <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
-                    <div class="form-group1">
-                        <label for="file-upload" class="custom-file-upload">
-                            <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
-                        </label>
-                        <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
-
-                        <input type="submit" class="btn savebtn text-white" value="Save">
-                    </div>
-                </form>
+                <br> 
             </div>
             <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
                 <h1>
-                    <div class="clubName font-weight-bold">Club Manager:</div>
+                    <div class="clubName font-weight-bold">Club Management</div>
                 </h1>
                 <div class="website">
-                    <span class="label"></span>
+                    <span class="label">Recruit Players To Join Your Club!</span>
                     <a href="" target="_blank"></a>
                 </div>
                 <div class="socialLinks">
-                    {{!--
-                    <ul class="socialOptions">
-                        <li class="socialList">
-                            <a target="blank" href="" role="button" class="facebook-option">
-                                <span class="fa fa-facebook"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="twitter-option">
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="youtube-option">
-                                <span class="fa fa-youtube"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="instagram-option">
-                                <span class="fa fa-instagram"></span>
-                            </a>
-                        </li>
-                    </ul>--}}
                 </div>
             </div>
             <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
@@ -76,7 +43,7 @@
     </div>
     <div class="teamInfo container-fluid">
         <div class="row">
-            <div class="adSpace col-lg-4 col-md-4">
+            <div class="adSpace col-lg-3 col-md-3">
             </div>
             <div class="personalLists col-lg-8 col-md-8">
                 <div class="form-group">
@@ -125,49 +92,16 @@
                     <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
                 </div>
                 <br>
-                {{!-- <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data"> 
-                    <div class="form-group1">
-                        <label for="file-upload" class="custom-file-upload">
-                            <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
-                        </label>
-                        <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
-
-                        <input type="submit" class="btn savebtn text-white" value="Save">
-                    </div>
-                </form>--}}
             </div>
             <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
                 <h1>
-                    <div class="clubName font-weight-bold">Player:</div>
+                    <div class="clubName font-weight-bold">Manage Player</div>
                 </h1>
                 <div class="website">
                     <span class="label"></span>
                     <a href="" target="_blank"></a>
                 </div>
                 <div class="socialLinks">
-                    {{!--
-                    <ul class="socialOptions">
-                        <li class="socialList">
-                            <a target="blank" href="" role="button" class="facebook-option">
-                                <span class="fa fa-facebook"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="twitter-option">
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="youtube-option">
-                                <span class="fa fa-youtube"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="instagram-option">
-                                <span class="fa fa-instagram"></span>
-                            </a>
-                        </li>
-                    </ul>--}}
                 </div>
             </div>
             <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
@@ -177,52 +111,50 @@
     </div>
     <div class="teamInfo container-fluid">
         <div class="row">
-            <div class="adSpace col-lg-4 col-md-4">
+            <div class="adSpace col-lg-3 col-md-3">
             </div>
             <div class="playerInfo col-lg-8 col-md-8 ">
                 <div class="row">
-                    <div class="adSpace col-lg-4 col-md-4 text-center">
-                        <h3 class="subheading font-weight-bold">Club: &nbsp &nbsp {{user.user.teamname}}</h3>
+                    <h3 class="subheading font-weight-bold">Club: &nbsp &nbsp {{user.user.teamname}}</h3>
 
-                        {{#if user.user.team_id}}
-                        <a href="/api/players/leaveTeam" class="btn btn-danger btn-sm my-3">Leave the club</a>
-                        {{/if}} {{#each requests}}
-                        <div class="card player-card">
+                    {{#if user.user.team_id}}
+                    <a href="/api/players/leaveTeam" class="btn btn-danger leavebtn btn-sm my-3">Leave the club</a>
+                    {{/if}} {{#each requests}}
+                    <div class="card player-card">
 
-                            <div class="card-block text-center">
-                                <p class="card-header cardHead">Request from
-                                    <strong>{{managerName}}</strong>
-                                </p>
-                                <div class="card-body cardBody">
-                                    <p class="card-text">Club: {{teamName}}</p>
-                                </div>
-                                <div class="card-footer cardFooter p-1">
-                                    <form action="/api/requests/accept" method="POST">
-                                        <input type="text" name="team_id" value={{team_id}} class="d-none">
-                                        <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
-                                    </form>&nbsp&nbsp
-                                    <form action="/api/request/reject" method="POST">
-                                        <input type="text" name="team_id" value={{team_id}} class="d-none">
-                                        <input type="text" name="playerEmail" value={{playerEmail}} class="d-none">
-                                        <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
-                                    </form>
-                                </div>
+                        <div class="card-block text-center">
+                            <p class="card-header cardHead">Request from
+                                <strong>{{managerName}}</strong>
+                            </p>
+                            <div class="card-body cardBody">
+                                <p class="card-text">Club: {{teamName}}</p>
+                            </div>
+                            <div class="card-footer cardFooter p-1">
+                                <form action="/api/requests/accept" method="POST">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
+                                </form>&nbsp&nbsp
+                                <form action="/api/request/reject" method="POST">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="text" name="playerEmail" value={{playerEmail}} class="d-none">
+                                    <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
+                                </form>
                             </div>
                         </div>
-                        {{/each}}
+                    </div>
+                    {{/each}}
 
-                    </div>
-                    <div class="personalLists col-lg-8 col-md-8">
-                        <h4 class="subheading font-weight-bold text-warning p-2">Squad</h4>
-                        {{#each players}}
-                        <ul class="pdcol">
-                            <li>
-                                <div class="label">{{username}}</div>
-                                <div class="info">{{position}}</div>
-                            </li>
-                        </ul>
-                        {{/each}}
-                    </div>
+                </div>
+                <div class="personalLists col-lg-8 col-md-8">
+                    <h4 class="subheading font-weight-bold text-warning p-2">Squad</h4>
+                    {{#each players}}
+                    <ul class="pdcol">
+                        <li>
+                            <div class="label">{{username}}</div>
+                            <div class="info">{{position}}</div>
+                        </li>
+                    </ul>
+                    {{/each}}
                 </div>
             </div>
         </div>
@@ -240,49 +172,16 @@
                     <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
                 </div>
                 <br>
-                {{!-- <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data"> 
-                    <div class="form-group1">
-                        <label for="file-upload" class="custom-file-upload">
-                            <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
-                        </label>
-                        <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
-
-                        <input type="submit" class="btn savebtn text-white" value="Save">
-                    </div>
-                </form>--}}
             </div>
             <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
                 <h1>
-                    <div class="clubName font-weight-bold">Organizer:</div>
+                    <div class="clubName font-weight-bold">Organize Tournaments</div>
                 </h1>
                 <div class="website">
-                    <span class="label"></span>
+                    <span class="label">Find Clubs To Join Your Tournaments! </span>
                     <a href="" target="_blank"></a>
                 </div>
                 <div class="socialLinks">
-                    {{!--
-                    <ul class="socialOptions">
-                        <li class="socialList">
-                            <a target="blank" href="" role="button" class="facebook-option">
-                                <span class="fa fa-facebook"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="twitter-option">
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="youtube-option">
-                                <span class="fa fa-youtube"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="instagram-option">
-                                <span class="fa fa-instagram"></span>
-                            </a>
-                        </li>
-                    </ul>--}}
                 </div>
             </div>
             <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
@@ -292,7 +191,7 @@
     </div>
     <div class="teamInfo container-fluid">
         <div class="row">
-            <div class="adSpace col-lg-4 col-md-4">
+            <div class="adSpace col-lg-3 col-md-3">
             </div>
             <div class="container col-lg-8 col-md-8">
                 <div class="flex_box">

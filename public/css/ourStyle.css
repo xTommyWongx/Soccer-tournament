@@ -344,7 +344,7 @@ img {
     transform: translateY(2px);
 }
 .form-group1 {
-    /*margin-left: 55px;*/
+    margin-left: 55px;
     margin-top:2px;
 }
 @media (max-width: 56.25em){
@@ -442,7 +442,7 @@ img {
 }
     
 .playerNumberLrg {
-    right: -5rem;
+    right: -2rem;
     top: -1rem;
     font-size: 17rem;
     position: absolute;
@@ -470,7 +470,6 @@ img {
         position: relative;
         margin-top: -2rem;
         margin-bottom: 5rem;
-        margin-left: -2rem;
         padding-left: 2rem;
         padding-top: 2rem;
         background: #fff;
@@ -483,33 +482,17 @@ img {
     }
 }
 
-    .playerInfo1 {
+.playerInfo1 {
             position: relative;
             margin-bottom: 8rem;
-            margin-left: -2rem;
             padding-left: 2rem;
             background: #fff;
             z-index: 20;
-    }
+}
     
-    .personalLists {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border-top: 4px solid rgba(194, 192, 192, 0.808);
-    }
-    
-    @media (max-width: 63.9375em) {
-        .personalLists {
-            display: flex;
-            flex-direction: vertical;
-            font-size: 12px;
-        }
-    }
-    
-    .pdcol1 .pdcol2 .pdcol3 {
+.pdcol1 .pdcol2 .pdcol3 {
         width: 33.33%;
-    }
+}
     
 
     /* club page*/
@@ -880,4 +863,8 @@ ul {
 }
 body {
     position:relative;
+}
+
+.leavebtn {
+    margin-left: 35px;
 }
