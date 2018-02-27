@@ -1,3 +1,4 @@
+
 #navbarCollapse li {
     box-shadow: 3px 3px 7px  rgb(24, 154, 180);
     border: 0.3px solid white;
@@ -22,7 +23,25 @@
     height: 270px;
     background: rgba(195, 214, 231, 0.336);
 }
-
+.flex_box {
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.new_flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.mybox {
+    background: linear-gradient(45deg,#447cb4,#32587e,#55ACEE);
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 3px #000;
+}
 
 .navbar-nav {
     margin-left: 150px;

@@ -19,22 +19,25 @@
                     <img class="troImg" src="/img/trophy1.jpg" alt="trophy1">
                 </div>
 
-                {{#if ../user.user.manager}} {{#check tournament_id ../requests }}
-                <form class="join_tournament">
-                    <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
-                    <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
-                    <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none">
-                    <input type="submit" class="btn savebtn text-white btn-sm mt-1" value="Cancel request" id="input">
-                </form>
-                {{else}}
-                <form class="join_tournament">
-                    <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
-                    <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
-                    <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none">
-                    <input type="submit" class="btn editbtn text-white btn-sm mt-1" value="Join tournament" id="input">
-                </form>
+                {{#if ../user.user.manager}} 
+                    {{#check tournament_id ../requests }}
+                    <form class="join_tournament">
+                        <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
+                        <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
+                        <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none">
+                        <input type="submit" class="btn savebtn text-white btn-sm mt-1" value="Cancel request" id="input">
+                    </form>
+                    {{else}}
+                    <form class="join_tournament">
+                        <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
+                        <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
+                        <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none">
+                        <input type="submit" class="btn editbtn text-white btn-sm mt-1" value="Join tournament" id="input">
+                    </form>
 
-                {{/check}} {{/if}} {{#if ../user.user.organizer}}
+                    {{/check}} 
+                {{/if}} 
+                {{#if ../user.user.organizer}}
                 <a href="/api/organizers/tournament/{{tournament_id}}/edit" class="btn editbtn text-white btn-sm mt-1">Edit</a>
                 <form id="tournament-delete" action="/api/organizers/tournament/{{tournament_id}}?_method=DELETE" method="POST">
                     <button class="btn savebtn text-white btn-sm mt-1">Delete</button>

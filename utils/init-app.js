@@ -9,7 +9,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 
 // Handlebars Helpers
-const {formatDate, check} = require('./helpersHbs');
+const {formatDate, check, checkiftrue} = require('./helpersHbs');
 
 module.exports = () => {
     // let client = redis.createClient();
@@ -19,7 +19,8 @@ module.exports = () => {
     app.engine('handlebars', hb({ 
         helpers : {
             formatDate : formatDate,
-            check : check
+            check : check,
+            checkiftrue: checkiftrue
         },
         defaultLayout: 'main'
      }));

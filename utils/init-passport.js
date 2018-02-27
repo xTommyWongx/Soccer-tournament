@@ -30,6 +30,7 @@ module.exports = (app) => {
                     .insert({
                         facebook_id: profile.id,
                         username: profile.displayName,
+                        player: true
                         // img : get facebook profile image url
                     }).then((id) => {
                         console.log(id[0]);

@@ -17,7 +17,8 @@ module.exports = class ManagerService {
                         return this.knex('teams')
                                     .returning('id')
                                     .insert({
-                                        teamname: teamname.name
+                                        teamname: teamname.name,
+                                        manager_id: managerId
                                     }).then((id)=>{
                                     //  assign newly created team to manager
                                         return this.knex('players')
