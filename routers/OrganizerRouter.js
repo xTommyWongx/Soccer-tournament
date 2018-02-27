@@ -43,8 +43,13 @@ module.exports = class OrganizerRouter {
         return this.organizerService.update(req)
             .then(() => res.redirect('/tournaments'))
             .catch((err) => {
-                console.log(err);
-                res.send(err);
+                if (err === 'Tournament name already in use!' ) {
+                    req.flash('error_msg', 'Tournament name already in use');
+                    res.redirect(`/api/organizers/tournament/${req.params.id}/edit`);
+                } else {
+                    console.log(err);
+                    res.send(err);
+                }
             }); 
     }
     delete(req,res){

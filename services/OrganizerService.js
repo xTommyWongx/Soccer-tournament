@@ -64,23 +64,33 @@ module.exports = class OrganizerService {
             .catch((err) => console.loog(err));
     }
     update(req){
-        return this.knex('tournaments').where('tournaments.id', req.params.id)
-            // update tournament table
-            .update({
-                tournamentName: req.body.nameOfTournament,
-                category_id: req.body.category,
-                number_of_teams: req.body.numberOfTeam,
-                number_of_player_id: req.body.numberOfPlayer,
-                prize: req.body.prize,
-            })
-            // update date, location to tournaments_dates_locations join table            
-            .then(() => {
-                return this.knex('tournamnets_dates_locations').where('tournament_id', req.params.id)
-                    .update({
-                        date: req.body.date,
-                        location: req.body.location
-                    })
-            })
+        return this.knex('tournaments')
+                .where('tournaments.tournamentName', req.body.nameOfTournament)
+                .whereNot('tournaments.id', req.params.id)
+                .then((result) => {
+                    if (result.length > 0) {
+                        let err = "Tournament name already in use!";
+                        throw err;
+                    } else {
+                        return this.knex('tournaments').where('tournaments.id', req.params.id)
+                            //update tournament table
+                            .update({
+                                tournamentName: req.body.nameOfTournament,
+                                category_id: req.body.category,
+                                number_of_teams: req.body.numberOfTeam,
+                                number_of_player_id: req.body.numberOfPlayer,
+                                prize: req.body.prize,
+                            })
+                            //update date, location to tournaments_dates_locations join table            
+                            .then(() => {
+                                return this.knex('tournamnets_dates_locations').where('tournament_id', req.params.id)
+                                    .update({
+                                        date: req.body.date,
+                                        location: req.body.location
+                                    })
+                            })
+                    }
+        })
     }
     list(req, res){
         if (req.user.user.organizer) {
