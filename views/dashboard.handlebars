@@ -74,13 +74,7 @@
             </div>
 </div>
     {{!-- but haven't formed any team yet, then show 'create team' --}} 
-    {{#unless user.user.team_id}}
-    <div class="row">
-        <div class="col-md-10 mx-auto text-center">
-            <a href="/createTeam" class="btn btn-danger btn-block btn-lg my-3 text-center">Create Team</a>
-
-        </div>
-    </div>
+    
     <div class="teamInfo container-fluid">
         <div class="row">
             <div class="adSpace col-lg-4 col-md-4">
@@ -331,14 +325,8 @@
     </div>
 </section>
 
-<<<<<<< HEAD
 {{!-- Organizer's block --}}
 {{#if user.user.organizer}}
-<div class="banner text-center" id="organizer-dashboard">
-    <img src="/img/clubLogo.png" alt="default club logo" width="200px" height="200px">
-    <hr style="width: 400px">
-</div>
-<br>
 
 <div class="container">  
     <div class="flex_box">
@@ -402,41 +390,4 @@
 {{/each}}
 </div>
 {{/if}}
-||||||| merged common ancestors
-{{!-- Organizer's block --}}
-{{#if user.user.organizer}}
-<div class="banner text-center" id="organizer-dashboard">
-    <img src="/img/clubLogo.png" alt="default club logo" width="200px" height="200px">
-    <hr style="width: 400px">
-</div>
-<br>
-<div class="container">  
-    <div class="flex_box">
-    {{#each requests}}
-        <div class="card helper" style="width: 20rem;">
-            <img class="mx-auto" src="/img/club.png" width="50px" height="100px" alt="Card image cap">
-            <div class="card-block">
-                <p class="card-title text-info text-center">Request to join {{tournament_name}}</p>
-                <p class="card-text text-center">This is a request from {{teamname}} to participate in {{tournament_name}}</p>
-                <div class=" cardFooter p-1">
-                    <form class="accept" >
-                        <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
-                        <input type="text" name="team_id" value={{team_id}} class="d-none">
-                        <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
-                    </form>&nbsp&nbsp
-                    <form class="reject">
-                        <input type="text" name="team_id" value={{team_id}} class="d-none">
-                        <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
-                        <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
-                    </form>
-                </div>
-            </div>  
-        </div>
-        <br><br>
-    {{/each}}
-   </div>
-</div>
 {{/if}}
-=======
-{{/if}}
->>>>>>> 151148c29f910c8380becdb4068976d086d93f5b
