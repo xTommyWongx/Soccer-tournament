@@ -1,63 +1,9 @@
-<section class="clubPage">
-    <div class="clubContainer container-fluid">
-        <div class="row">
-            <div class="badgeContainer col-lg-4 col-md-4 col-sm-6">
-                <div class="clubImg">
-                    {{#if user.user.img}}
-                    <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
-                    <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
-                </div>
-                <br>
-                
-            </div>
-            <div class="clubDetails col-lg-4 col-md-4 col-sm-6">
-                <h1>
-                    <div class="clubName font-weight-bold">Manchester City</div>
-                </h1>
-                <div class="website">
-                    <span class="label">Official Website:</span>
-                    <a href="" target="_blank">www.mancity.com</a>
-                </div>
-                <div class="socialLinks">
-                    <ul class="socialOptions">
-                        <li class="socialList">
-                            <a target="blank" href="" role="button" class="facebook-option">
-                                <span class="fa fa-facebook"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="twitter-option">
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="youtube-option">
-                                <span class="fa fa-youtube"></span>
-                            </a>
-                        </li>
-                        <li class="socialList">
-                            <a target="_blank" href="" role="button" class="instagram-option">
-                                <span class="fa fa-instagram"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
-                <img class="staImg" src="/img/fifa1-background.jpg" alt="champ">
-            </div>
-        </div>
-    </div>
-</section>
 
-<div class="row teamslist">
-    <div class="col-md-12 mx-auto">
-        <div class="text-center">
-            <span class="h2 text-info">Football Clubs</span>
-        </div>
-        <br>
+ {{#each teams}}
+<section class="teamPage">
+    <div class="teamContainer1 container-fluid ">
         <div class="row">
-            {{#each teams}}
+            {{!-- {{#each teams}}
             <div class="col-lg-3 col-md-4 col-sm-6 col-8 mx-auto">
                 
                 <a href="" class="btn btn-primary teamlistbutton">
@@ -69,9 +15,54 @@
                         </div>       
                 </a>
                 <br>
+            {{/each}} --}}
+           
+            <div class="teamContainer col-lg-4 col-md-4 col-sm-4 ">
+                <div class="teamImg">
+                    <img class="teamImg" src="/img/mancity.svg" alt="teamlogo">
+                </div>
             </div>
-            {{/each}}
+            <div class="teamDetails col-lg-8 col-md-8 col-sm-8 ">
+                <div class="teamLists">
+                    <h3 class="subheading font-weight-bold">{{teamname}}</h3>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Team Manager</div>
+                            <div class="info">{{username}}</div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Home Stadium</div>
+                            <div class="info">{{location}}</div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Number of Players</div>
+                            <div class="info"></div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Matches Played</div>
+                            <div class="info"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+           
         </div>
-
     </div>
+</section>
+ {{/each}}
+
+
+{{!-- {{#each teams}}
+<div class="col-lg-3 col-md-4 col-sm-6 col-8 mx-auto">
+    <a href="" class="btn btn-success teamlistbutton">{{teamname}}&nbsp
+        <img src="/img/rotatingSoccer.gif" width="20px" height="20px">
+    </a>
+    <br>
 </div>
+{{/each}} --}}

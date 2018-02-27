@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const hb = require('express-handlebars');
 const flash = require('connect-flash');
 const path = require('path');
+const methodOverride = require('method-override');
 
 // Handlebars Helpers
 const {formatDate, check, checkiftrue} = require('./helpersHbs');
@@ -36,6 +37,7 @@ module.exports = () => {
 
     }));
     app.use(cors());
+    app.use(methodOverride("_method")); // this is for put and delete request
 
     let sess;
 
