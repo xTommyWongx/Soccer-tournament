@@ -1,12 +1,11 @@
- {{!-- {{#if user.user.organizer}}
- <div class="row">
-     <div class="col banner text-center">
-         <img src="/img/trophy.png" width="200px" height="200px">
-         <p class="py-2 text-info">My Tournaments</p>
-     </div>
- 
- </div>
- {{/if}} --}}
+{{#unless organizerTournament}}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>NO TOURNAMENT!</h1>
+        </div>
+    </div>
+{{/unless}} 
+
 {{#each organizerTournament}}
     <section class="tourneyPage">
         <div class="tourneyContainer1 container-fluid ">
@@ -35,6 +34,13 @@
 
                         {{/check}} 
                                     
+                    {{/if}}
+
+                    {{#if ../user.user.organizer}}
+                        <a href="/api/organizers/tournament/{{tournament_id}}/edit" class="btn btn-success btn-sm mt-1">Edit</a>
+                        <form id="tournament-delete" action="/api/organizers/tournament/{{tournament_id}}?_method=DELETE" method="POST">
+                            <button class="btn btn-danger btn-sm mt-1">Delete</button>
+                        </form>
                     {{/if}}
                 </div>
                 <div class="tourneyDetails col-lg-8 col-md-8 col-sm-8 ">
@@ -83,7 +89,7 @@
         </div>
     </section>
  {{/each}}
- 
 
-    
+
+
     

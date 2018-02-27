@@ -14,5 +14,5 @@ module.exports = {
         } else {
             return options.fn(this);
         }
-    }
+    },
 }
