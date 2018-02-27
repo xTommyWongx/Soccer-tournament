@@ -79,6 +79,29 @@
     }
 }
 
+/* tournament edit button */
+.editbtn{
+    border-radius: 20px;
+    display: inline-block;
+    padding: 9px 17px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #343a40;
+    box-shadow: 3px 3px 7px  rgb(24, 154, 180);
+    border: 0.5px solid white;
+    margin-left: 69px;
+}
+@media (max-width: 56.25em){
+    .editbtn{
+        height: 29px;
+        font-size: 10px;
+        margin-left: 20px;
+        padding: 7px 14px;
+    }
+}
+
+
+
 #file-upload{
     display: none;
 }
@@ -307,6 +330,7 @@ img {
     background-color: rgb(24, 154, 180);
     box-shadow: 3px 3px 7px  rgb(24, 154, 180);
     border: 0.4px solid white;
+    height:40px;
 }
 @media (max-width: 56.25em){
     .savebtn{
@@ -731,7 +755,7 @@ ul {
 }
 @media (max-width: 50.25em){
     .tourneyDetails {
-        font-size: 7px;
+        font-size: 11px;
         margin-left: 10px;
         margin-top: 5px;
     }
@@ -749,7 +773,7 @@ ul {
     .tourneyLists {
         display: flex;
         flex-direction: vertical;
-        font-size: 9px;
+        font-size: 11px;
     }
 }
 
@@ -797,7 +821,7 @@ ul {
 }
 @media (max-width: 50.25em){
     .teamContainer {
-        font-size: 10px;
+        font-size: 11px;
         max-width: 150px;
         margin-left: 110px;
     }
@@ -805,13 +829,13 @@ ul {
 
 .teamImg {
     margin-top: 8px;
-    max-height: 200px;
+    max-height: 150px;
 }
 
 @media (max-width: 50.25em){
     .teamImg {
         max-height: 100px;
-        margin-top: 20px;
+        margin-top: 3px;
     }
 }
 .teamDetails {
@@ -822,7 +846,7 @@ ul {
 }
 @media (max-width: 50.25em){
     .teamDetails {
-        font-size: 7px;
+        font-size: 11px;
         margin-left: 10px;
         margin-top: 5px;
     }
@@ -840,7 +864,7 @@ ul {
     .teamLists {
         display: flex;
         flex-direction: vertical;
-        font-size: 9px;
+        font-size: 11px;
     }
 }
 
