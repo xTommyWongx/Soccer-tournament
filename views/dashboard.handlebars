@@ -1,10 +1,76 @@
-{{!-- if user is manager show the following --}} 
-{{#if user.user.manager }} 
-<div class="row">
-           
-            <div class="col-lg-12 banner">
-                <div class=" text-center"><img src="/img/clubLogo.png" alt="" width="200px" height="200px"></div>
+{{!-- if user is manager show the following --}} {{#if user.user.manager }} {{!-- but haven't formed any team yet, then show
+'create team' --}} {{#unless user.user.team_id}}
+
+<div class="clubContainer container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-md-4"></div>
+        <div class="col-lg-4 col-md-4">
+            <img src="/img/stadium2.png" alt="" width="200px" height="200px">
+            <a href="/createTeam" class="btn savebtn text-white my-3">Create Your Team</a>
+        </div>
+        <div class="col-lg-4 col-md-4 align-content-center">
+        </div>
+    </div>
+</div>
+
+{{/unless}} {{!-- if manager already has team, then show team details and available players --}} {{#if user.user.team_id}}
+<section class="clubPage">
+    <div class="clubContainer container-fluid">
+        <div class="row">
+            <div class="badgeContainer col-lg-4 col-md-4 col-sm-3">
+                <div class="clubImg">
+                    {{#if user.user.img}}
+                    <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
+                    <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
+                </div>
                 <br>
+                <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
+                    <div class="form-group1">
+                        <label for="file-upload" class="custom-file-upload">
+                            <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
+                        </label>
+                        <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
+
+                        <input type="submit" class="btn savebtn text-white" value="Save">
+                    </div>
+                </form>
+            </div>
+            <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
+                <h1>
+                    <div class="clubName font-weight-bold">Club Manager:</div>
+                </h1>
+                <div class="website">
+                    <span class="label"></span>
+                    <a href="" target="_blank"></a>
+                </div>
+                <div class="socialLinks">
+                    {{!--
+                    <ul class="socialOptions">
+                        <li class="socialList">
+                            <a target="blank" href="" role="button" class="facebook-option">
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                        </li>
+                        <li class="socialList">
+                            <a target="_blank" href="" role="button" class="twitter-option">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li class="socialList">
+                            <a target="_blank" href="" role="button" class="youtube-option">
+                                <span class="fa fa-youtube"></span>
+                            </a>
+                        </li>
+                        <li class="socialList">
+                            <a target="_blank" href="" role="button" class="instagram-option">
+                                <span class="fa fa-instagram"></span>
+                            </a>
+                        </li>
+                    </ul>--}}
+                </div>
+            </div>
+            <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
+                <img class="staImg" src="/img/fifa1-background.jpg" alt="champ">
             </div>
 </div>
     {{!-- but haven't formed any team yet, then show 'create team' --}} 
@@ -14,104 +80,258 @@
             <a href="/createTeam" class="btn btn-danger btn-block btn-lg my-3 text-center">Create Team</a>
 
         </div>
-        
     </div>
-        
-    {{/unless}} 
-    {{!-- if manager already has team, then show team details and available players --}} 
-    {{#if user.user.team_id}}
-        
-        <div class="row p-3">
-            <div class="col-lg-8 col-md-8 mx-auto">
-                    <div class="form-group">
-                        <h2>Club :&nbsp<strong>{{user.user.teamname}}</strong></h2>
-                        <div class="personalLists ">
-                                <br><br>
-                            <h3 class="subheading font-weight-bold">Squad</h3>
-                            
-                            {{#each players}}
-                            <ul class="pdcol">
-                                <li>
-                                    <div class="label">{{username}}</div>
-                                    <div class="info">{{position}}</div>
-                                </li>
-                            </ul>
-                            
-                            {{/each}}  
-                        </div>
-                    </div>
+    <div class="teamInfo container-fluid">
+        <div class="row">
+            <div class="adSpace col-lg-4 col-md-4">
             </div>
-        </div> 
+            <div class="personalLists col-lg-8 col-md-8">
+                <div class="form-group">
+                    <h2>Club :&nbsp
+                        <strong>{{user.user.teamname}}</strong>
+                    </h2>
+                    <div class="personalLists ">
+                        <br>
+                        <br>
+                        <h3 class="subheading font-weight-bold">Squad</h3>
+
+                        {{#each players}}
+                        <ul class="pdcol">
+                            <li>
+                                <div class="label">{{username}}</div>
+                                <div class="info">{{position}}</div>
+                            </li>
+                        </ul>
+
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12  text-center">
                 {{!-- Available players details --}}
-                <button class="btn btn-info" id="showPlayerMarket">Show available players</button>
-                <br><br>
+                <button class="btn savebtn text-white" id="showPlayerMarket">Show available players</button>
+                <br>
+                <br>
                 <div id="playerslist">
-                {{!-- available players are displayed here --}}
+                    {{!-- available players are displayed here --}}
                 </div>
-            </div>
-        </div>     
-    {{/if}}
-{{/if}}
-{{!-- End of manager block --}}
-
-{{!-- Players block --}}
-{{#if user.user.player}}
-<div class="banner text-center">
-    <img src="/img/clubLogo.png" alt="default club logo" width="200px" height="200px">
-    <hr style="width: 400px">
-</div>
-
-
-    <div class="playerInfo ">
-        <div class="row">
-            <div class="adSpace col-lg-4 col-md-4 text-center">
-                <h3 class="subheading font-weight-bold">Club: &nbsp &nbsp {{user.user.teamname}}</h3>
-                
-                {{#if user.user.team_id}}
-                    <a href="/api/players/leaveTeam" class="btn btn-danger btn-sm my-3">Leave the club</a>
-                 {{/if}}
-                {{#each requests}}
-                    <div class="card player-card">
-                        
-                        <div class="card-block text-center">
-                            <p class="card-header cardHead">Request from <strong>{{managerName}}</strong></p>
-                            <div class="card-body cardBody">
-                                <p class="card-text">Club: {{teamName}}</p>
-                            </div>
-                            <div class="card-footer cardFooter p-1">
-                                <form action="/api/requests/accept" method="POST">
-                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
-                                    <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
-                                </form>&nbsp&nbsp
-                                <form action="/api/request/reject" method="POST">
-                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
-                                    <input type="text" name="playerEmail" value={{playerEmail}} class="d-none">
-                                    <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
-                                </form>
-                            </div>  
-                        </div>
-                    </div>       
-                {{/each}}
-
-            </div>
-            <div class="personalLists col-lg-8 col-md-8">
-                <h4 class="subheading font-weight-bold text-warning p-2">Squad</h4>
-             {{#each players}}
-             <ul class="pdcol">
-                    <li>
-                        <div class="label">{{username}}</div>
-                        <div class="info">{{position}}</div>
-                    </li>
-                </ul>
-            {{/each}}
             </div>
         </div>
     </div>
-{{/if}}
-{{!-- End of player block --}}
+</section>
+{{/if}} {{/if}} {{!-- End of manager block --}} {{!-- Players block --}} {{#if user.user.player}}
+<section class="clubPage">
+    <div class="clubContainer container-fluid">
+        <div class="row">
+            <div class="badgeContainer col-lg-4 col-md-4 col-sm-3">
+                <div class="clubImg">
+                    {{#if user.user.img}}
+                    <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
+                    <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
+                </div>
+                <br>
+                {{!-- <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data"> 
+                    <div class="form-group1">
+                        <label for="file-upload" class="custom-file-upload">
+                            <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
+                        </label>
+                        <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
 
+                        <input type="submit" class="btn savebtn text-white" value="Save">
+                    </div>
+                </form>--}}
+            </div>
+            <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
+                <h1>
+                    <div class="clubName font-weight-bold">Player:</div>
+                </h1>
+                <div class="website">
+                    <span class="label"></span>
+                    <a href="" target="_blank"></a>
+                </div>
+                <div class="socialLinks">
+                    {{!--
+                    <ul class="socialOptions">
+                        <li class="socialList">
+                            <a target="blank" href="" role="button" class="facebook-option">
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                        </li>
+                        <li class="socialList">
+                            <a target="_blank" href="" role="button" class="twitter-option">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li class="socialList">
+                            <a target="_blank" href="" role="button" class="youtube-option">
+                                <span class="fa fa-youtube"></span>
+                            </a>
+                        </li>
+                        <li class="socialList">
+                            <a target="_blank" href="" role="button" class="instagram-option">
+                                <span class="fa fa-instagram"></span>
+                            </a>
+                        </li>
+                    </ul>--}}
+                </div>
+            </div>
+            <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
+                <img class="staImg" src="/img/fifa1-background.jpg" alt="champ">
+            </div>
+        </div>
+    </div>
+    <div class="teamInfo container-fluid">
+        <div class="row">
+            <div class="adSpace col-lg-4 col-md-4">
+            </div>
+            <div class="playerInfo col-lg-8 col-md-8 ">
+                <div class="row">
+                    <div class="adSpace col-lg-4 col-md-4 text-center">
+                        <h3 class="subheading font-weight-bold">Club: &nbsp &nbsp {{user.user.teamname}}</h3>
+
+                        {{#if user.user.team_id}}
+                        <a href="/api/players/leaveTeam" class="btn btn-danger btn-sm my-3">Leave the club</a>
+                        {{/if}} {{#each requests}}
+                        <div class="card player-card">
+
+                            <div class="card-block text-center">
+                                <p class="card-header cardHead">Request from
+                                    <strong>{{managerName}}</strong>
+                                </p>
+                                <div class="card-body cardBody">
+                                    <p class="card-text">Club: {{teamName}}</p>
+                                </div>
+                                <div class="card-footer cardFooter p-1">
+                                    <form action="/api/requests/accept" method="POST">
+                                        <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                        <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
+                                    </form>&nbsp&nbsp
+                                    <form action="/api/request/reject" method="POST">
+                                        <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                        <input type="text" name="playerEmail" value={{playerEmail}} class="d-none">
+                                        <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+
+                    </div>
+                    <div class="personalLists col-lg-8 col-md-8">
+                        <h4 class="subheading font-weight-bold text-warning p-2">Squad</h4>
+                        {{#each players}}
+                        <ul class="pdcol">
+                            <li>
+                                <div class="label">{{username}}</div>
+                                <div class="info">{{position}}</div>
+                            </li>
+                        </ul>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{/if}} {{!-- End of player block --}} {{!-- Organizer's block --}} {{#if user.user.organizer}}
+<section class="clubPage">
+    <div class="clubContainer container-fluid">
+        <div class="row">
+            <div class="badgeContainer col-lg-4 col-md-4 col-sm-3">
+                <div class="clubImg">
+                    {{#if user.user.img}}
+                    <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
+                    <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
+                </div>
+                <br>
+                {{!-- <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data"> 
+                    <div class="form-group1">
+                        <label for="file-upload" class="custom-file-upload">
+                            <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
+                        </label>
+                        <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
+
+                        <input type="submit" class="btn savebtn text-white" value="Save">
+                    </div>
+                </form>--}}
+            </div>
+            <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
+                <h1>
+                    <div class="clubName font-weight-bold">Organizer:</div>
+                </h1>
+                <div class="website">
+                    <span class="label"></span>
+                    <a href="" target="_blank"></a>
+                </div>
+                <div class="socialLinks">
+                    {{!--
+                    <ul class="socialOptions">
+                        <li class="socialList">
+                            <a target="blank" href="" role="button" class="facebook-option">
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                        </li>
+                        <li class="socialList">
+                            <a target="_blank" href="" role="button" class="twitter-option">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                        </li>
+                        <li class="socialList">
+                            <a target="_blank" href="" role="button" class="youtube-option">
+                                <span class="fa fa-youtube"></span>
+                            </a>
+                        </li>
+                        <li class="socialList">
+                            <a target="_blank" href="" role="button" class="instagram-option">
+                                <span class="fa fa-instagram"></span>
+                            </a>
+                        </li>
+                    </ul>--}}
+                </div>
+            </div>
+            <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
+                <img class="staImg" src="/img/fifa1-background.jpg" alt="champ">
+            </div>
+        </div>
+    </div>
+    <div class="teamInfo container-fluid">
+        <div class="row">
+            <div class="adSpace col-lg-4 col-md-4">
+            </div>
+            <div class="container col-lg-8 col-md-8">
+                <div class="flex_box">
+                    {{#each requests}}
+                    <div class="card helper" style="width: 20rem;">
+                        <img class="mx-auto" src="/img/club.png" width="50px" height="100px" alt="Card image cap">
+                        <div class="card-block">
+                            <p class="card-title text-info text-center">Request to join {{tournament_name}}</p>
+                            <p class="card-text text-center">This is a request from {{teamname}} to participate in {{tournament_name}}</p>
+                            <div class=" cardFooter p-1">
+                                <form class="accept">
+                                    <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
+                                </form>&nbsp&nbsp
+                                <form class="reject">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
+                                    <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br> {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<<<<<<< HEAD
 {{!-- Organizer's block --}}
 {{#if user.user.organizer}}
 <div class="banner text-center" id="organizer-dashboard">
@@ -182,3 +402,41 @@
 {{/each}}
 </div>
 {{/if}}
+||||||| merged common ancestors
+{{!-- Organizer's block --}}
+{{#if user.user.organizer}}
+<div class="banner text-center" id="organizer-dashboard">
+    <img src="/img/clubLogo.png" alt="default club logo" width="200px" height="200px">
+    <hr style="width: 400px">
+</div>
+<br>
+<div class="container">  
+    <div class="flex_box">
+    {{#each requests}}
+        <div class="card helper" style="width: 20rem;">
+            <img class="mx-auto" src="/img/club.png" width="50px" height="100px" alt="Card image cap">
+            <div class="card-block">
+                <p class="card-title text-info text-center">Request to join {{tournament_name}}</p>
+                <p class="card-text text-center">This is a request from {{teamname}} to participate in {{tournament_name}}</p>
+                <div class=" cardFooter p-1">
+                    <form class="accept" >
+                        <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
+                        <input type="text" name="team_id" value={{team_id}} class="d-none">
+                        <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
+                    </form>&nbsp&nbsp
+                    <form class="reject">
+                        <input type="text" name="team_id" value={{team_id}} class="d-none">
+                        <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
+                        <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
+                    </form>
+                </div>
+            </div>  
+        </div>
+        <br><br>
+    {{/each}}
+   </div>
+</div>
+{{/if}}
+=======
+{{/if}}
+>>>>>>> 151148c29f910c8380becdb4068976d086d93f5b

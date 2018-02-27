@@ -1,22 +1,23 @@
-{{!-- if user is manager --}}
-{{#if user.user.manager }}
-    {{!-- but haven't formed any team yet, then show 'create team' --}}
-    {{!-- {{#unless user.user.team_id}} --}}
-        <div class="row text-white">
-
-            <div class="col-md-8 mx-auto">
-                <div class="text-center">
-                    Create Your Team
-                </div>
-                <form action="/api/managers/createTeam" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter name for your team" required>
-                    </div>
-                    <input type="submit" value="Submit" class="btn btn-info">
-
-                </form>
+{{!-- if user is manager --}} {{#if user.user.manager }} {{!-- but haven't formed any team yet, then show 'create team' --}}
+{{!-- {{#unless user.user.team_id}} --}}
+<div class="clubContainer container-fluid">
+    <div class="row text-primary">
+        <div class="col-md-8 mx-auto">
+            <div class="text-center">
+                Create Your Team
             </div>
+            <form action="/api/managers/createTeam" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter name for your team" required>
+                </div>
+                <input type="submit" value="Submit" class="btn savebtn text-white">
+
+            </form>
         </div>
-    {{!-- {{/unless}} --}}
-{{/if}}
+    </div>
+    <br>
+    <div class="row">
+    </div>
+</div>
+{{!-- {{/unless}} --}} {{/if}}

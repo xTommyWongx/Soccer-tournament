@@ -321,9 +321,10 @@ th {
 /* profile page */
 
 /* picture iamge */
-#profile-pic {
-    max-width: 320px;
+ #profile-pic {
+    max-height: 220px;
 }
+
 @media (max-width: 56.25em){
     #profile-pic {
         max-width: 145px;
@@ -362,7 +363,7 @@ img {
     transform: translateY(2px);
 }
 .form-group1 {
-    margin-left: 55px;
+    /*margin-left: 55px;*/
     margin-top:2px;
 }
 @media (max-width: 56.25em){
@@ -461,7 +462,7 @@ img {
     
 .playerNumberLrg {
     right: -5rem;
-    top: 3rem;
+    top: -1rem;
     font-size: 17rem;
     position: absolute;
     z-index: 0;
@@ -541,7 +542,7 @@ img {
 }
 
 .clubImg {
-    max-height: 220px;
+    max-height: 150px;
 }
 @media (max-width: 50.25em){
     .clubImg {
@@ -887,3 +888,15 @@ ul {
     }
 }
 
+/* alert */
+#amess {
+    z-index: 1;
+    position:absolute;
+    left: 50%;
+    top:10%;
+    transform: translateX(-50%);
+    min-width: 600px;
+}
+body {
+    position:relative;
+}
