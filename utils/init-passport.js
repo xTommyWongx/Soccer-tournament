@@ -70,6 +70,7 @@ module.exports = (app) => {
 
             }).then((user) => {
                 // Match password
+                if(user != null){
                 bcrypt.compare(password, user[0].password, (err, match) => {
                     if (err) throw err;
                     if (match) {
@@ -78,6 +79,7 @@ module.exports = (app) => {
                     if (!match)
                         return done(null, false, { message: "Incorrect password" });
                 })
+                }
             })
     }));
 
