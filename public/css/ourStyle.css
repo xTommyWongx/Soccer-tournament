@@ -302,9 +302,10 @@ th {
 /* profile page */
 
 /* picture iamge */
-#profile-pic {
-    max-width: 320px;
+ #profile-pic {
+    max-height: 220px;
 }
+
 @media (max-width: 56.25em){
     #profile-pic {
         max-width: 145px;
@@ -343,7 +344,7 @@ img {
     transform: translateY(2px);
 }
 .form-group1 {
-    margin-left: 55px;
+    /*margin-left: 55px;*/
     margin-top:2px;
 }
 @media (max-width: 56.25em){
@@ -522,7 +523,7 @@ img {
 }
 
 .clubImg {
-    max-height: 220px;
+    max-height: 150px;
 }
 @media (max-width: 50.25em){
     .clubImg {
