@@ -12,8 +12,19 @@ module.exports = class OrganizerRouter {
         router.post('/reject',this.reject.bind(this));
         router.put('/tournament/:id',this.put.bind(this));
         router.delete('/tournament/:id',this.delete.bind(this));
+        router.post('/fixtures/',this.fixtures.bind(this));
         return router;
     }
+    fixtures(req, res){
+        console.log("fixtures ,",req.body);
+        return this.organizerService.createFixture(req.body)
+            .then((data)=>{
+                res.send();
+            }).catch(err=>{
+                console.log(err);
+            })
+    }
+
     get(req,res){
         return this.organizerService.list(req, res)
             .then((cb) => {

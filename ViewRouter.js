@@ -48,9 +48,15 @@ module.exports = class ViewRouter {
                     if (req.user.user.team_id) {
                         return this.knex('players').select().where('team_id', req.user.user.team_id)//get all the teammates
                             .then((players) => {
-                                console.log("players", players);
+                                return this.knex('matches').select()
+                                    .innerJoin('tournaments','tournaments.id','tournament_id')
+                                    .then((matches)=>{
+                                        console.log("players", players);
                                 console.log('request ..', result);
-                                res.render('dashboard', { requests: result, players: players });
+                                res.render('dashboard', { requests: result, players: players,matches:matches });
+
+                                    })
+                                
                             })
                     } else {
                         console.log('requests', result);
@@ -69,7 +75,11 @@ module.exports = class ViewRouter {
             // get list of players from manager's team
             this.knex('players').select().where('team_id', req.user.user.team_id)
                 .then((players) => {
-                    res.render('dashboard', { players: players });
+                    return this.knex('matches').select()
+                        .then((matches)=>{
+                            res.render('dashboard', { players: players ,matches:matches});
+                        })
+                    
                 })
         }
         else if (req.user.user.organizer) { // load organizer's dashboard

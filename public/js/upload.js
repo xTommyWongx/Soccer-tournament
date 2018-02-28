@@ -70,3 +70,39 @@ if($('.join_tournament') != null){
     }
    
 }
+
+// create fixture form
+if($('.createFixture') != null){
+    $('.createFixture').on('click',function(e){
+        e.preventDefault();
+        if($(this).html() == 'Create fixtures'){
+             $(this).html("Cancel fixture");
+             $(this).removeClass('btn-info').addClass('btn-danger');
+             $(this).siblings('.fixtureForm').removeClass("d-none");
+        } else {
+            $(this).html("Create fixtures");
+            $(this).removeClass('btn-danger').addClass('btn-info');
+            $(this).siblings('.fixtureForm').addClass("d-none");
+        }
+    let self = this;
+    let fixture = document.querySelectorAll('.fixtureForm');
+    for(let i=0;i<fixture.length;i++){
+        fixture[i].addEventListener('submit',function(e){
+            e.preventDefault();     
+                const data = new URLSearchParams();
+                for (const pair of new FormData(fixture[i])) {
+                   data.append(pair[0], pair[1]);
+                }
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST','api/organizers/fixtures',true);
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {               
+                        fixture[i].classList.add('d-none');
+                        $(self).attr("disabled", "disabled").html("Fixtures");
+                    }
+                  };
+                xhr.send(data);   
+            })        
+    }
+})
+}

@@ -118,4 +118,26 @@ module.exports = class OrganizerService {
                         tournament_id: tournament_id
                     }).del();
     }
+    createFixture(body){
+        let rows = [{
+            teamA: body.A,
+            teamB: body.B,
+            tournament_id: body.tournament_id
+        },{
+            teamA: body.C,
+            teamB: body.D,
+            tournament_id: body.tournament_id
+        },{
+            teamA: body.E,
+            teamB: body.F,
+            tournament_id: body.tournament_id
+        },{
+            teamA: body.G,
+            teamB: body.H,
+            tournament_id: body.tournament_id
+        }];
+        let chunksize = 10;
+        return this.knex.batchInsert('matches',rows,chunksize);
+
+    }
 }

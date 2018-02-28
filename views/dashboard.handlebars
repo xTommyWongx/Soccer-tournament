@@ -43,8 +43,7 @@
                 <img class="staImg" src="/img/fifa1-background.jpg" alt="champ">
             </div>
         </div>
-        {{!-- but haven't formed any team yet, then show 'create team' --}}
-
+       
         <div class="teamInfo container-fluid">
             <div class="row">
                 <div class="adSpace col-lg-4 col-md-4">
@@ -72,6 +71,25 @@
                     </div>
                 </div>
             </div>
+            {{!-- fixtures --}}
+            {{#if matches}}
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3>Fixtures</h3>
+                </div>
+                {{#each matches}}
+                <div class="col-md-6 mx-auto text-center">
+                     
+                        <div class="btn btn-success">{{teamA}} vs {{teamB}}</div>
+                   
+
+                </div>
+                 {{/each}}
+
+                   
+                
+            </div>
+            {{/if}}
             <div class="row">
                 <div class="col-md-12  text-center">
                     {{!-- Available players details --}}
@@ -164,8 +182,38 @@
                     </ul>
                     {{/each}}
                 </div>
+
             </div>
         </div>
+        {{!-- fixtures --}}
+            {{#if matches}}
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3>Fixtures</h3>
+                </div>
+                {{#each matches}}
+                <div class="col-md-5 mx-auto text-center my-2">
+                     
+                       <div class="card card_withborder text-center">
+                            <div class="card-header">
+                                <h4>{{tournamentName}}</h4>
+                            </div>
+                            <div class="card-block">
+                               
+                                <p class="card-text">{{teamA}} vs {{teamB}}</p>
+                               
+                            </div>
+                            
+                        </div>
+                   
+
+                </div>
+                 {{/each}}
+
+                   
+                
+            </div>
+            {{/if}}
     </div>
 </section>
 {{/if}} {{!-- End of player block --}} 
@@ -228,7 +276,7 @@
                 </div>
             </div>
             <div class="row">
-                {{#each id}}
+            {{#each id}}
 
                 <div class="col-md-12 mx-auto text-center ">
                     <hr>
@@ -242,23 +290,55 @@
 
                 <div class="col-md-10 mx-auto text-center new_flex">
 
-                    {{#each this}} {{#checkiftrue ../../id tournament_id}}
-                    <div class="d-block py-3 text-center mybox" style="width: 18rem;">
-                        <img src="/img/clubs.png" width="70px" height="70px" alt="Card image cap">
-                        <div>
-                            <h5 class="card-title text-white"> {{teamname}}</h5>
+                    {{#each this}} 
+                        {{#checkiftrue ../../id tournament_id}}
+                        <div class="d-block py-3 text-center mybox" style="width: 18rem;">
+                            <img src="/img/clubs.png" width="70px" height="70px" alt="Card image cap">
+                            <div>
+                                <h5 class="card-title text-white"> {{teamname}}</h5>
+                            </div>
                         </div>
-                    </div>
-                    {{/checkiftrue}} {{/each}}
+                        {{/checkiftrue}} 
+                    {{/each}}
 
                 </div>
-
+                    
                 {{/each}}
-                <div class="col-md-10 mx-auto text-center py-2">
-                    <button class="btn btn-info" disabled>Fixtures</button>
+                 <div class="col-md-10 mx-auto text-center py-2">
+                    <button class="btn btn-info createFixture">Create fixtures</button><br><br>
+                    <form class="row form-group fixtureForm d-none bg-primary">
+                        <input type="text" name="tournament_id" value={{id}} class="d-none">
+                            <div class="col-md-3 mx-auto">
+                               <h3>Group A</h3> 
+                               <input type="text" class="form-control" name="A" required>
+                               <span class="text-white">VS</span>
+                               <input type="text" class="form-control" name="B" required>
+                               <br><br>
+                               <input type="text" class="form-control" name="C" required>
+                               <span class="text-white">VS</span>
+                               <input type="text" class="form-control" name="D" required>
+                            </div>
+                            <div class="col-md-3 mx-auto">
+                                <h3>Group B</h3>
+                                <input type="text" class="form-control" name="E" required>
+                                <span class="text-white">VS</span>
+                                <input type="text" class="form-control" name="F" required>
+                                <br><br>
+                                <input type="text" class="form-control" name="G" required>
+                                <span class="text-white">VS</span>
+                                <input type="text" class="form-control" name="H" required>
+                            </div>  
+                            
+                                <div class="col-12 text-center py-3">
+                                    <input type="submit" class="btn btn-success "value="Done!"> 
+                                </div>
+
+                           
+                    </form>
+                    
                 </div>
-
-                {{/each}}
+                
+            {{/each}}
             </div>
         </div>
     </div>
