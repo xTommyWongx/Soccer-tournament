@@ -507,6 +507,7 @@ h1, h2, h3, h4, h5, h6 {
 */
 .sizerow{
     max-height: 300px;
+    background-color: rgba(195, 214, 231, 0.336);
 }
 @media (max-width: 63.9375em){
     .sizerow {
@@ -516,7 +517,6 @@ h1, h2, h3, h4, h5, h6 {
 
         /* [dashboard] page*/
 .clubContainer {
-    background-color: rgba(195, 214, 231, 0.336);
     margin-bottom: 30px;
 }
 .badgeContainer {
@@ -578,6 +578,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 56.25em){
     .teamInfo{
         padding-top: 0;
+        margin-left: -1rem;
     }
 }
 .teamInfo1 {
