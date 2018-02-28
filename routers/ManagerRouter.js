@@ -13,17 +13,23 @@ module.exports = class ManagerRouter {
     }
     createTeamPost(req, res){
         return this.managerService.createTeam(req.body, req.user.user.id)
-                    .then((res)=>{
+                    .then((response)=>{
+                        if(response === "Name in use"){
+                            req.flash('error_msg','Name already in use');
+                            res.redirect('/createTeam');
+                        }else {
                         console.log("i am here");
                         return this.getManagerInfo(req, res);
-                        
+                        }
                     })
                     .then(()=>{
                         req.flash('success_msg','Team created successfully');
                         
                         res.redirect('/dashboard');
                     })
-                    .catch((err)=>console.log(err));
+                    .catch((err)=>{
+                        console.log(err);
+                    });
     }
     getManagerInfo(req, res){
         console.log("details ",req.user.user.email);
