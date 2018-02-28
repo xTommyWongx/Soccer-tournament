@@ -1,4 +1,35 @@
+/* alert message */
+body {
+    position:relative;
+}
+#message {
+    display: flex;
+    margin-top : 70px;
+    /* justify-content: center;
+    align-items: center; */
+}
+#amess {
+    z-index: 1;
+    position:absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 500px;
+}
+/* alert ends */
 
+/* navbar */
+/* logo BSN */
+.logo {
+    max-height: 40px;
+}
+.navbar {
+    box-shadow: 0 2px 2px  #282929;
+    background: linear-gradient(-45deg,rgb(104, 115, 121),#3e4449,rgb(60, 73, 80));
+}
+#navbarCollapse li:hover {
+    background-color: #000 !important;
+    /* opacity: 0.5; */
+}
 #navbarCollapse li {
     box-shadow: 3px 3px 7px  rgb(24, 154, 180);
     border: 0.3px solid white;
@@ -9,22 +40,87 @@
     box-shadow: 0 1px #333;
     transform: translateY(2px);
 }
-
+.navbar-nav {
+    margin-left: 150px;
+}
+@media (max-width: 56.25em){
+.navbar-nav {
+    margin-left:0;
+}}
+#navbarCollapse a{
+    color: #fff;
+}
 /* highlighting tab */
 #menu a:active {
     color: rgb(24, 154, 180);
 }
+/* navbar end */
 
-/* logo */
-.logo {
-    max-height: 40px;
+/* footer */
+.footing {
+    box-shadow: 0 2px 2px  #282929;
+    background: linear-gradient(-45deg,rgb(104, 115, 121),#3e4449,rgb(60, 73, 80));
 }
+/* hover effect */
+.fa:hover {
+    opacity: 0.7;
+}
+/* Facebook */
+.fa-facebook {
+    color: #3B5998;
+}
+/* Twitter */
+.fa-twitter {
+   color:  #55ACEE;
+}
+/* Youtube */
+.fa-youtube {
+    color: rgb(247, 7, 7);
+}
+/* Instagaram */
+.fa-instagram {
+    color: rgb(247, 7, 215);
+}
+.socialList {
+    list-style-type: none;
+    border-bottom: none;
+}
+.socialOptions {
+    border-right: none;
+    display: flex;
+    font-size: 14px;
+}
+/* footer end */
+
+/* login page */
+.loginFrame {
+    background-color: rgba(39, 154, 221)!important;
+    border:solid 1vmin rgba(39, 154, 221, 0.897);
+    border-bottom-color:#1a65af;
+    border-left-color:rgb(61, 87, 109);
+    border-radius:10px;
+    border-right-color:rgb(25, 128, 175);
+    border-top-color:rgb(43, 90, 117);
+    box-shadow: 2px 5px 8px  rgb(24, 154, 180);
+    outline: none;
+    box-sizing:border-box;
+}
+.loginBody{
+    background: url('/img/fifa1-background.jpg');
+    margin-top: -3px;
+    height: 100vh;
+    background-position-y: -145px;
+    background-size: cover;
+}
+
+
+
 .banner {
     height: 270px;
     background: rgba(195, 214, 231, 0.336);
 }
+/* list of teams */
 .flex_box {
-   
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,25 +139,6 @@
     box-shadow: 2px 3px 3px #000;
 }
 
-.navbar-nav {
-    margin-left: 150px;
-}
-
-@media (max-width: 56.25em){
-.navbar-nav {
-    margin-left:0;
-}
-}
-
-#navbarCollapse a{
-    color: #fff;
-}
-
-
-/* body {
-    background: url('/img/football-stadium.jpg');
-}
-   */ 
 .teamlistbutton{
    
     display: flex;
@@ -69,15 +146,15 @@
     align-items: center;
 }
 
-#message {
-    display: flex;
-    
-    margin-top : 70px;
-    justify-content: center;
-    align-items: center;
+/* buttons */
+.btn {
+    border-radius: 20px;
+    outline: none;
 }
-
-/* profile upload buttom */
+.leavebtn {
+    margin-left: 35px;
+}
+/* [profile page] upload button */
 .custom-file-upload {
     border-radius: 20px;
     display: inline-block;
@@ -98,7 +175,7 @@
     }
 }
 
-/* tournament edit button */
+/* [tournament page] edit button */
 .editbtn{
     border-radius: 20px;
     display: inline-block;
@@ -118,34 +195,52 @@
         padding: 7px 14px;
     }
 }
-
-
-
-#file-upload{
-    display: none;
-}
-/* profile upload end */
-
-.navbar {
-    box-shadow: 0 2px 2px  #282929;
-    background: linear-gradient(-45deg,rgb(104, 115, 121),#3e4449,rgb(60, 73, 80));
-}
-
-#navbarCollapse li:hover {
-    background-color: #000 !important;
-    /* opacity: 0.5; */
-}
-
-.btn {
-    border-radius: 20px;
-    outline: none;
-}
-/* tournament save button for mobile*/
+/* tournament save button for mobile */
 @media (max-width: 63.9375em){
     .tbtn {
         margin-left: 20px;
     }
 }
+#file-upload{
+    display: none;
+}
+/* profile img save button */
+.save {
+    width: 150px;
+    height: 40px;
+    box-shadow: 0 2px 1px #050505;
+    outline: none;
+    border-radius: 20px;
+    color: #fff;
+  }
+.savebtn{
+    background-color: rgb(24, 154, 180);
+    box-shadow: 3px 3px 7px  rgb(24, 154, 180);
+    border: 0.4px solid white;
+    height:40px;
+}
+@media (max-width: 56.25em){
+    .savebtn{
+        height:29px;
+        font-size: 10px;
+    }
+}
+  .save:active {
+    box-shadow: 0 1px #282929;
+    transform: translateY(2px);
+}
+.form-group1 {
+    margin-left: 40px;
+    margin-top:2px;
+}
+@media (max-width: 56.25em){
+    .form-group1 {
+        margin-left: -7px;
+        margin-top: 31px;
+        font-size: 10px;
+}}
+
+/* button end */
 
 /* card */
 .card {
@@ -198,42 +293,7 @@ hr {
     border-radius: 20px;
 }
 
-/* login page */
-.loginFrame {
-    background-color: rgba(39, 154, 221)!important;
-    border:solid 1vmin rgba(39, 154, 221, 0.897);
-    border-bottom-color:#1a65af;
-    border-left-color:rgb(61, 87, 109);
-    border-radius:10px;
-    border-right-color:rgb(25, 128, 175);
-    border-top-color:rgb(43, 90, 117);
-    box-shadow: 2px 5px 8px  rgb(24, 154, 180);
-    outline: none;
-    box-sizing:border-box;
-}
 
-.loginBody{
-    background: url('/img/fifa1-background.jpg');
-    margin-top: -8px;
-    height: 100vh;
-    background-position-y: -170px;
-    background-size: cover;
-}
-
-.loginBody {
-    /* height: 100vh;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-align: center;
-    -ms-flex-pack: center;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    padding-bottom: 40px; */
-    /* z-index: 3; */
-  }
 .form-signin {
     width: 100%;
     max-width: 330px;
@@ -318,13 +378,11 @@ th {
 
 
 
-/* profile page */
-
-/* picture iamge */
+        /* [profile page] */
+/* image */
  #profile-pic {
     max-height: 220px;
 }
-
 @media (max-width: 56.25em){
     #profile-pic {
         max-width: 145px;
@@ -332,63 +390,10 @@ th {
 }
 img {
     border-radius: 10px;
-  }
-  #cloudIcon {
+}
+#cloudIcon {
       color: #fff;
-  }
-
-/* profile img save button */
-.save {
-    width: 150px;
-    height: 40px;
-    box-shadow: 0 2px 1px #050505;
-    outline: none;
-    border-radius: 20px;
-    color: #fff;
-  }
-.savebtn{
-    background-color: rgb(24, 154, 180);
-    box-shadow: 3px 3px 7px  rgb(24, 154, 180);
-    border: 0.4px solid white;
-    height:40px;
 }
-@media (max-width: 56.25em){
-    .savebtn{
-        height:29px;
-        font-size: 10px;
-    }
-}
-  .save:active {
-    box-shadow: 0 1px #282929;
-    transform: translateY(2px);
-}
-.form-group1 {
-    /*margin-left: 55px;*/
-    margin-top:2px;
-}
-@media (max-width: 56.25em){
-    .form-group1 {
-        margin-left: -7px;
-        margin-top: 31px;
-        font-size: 10px;
-}}
-
-  /* profile picture frame */
- /* .frame {
-    background-color:rgb(41, 139, 21);
-    border:solid 1vmin rgba(30, 122, 18, 0.897);
-    border-bottom-color:rgb(28, 133, 89);
-    border-left-color:rgb(28, 133, 89);
-    border-radius:10px;
-    border-right-color:rgb(28, 133, 51);
-    border-top-color:rgb(28, 133, 89);
-    box-shadow:0 0 5px 0 rgb(59, 58, 58) inset, 0 5px 10px 5px rgba(0,0,0,.25);
-    box-sizing:border-box;
-    display:inline-block;
-    position:relative;
-    text-align:center;
-  }
-   
 .frame:before {
     border-radius:10px;
     bottom:-1vmin;
@@ -399,57 +404,34 @@ img {
     right:-1vmin;
     top:-1vmin;
 }
-*/
-  
-    /* end of profile pic frame */
- h1, h2, h3, h4, h5, h6 {
-    font-family: "PremierSans-Bold", Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-weight: normal;
-    font-weight: normal;
-}
-    
-.row{
-    max-height: 300px;
-}
-
-@media (max-width: 63.9375em){
-    .row {
-        max-height:500px;
-    }
-}    
-
+ /* end of profile pic frame */
+/* profile structure */
 .playerContainer {
     background-color: rgba(195, 214, 231, 0.336);
     /* margin-bottom: 30px; */
-}
-    
+}   
 .imgContainer {
     height: 450px;
 }
-
 @media (max-width: 56.25em){
     .imgContainer {
         max-width: 250px;
         height:200px;
 }}
-
 .playerImg {
     max-height: 220px;
-}
-   
+}  
 @media (max-width: 50.25em){
     .playerImg {
         max-height: 100px;
     }
-}
-    
+}   
 .playerDetails {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-left: -30px;
-}
-    
+}   
 @media (max-width: 50.25em){
     .playerDetails {
         font-size: 10px;
@@ -458,10 +440,9 @@ img {
     .name {
         font-size: 12px;
     }
-}
-    
+}   
 .playerNumberLrg {
-    right: -5rem;
+    right: -2rem;
     top: -1rem;
     font-size: 17rem;
     position: absolute;
@@ -470,30 +451,26 @@ img {
     opacity: .8;
     font-family: PremierSans-Bold,Arial,Helvetica Neue,Helvetica,sans-serif;
     font-weight: normal;
-}
-    
+}  
 @media (max-width: 56.25em){
     .playerNumberLrg {
         display: none;
-}}
-        
+}}      
 @media (max-width: 63.9375em){
     .playerNumberLrg {
             right: -4rem;
             bottom: -7rem;
             font-size: 250px;
-}}
-        
-    /* playerInfo section */
+}}    
+/* playerInfo section */
 .playerInfo {
-        position: relative;
-        margin-top: -2rem;
-        margin-bottom: 5rem;
-        margin-left: -2rem;
-        padding-left: 2rem;
-        padding-top: 2rem;
-        background: #fff;
-        z-index: 20;
+    position: relative;
+    margin-top: -2rem;
+    margin-bottom: 5rem;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    background: #fff;
+    z-index: 20;
 }
 @media (max-width: 56.25em){
     .playerInfo{
@@ -501,48 +478,53 @@ img {
         margin-bottom: 3rem;
     }
 }
-
-    .playerInfo1 {
-            position: relative;
-            margin-bottom: 8rem;
-            margin-left: -2rem;
-            padding-left: 2rem;
-            background: #fff;
-            z-index: 20;
-    }
-    
-    .personalLists {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border-top: 4px solid rgba(194, 192, 192, 0.808);
-    }
-    
-    @media (max-width: 63.9375em) {
-        .personalLists {
-            display: flex;
-            flex-direction: vertical;
-            font-size: 12px;
-        }
-    }
-    
-    .pdcol1 .pdcol2 .pdcol3 {
+.playerInfo1 {
+    position: relative;
+    margin-bottom: 8rem;
+    padding-left: 2rem;
+    background: #fff;
+    z-index: 20;
+}
+.pdcol1 .pdcol2 .pdcol3 {
         width: 33.33%;
-    }
-    
+}
+        /* end of [profile page]*/
 
-    /* club page*/
-.clubContainer {
+/* For all pages */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "PremierSans-Bold", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: normal;
+    font-weight: normal;
+}
+/* .row{
+    max-height: 300px;
+}
+@media (max-width: 63.9375em){
+    .row {
+        max-height:500px;
+    }
+}  
+*/
+.sizerow{
+    max-height: 300px;
     background-color: rgba(195, 214, 231, 0.336);
+}
+@media (max-width: 63.9375em){
+    .sizerow {
+        max-height:500px;
+    }
+}    
+
+        /* [dashboard] page*/
+.clubContainer {
     margin-bottom: 30px;
 }
-
 .badgeContainer {
     max-height:270px;
 }
-
 .clubImg {
     max-height: 150px;
+    max-width: 270px;
 }
 @media (max-width: 50.25em){
     .clubImg {
@@ -553,7 +535,6 @@ img {
         height: 200px;
     }
 }
-
 .clubDetails {
     display: flex;
     flex-direction: column;
@@ -566,24 +547,23 @@ img {
         max-width: 200px;
         margin-left: 0;
     }
-    .clubName {
-        font-size: 12px;
+.clubName {
+    font-size: 12px;
     }
 }
-
-
+.staImg {
+    max-height: 240px;
+}
 @media (max-width: 56.25em){
     .staImg {
         display: none;
     }}
-    
 @media (max-width: 63.9375em){
    .staImg {
         right: -4rem;
         bottom: -7rem;
         font-size: 250px;
     }}
-
 /* teamInfo section */
 .teamInfo {
         position: relative;
@@ -598,6 +578,7 @@ img {
 @media (max-width: 56.25em){
     .teamInfo{
         padding-top: 0;
+        margin-left: -1rem;
     }
 }
 .teamInfo1 {
@@ -608,14 +589,12 @@ img {
         background: #fff;
         z-index: 20;
 }
-
 .personalLists {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-top: 4px solid rgba(194, 192, 192, 0.808);
 }
-
 @media (max-width: 63.9375em) {
     .personalLists {
         display: flex;
@@ -623,17 +602,19 @@ img {
         font-size: 12px;
     }
 }
-
 .pdcol {
     border-right: 1px solid rgba(194, 192, 192, 0.808);
 }
-
 ul {
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
 }
-
+@media (max-width: 63.9375em){
+    ul {
+        width: 100%;
+        border: none;
+}}
 .label {
     color: #76766f;
     width: 40%;
@@ -644,78 +625,13 @@ ul {
     margin-right: -4px;
     width: 50%;
 }
-
 li {
     border-bottom: 1px solid rgba(232, 232, 232, 0.808);
-}
-
-li {
     line-height: 1.4;
     padding: 0.5rem 1rem;
 }
 
-@media (max-width: 63.9375em){
-ul {
-    width: 100%;
-    border: none;
-}}
-
-.staImg {
-    max-height: 240px;
-}
-
-
-/* Style all font awesome icons */
-/*
-.fa {
-    padding: 10px;
-    font-size: 15px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 50%;
-    background-color: white;
-}
-*/
-
-/* Add a hover effect if you want */
-.fa:hover {
-    opacity: 0.7;
-}
-
-
-/* Set a specific color for each brand */
-
-/* Facebook */
-.fa-facebook {
-    color: #3B5998;
-}
-
-/* Twitter */
-.fa-twitter {
-   color:  #55ACEE;
-}
-
-/* Youtube */
-.fa-youtube {
-    color: rgb(247, 7, 7);
-}
-
-/* Instagaram */
-.fa-instagram {
-    color: rgb(247, 7, 215);
-}
-
-.socialList {
-    list-style-type: none;
-    border-bottom: none;
-}
-
-.socialOptions {
-    border-right: none;
-    display: flex;
-}
-
-/* Tournament Page */
+        /* [tournament] Page */
 .tourneyContainer1 {
     background-color: rgba(195, 214, 231, 0.336);
     max-height:270px;
@@ -727,8 +643,6 @@ ul {
         max-height: 500px;
     }
 }
-
-
 .tourneyContainer2 {
     background-color: rgba(231, 196, 195, 0.336);
     max-height:270px;
@@ -747,7 +661,6 @@ ul {
     padding-bottom: 20px;
     margin-top: -5px;
 }
-
 @media (max-width: 50.25em){
     .tourContainer {
         font-size: 10px;
@@ -755,18 +668,15 @@ ul {
         margin-left: 110px;
     }
 }
-
 .troImg {
     margin-top: 20px;
 }
-
 @media (max-width: 50.25em){
     .troImg {
         max-height: 100px;
         margin-top: 20px;
     }
 }
-
 .tourneyDetails {
     display: flex;
     flex-direction: column;
@@ -780,7 +690,6 @@ ul {
         margin-top: 5px;
     }
 }
-
 .tourneyLists {
     display: flex;
     flex-direction: column;
@@ -788,7 +697,6 @@ ul {
     border-top: 4px solid rgba(194, 192, 192, 0.808);
     font-size: 14px;
 }
-
 @media (max-width: 63.9375em) {
     .tourneyLists {
         display: flex;
@@ -796,24 +704,6 @@ ul {
         font-size: 11px;
     }
 }
-
-
-.pdcol {
-    border-right: 1px solid rgba(194, 192, 192, 0.808);
-}
-
-ul {
-    padding-left: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.label {
-    color: #76766f;
-    width: 40%;
-    vertical-align: middle;
-}
-
 .tourlist {
     border-bottom: 1px solid rgba(232, 232, 232, 0.808);
     line-height: 1.4;
@@ -821,7 +711,6 @@ ul {
     display: flex;
     justify-content: space-between;
 }
-
 #tournament-delete {
     display: inline-block;
 }
@@ -846,12 +735,10 @@ ul {
         margin-left: 110px;
     }
 }
-
 .teamImg {
     margin-top: 8px;
     max-height: 150px;
 }
-
 @media (max-width: 50.25em){
     .teamImg {
         max-height: 100px;
@@ -871,7 +758,6 @@ ul {
         margin-top: 5px;
     }
 }
-
 .teamLists {
     display: flex;
     flex-direction: column;
@@ -879,24 +765,10 @@ ul {
     border-top: 4px solid rgba(194, 192, 192, 0.808);
     font-size: 14px;
 }
-
 @media (max-width: 63.9375em) {
     .teamLists {
         display: flex;
         flex-direction: vertical;
         font-size: 11px;
     }
-}
-
-/* alert */
-#amess {
-    z-index: 1;
-    position:absolute;
-    left: 50%;
-    top:10%;
-    transform: translateX(-50%);
-    min-width: 600px;
-}
-body {
-    position:relative;
 }

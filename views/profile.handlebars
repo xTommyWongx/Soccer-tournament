@@ -1,12 +1,14 @@
+{{!-- if manager --}} {{#if user.user.manager}}
+
 <section class="playerPage">
     <div class="playerContainer container-fluid">
-        <div class="row">
+        <div class="row sizerow">
             <div class="imgContainer col-lg-4 col-md-4 col-sm-5">
                 <div class="container">
                     <div class="playerImg">
                         {{#if user.user.img}}
                         <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
-                        <img src="/img/kakashi.jpg" alt="profile picture" id="profile-pic" class="img-fluid"> {{/if}}
+                        <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="img-fluid"> {{/if}}
                     </div>
                     <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
                         <div class="form-group1">
@@ -21,20 +23,17 @@
                 </div>
             </div>
             <div class="playerDetails col-lg-4 col-md-4 col-sm-5">
-                <div class="playerNumber font-weight-bold">10</div>
+                <div class="playerNumber font-weight-bold">Club Manager</div>
                 <h2>
-                    <div class="name font-weight-bold">{{user.user.username}}</div>
+                    <div class="name font-weight-bold">{{user.user.firstname}} {{user.user.lastname}}</div>
                 </h2>
             </div>
-            <div class="playerNumberLrg col-lg-4 col-md-4">10</div>
+            <div class="playerNumberLrg col-lg-4 col-md-4">CM</div>
         </div>
     </div>
-    
-   
-
     <div class="playerInfo ">
         <div class="row">
-            <div class="adSpace col-lg-4 col-md-4">
+            <div class="adSpace col-lg-3 col-md-3">
             </div>
             <div class="personalLists col-lg-8 col-md-8">
                 <h3 class="subheading font-weight-bold">League Record</h3>
@@ -67,11 +66,9 @@
             </div>
         </div>
     </div>
-   
-
     <div class="playerInfo1 ">
         <div class="row">
-            <div class="adSpace col-lg-4 col-md-4">
+            <div class="adSpace col-lg-3 col-md-3">
             </div>
             <div class="personalLists col-lg-8 col-md-8">
                 <h3 class="subheading font-weight-bold">Personal Details</h3>
@@ -98,3 +95,201 @@
         </div>
     </div>
 </section>
+
+{{/if}} {{!-- End of manager block --}} {{!-- Players block --}} {{#if user.user.player}}
+
+<section class="playerPage">
+    <div class="playerContainer container-fluid">
+        <div class="row sizerow">
+            <div class="imgContainer col-lg-4 col-md-4 col-sm-5">
+                <div class="container">
+                    <div class="playerImg">
+                        {{#if user.user.img}}
+                        <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
+                        <img src="/img/kakashi.jpg" alt="profile picture" id="profile-pic" class="img-fluid"> {{/if}}
+                    </div>
+                    <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
+                        <div class="form-group1">
+                            <label for="file-upload" class="custom-file-upload">
+                                <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
+                            </label>
+                            <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
+
+                            <input type="submit" class="btn savebtn text-white" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="playerDetails col-lg-4 col-md-4 col-sm-5">
+                <div class="playerNumber font-weight-bold">10</div>
+                <h2>
+                    <div class="name font-weight-bold">{{user.user.firstname}} {{user.user.lastname}}</div>
+                </h2>
+            </div>
+            <div class="playerNumberLrg col-lg-4 col-md-4">10</div>
+        </div>
+    </div>
+    <div class="playerInfo ">
+        <div class="row">
+            <div class="adSpace col-lg-3 col-md-3">
+            </div>
+            <div class="personalLists col-lg-8 col-md-8">
+                <h3 class="subheading font-weight-bold">League Record</h3>
+
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Club</div>
+                        <div class="info">{{user.user.teamname}}</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Position</div>
+                        <div class="info">{{user.user.position}}</div>
+                    </li>
+                </ul>
+
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Goals</div>
+                        <div class="info">Not available</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Assists</div>
+                        <div class="info">Not available</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="playerInfo1 ">
+        <div class="row">
+            <div class="adSpace col-lg-3 col-md-3">
+            </div>
+            <div class="personalLists col-lg-8 col-md-8">
+                <h3 class="subheading font-weight-bold">Personal Details</h3>
+
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Date of Birth</div>
+                        <div class="info">02/06/1988</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Height</div>
+                        <div class="info">173cm</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Weight</div>
+                        <div class="info">70kg</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{/if}} {{!-- End of player block --}} {{!-- Organizer's block --}} {{#if user.user.organizer}}
+
+<section class="playerPage">
+    <div class="playerContainer container-fluid">
+        <div class="row sizerow">
+            <div class="imgContainer col-lg-4 col-md-4 col-sm-5">
+                <div class="container">
+                    <div class="playerImg">
+                        {{#if user.user.img}}
+                        <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
+                        <img src="/img/tropy.png" alt="profile picture" id="profile-pic" class="img-fluid"> {{/if}}
+                    </div>
+                    <form action="/api/players/uploadPic" method="POST" enctype="multipart/form-data">
+                        <div class="form-group1">
+                            <label for="file-upload" class="custom-file-upload">
+                                <i class="fa fa-cloud-upload" id="cloudIcon">Change picture</i>
+                            </label>
+                            <input id="file-upload" type="file" name="profileimg" accept="image/*" />&nbsp
+
+                            <input type="submit" class="btn savebtn text-white" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="playerDetails col-lg-4 col-md-4 col-sm-5">
+                <div class="playerNumber font-weight-bold">Tournament Organizer</div>
+                <h2>
+                    <div class="name font-weight-bold">{{user.user.firstname}} {{user.user.lastname}}</div>
+                </h2>
+            </div>
+            <div class="playerNumberLrg col-lg-4 col-md-4">TO</div>
+        </div>
+    </div>
+    {{!-- <div class="playerInfo "> 
+        <div class="row">
+            <div class="adSpace col-lg-3 col-md-3">
+            </div>
+            <div class="personalLists col-lg-8 col-md-8">
+                <h3 class="subheading font-weight-bold">League Record</h3>
+
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Club</div>
+                        <div class="info">{{user.user.teamname}}</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Position</div>
+                        <div class="info">{{user.user.position}}</div>
+                    </li>
+                </ul>
+
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Goals</div>
+                        <div class="info">Not available</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Assists</div>
+                        <div class="info">Not available</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>--}}
+    <div class="playerInfo1 ">
+        <div class="row">
+            <div class="adSpace col-lg-3 col-md-3">
+            </div>
+            <div class="personalLists col-lg-8 col-md-8">
+                <h3 class="subheading font-weight-bold">Personal Details</h3>
+
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Date of Birth</div>
+                        <div class="info">02/06/1988</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Height</div>
+                        <div class="info">173cm</div>
+                    </li>
+                </ul>
+                <ul class="pdcol">
+                    <li>
+                        <div class="label">Weight</div>
+                        <div class="info">70kg</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{{/if}}
