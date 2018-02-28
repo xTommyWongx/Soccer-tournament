@@ -415,7 +415,7 @@ img {
 }
 @media (max-width: 56.25em){
     .imgContainer {
-        max-width: 210px;
+        max-width: 220px;
         height:200px;
 }}
 .playerImg {
@@ -532,7 +532,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     .badgeContainer {
         max-width: 175px;
-        height: 200px;
+        height: 175px;
     }
 }
 .clubDetails {
