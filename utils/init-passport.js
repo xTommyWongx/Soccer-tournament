@@ -30,6 +30,7 @@ module.exports = (app) => {
                     .insert({
                         facebook_id: profile.id,
                         username: profile.displayName,
+                        player: true
                         // img : get facebook profile image url
                     }).then((id) => {
                         console.log(id[0]);
@@ -69,6 +70,7 @@ module.exports = (app) => {
 
             }).then((user) => {
                 // Match password
+                if(user != null){
                 bcrypt.compare(password, user[0].password, (err, match) => {
                     if (err) throw err;
                     if (match) {
@@ -77,6 +79,7 @@ module.exports = (app) => {
                     if (!match)
                         return done(null, false, { message: "Incorrect password" });
                 })
+                }
             })
     }));
 
@@ -88,6 +91,7 @@ module.exports = (app) => {
     });
 
     passport.deserializeUser((user, done) => {
+        console.log("deserialize user called",user);
         done(null, user);
     });
 

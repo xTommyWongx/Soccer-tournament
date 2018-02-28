@@ -1,16 +1,67 @@
-<div class="row teamslist">
-    <div class="col-md-12 mx-auto">
-        <div class="text-center">
-            <span class="h2 text-white">Team list</span>
-        </div>
-        <br>
+ {{#each teams}}
+<section class="teamPage">
+    <div class="teamContainer1 container-fluid ">
         <div class="row">
-            {{#each teams}}
-            <div class="col-md-5 mx-auto">
-                <a href="" class="btn btn-success text-white teamlistbutton">{{teamname}}&nbsp<img src="/img/rotatingSoccer.gif" width="20px" height="20px"></a><br>
+            {{!-- {{#each teams}}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-8 mx-auto">
+                
+                <a href="" class="btn btn-primary teamlistbutton">
+                     <div class="d-block py-3 text-center mybox" style="width: 18rem;">
+                            <img  src="/img/clubs.png" width="70px" height="70px" alt="Card image cap">
+                            <div >
+                                <h5 class="fa text-white"> {{teamname}}</h5>
+                            </div>
+                        </div>       
+                </a>
+                <br>
+            {{/each}} --}}
+           
+            <div class="teamContainer col-lg-4 col-md-4 col-sm-4 ">
+                <div class="teamImg">
+                    <img class="teamImg" src="/img/mancity.svg" alt="teamlogo">
+                </div>
             </div>
-            {{/each}}
+            <div class="teamDetails col-lg-8 col-md-8 col-sm-8 ">
+                <div class="teamLists">
+                    <h3 class="subheading font-weight-bold">{{teamname}}</h3>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Team Manager</div>
+                            <div class="info">{{username}}</div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Home Stadium</div>
+                            <div class="info">{{location}}</div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Number of Players</div>
+                            <div class="info"></div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Matches Played</div>
+                            <div class="info"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+           
         </div>
-        
     </div>
+</section>
+ {{/each}}
+
+
+{{!-- {{#each teams}}
+<div class="col-lg-3 col-md-4 col-sm-6 col-8 mx-auto">
+    <a href="" class="btn btn-success teamlistbutton">{{teamname}}&nbsp
+        <img src="/img/rotatingSoccer.gif" width="20px" height="20px">
+    </a>
+    <br>
 </div>
+{{/each}} --}}

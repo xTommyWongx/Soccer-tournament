@@ -1,91 +1,346 @@
 {{!-- if user is manager show the following --}} 
 {{#if user.user.manager }} 
-    {{!-- but haven't formed any team yet, then show 'create team' --}} 
-    {{#unless user.user.team_id}}
-        <a href="/createTeam" class="btn btn-danger my-3">Create Team</a>
-    {{/unless}} 
-    {{!-- if manager already has team, then show team details and available players --}} 
-    {{#if user.user.team_id}}
-        <div class="row">
-            <div class="col">
-                <div class="col text-center"><img src="/img/fifa-background.jpg" alt="" width="200px" height="200px"></div>
-                <br>
-                <div class="form-group backgroundForm">
-                    <div class="clubDetails">
-                        <label for="">Club name:&nbsp</label>
-                        <span><strong>{{user.user.teamname}}</strong></span>
-                        <hr>
-                        <span>Squad:</span>
-                        <table>
-                           <tr>
-                               <th>Name</th>
-                               <th>Position</th>
-                           </tr>
-                           {{#each players}}
-                            <tr>
-                                <td>{{username}}</td>
-                                <td>{{position}}</td>
-                            </tr>
-                           {{/each}}
-                        </table> 
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        {{!-- Available players details --}}
-        {{!-- <a href="/api/players" class="btn btn-danger fa">Show available players</a> --}}
-        <button class="btn btn-danger" id="showPlayerMarket">Show available players</button>
-        <br><br>
-        <div id="playerslist">
-            {{!-- available players are displayed here --}}
-        </div>
-    {{/if}}
-{{/if}}
-{{!-- End of manager block --}}
+{{!-- but haven't formed any team yet, then show 'create team' --}} 
+{{#unless user.user.team_id}}
 
-{{!-- Players block --}}
-{{#if user.user.player}}
-<div class="row my-3">
-    <div class="col-md-7"> 
-        <div class="card text-white bg-success mb-3" >
-            <div class="card-header">Club : {{user.user.teamname}}</div>
-            <div class="card-body">
-                <h4 class="card-title">Your squad: </h4>
-                {{#each players}}
-                    <p class="card-text"> {{username}}</p>
-                {{/each}}
-            </div>
-        </div>   
-    </div>
-    
-    <div class="col-md-5">
-        {{#if user.user.team_id}}
-            <a href="/api/players/leaveTeam" class="btn btn-danger">Leave</a>
-        {{/if}}
-        {{#each requests}}
-            <div class="card player-card">
-                    
-                    <div class="card-block text-center">
-                        <p class="card-header cardHead">Request from <strong>{{managerName}}</strong></p>
-                        <div class="card-body cardBody">
-                            <p class="card-text">Club: {{teamName}}</p>
-                        </div>
-                        <div class="card-footer cardFooter p-1">
-                            <form action="/api/request/accept" method="POST">
-                                <input type="text" name="team_id" value={{team_id}} class="d-none">
-                                <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
-                            </form>&nbsp&nbsp
-                             <form action="/api/request/reject" method="POST">
-                                <input type="text" name="team_id" value={{team_id}} class="d-none">
-                                <input type="text" name="playerEmail" value={{playerEmail}} class="d-none">
-                                <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
-                            </form>
-                        </div>  
-                    </div>
-                </div>       
-        {{/each}}
+<div class="clubContainer container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-md-4"></div>
+        <div class="col-lg-4 col-md-4">
+            <img src="/img/stadium2.png" alt="" width="200px" height="200px">
+            <a href="/createTeam" class="btn savebtn text-white my-3">Create Your Team</a>
+        </div>
+        <div class="col-lg-4 col-md-4 align-content-center">
+        </div>
     </div>
 </div>
+
+{{/unless}} {{!-- if manager already has team, then show team details and available players --}} 
+{{#if user.user.team_id}}
+<section class="clubPage">
+    <div class="clubContainer container-fluid">
+        <div class="row sizerow">
+            <div class="badgeContainer col-lg-4 col-md-4 col-sm-3">
+                <div class="clubImg">
+                    {{#if user.user.img}}
+                    <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
+                    <img src="/img/clubLogo.png" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
+                </div>
+                <br>
+            </div>
+            <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
+                <h1>
+                    <div class="clubName font-weight-bold">Club Management</div>
+                </h1>
+                <div class="website">
+                    <span class="label">Recruit Players To Join Your Club!</span>
+                    <a href="" target="_blank"></a>
+                </div>
+                <div class="socialLinks">
+                </div>
+            </div>
+            <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
+                <img class="staImg" src="/img/fifa1-background.jpg" alt="champ">
+            </div>
+        </div>
+       
+        <div class="teamInfo container-fluid">
+            <div class="row">
+                <div class="adSpace col-lg-4 col-md-4">
+                </div>
+                <div class="personalLists col-lg-8 col-md-8">
+                    <div class="form-group">
+                        <h2>Club :&nbsp
+                            <strong>{{user.user.teamname}}</strong>
+                        </h2>
+                        <div class="personalLists ">
+                            <br>
+                            <br>
+                            <h3 class="subheading font-weight-bold">Squad</h3>
+
+                            {{#each players}}
+                            <ul class="pdcol">
+                                <li>
+                                    <div class="label">{{username}}</div>
+                                    <div class="info">{{position}}</div>
+                                </li>
+                            </ul>
+
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{!-- fixtures --}}
+            {{#if matches}}
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3>Fixtures</h3>
+                </div>
+                {{#each matches}}
+                <div class="col-md-6 mx-auto text-center">
+                     
+                        <div class="btn btn-success">{{teamA}} vs {{teamB}}</div>
+                   
+
+                </div>
+                 {{/each}}
+
+                   
+                
+            </div>
+            {{/if}}
+            <div class="row">
+                <div class="col-md-12  text-center">
+                    {{!-- Available players details --}}
+                    <button class="btn savebtn text-white" id="showPlayerMarket">Show available players</button>
+                    <br>
+                    <br>
+                    <div id="playerslist">
+                        {{!-- available players are displayed here --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+{{/if}} {{/if}} 
+{{!-- End of manager block --}} 
+
+{{!-- Players block --}} 
+{{#if user.user.player}}
+<section class="clubPage">
+    <div class="clubContainer container-fluid">
+        <div class="row sizerow">
+            <div class="badgeContainer col-lg-4 col-md-4 col-sm-3">
+                <div class="clubImg">
+                    {{#if user.user.img}}
+                    <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
+                    <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
+                </div>
+                <br>
+            </div>
+            <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
+                <h1>
+                    <div class="clubName font-weight-bold">Recruitment</div>
+                </h1>
+                <div class="website">
+                    <span class="label">Players can choose to join or leave the club</span>
+                    <a href="" target="_blank"></a>
+                </div>
+                <div class="socialLinks">
+                </div>
+            </div>
+            <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
+                <img class="staImg" src="/img/fifa1-background.jpg" alt="champ">
+            </div>
+        </div>
+    </div>
+    <div class="teamInfo container-fluid">
+        <div class="row">
+            <div class="adSpace col-lg-4 col-md-4">
+            </div>
+            <div class="playerInfo col-lg-8 col-md-8 ">
+                <div class="row">
+                    <h3 class="subheading font-weight-bold">Club: &nbsp &nbsp {{user.user.teamname}}</h3>
+
+                    {{#if user.user.team_id}}
+                    <a href="/api/players/leaveTeam" class="btn btn-danger leavebtn btn-sm my-3">Leave the club</a>
+                    {{/if}} {{#each requests}}
+                    <div class="card player-card">
+
+                        <div class="card-block text-center">
+                            <p class="card-header cardHead">Request from
+                                <strong>{{managerName}}</strong>
+                            </p>
+                            <div class="card-body cardBody">
+                                <p class="card-text">Club: {{teamName}}</p>
+                            </div>
+                            <div class="card-footer cardFooter p-1">
+                                <form action="/api/requests/accept" method="POST">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
+                                </form>&nbsp&nbsp
+                                <form action="/api/request/reject" method="POST">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="text" name="playerEmail" value={{playerEmail}} class="d-none">
+                                    <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+
+                </div>
+                <div class="personalLists">
+                    <h4 class="subheading font-weight-bold text-warning p-2">Squad</h4>
+                    {{#each players}}
+                    <ul class="pdcol">
+                        <li>
+                            <div class="label">{{username}}</div>
+                            <div class="info">{{position}}</div>
+                        </li>
+                    </ul>
+                    {{/each}}
+                </div>
+
+            </div>
+        </div>
+        {{!-- fixtures --}}
+            {{#if matches}}
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3>Fixtures</h3>
+                </div>
+                {{#each matches}}
+                <div class="col-md-5 mx-auto text-center my-2">
+                     
+                       <div class="card card_withborder text-center">
+                            <div class="card-header">
+                                <h4>{{tournamentName}}</h4>
+                            </div>
+                            <div class="card-block">
+                               
+                                <p class="card-text">{{teamA}} vs {{teamB}}</p>
+                               
+                            </div>
+                            
+                        </div>
+                   
+
+                </div>
+                 {{/each}}
+
+                   
+                
+            </div>
+            {{/if}}
+    </div>
+</section>
+{{/if}} {{!-- End of player block --}} 
+
+{{!-- Organizer's block --}} 
+{{#if user.user.organizer}}
+<section class="clubPage">
+    <div class="clubContainer container-fluid">
+        <div class="row sizerow">
+            <div class="badgeContainer col-lg-4 col-md-4 col-sm-3">
+                <div class="clubImg">
+                    {{#if user.user.img}}
+                    <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
+                    <img src="/img/kakashi.jpg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
+                </div>
+                <br>
+            </div>
+            <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
+                <h1>
+                    <div class="clubName font-weight-bold">Organize Tournaments</div>
+                </h1>
+                <div class="website">
+                    <span class="label">Find Clubs To Join Your Tournaments! </span>
+                    <a href="" target="_blank"></a>
+                </div>
+                <div class="socialLinks">
+                </div>
+            </div>
+            <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
+                <img class="staImg" src="/img/fifa1-background.jpg" alt="champ">
+            </div>
+        </div>
+    </div>
+    <div class="teamInfo container-fluid">
+        <div class="row">
+            <div class="container">
+                <div class="flex_box">
+                    {{#each requests}}
+                    <div class="card helper" style="width: 20rem;">
+                        <img class="mx-auto" src="/img/club.png" width="50px" height="100px" alt="Card image cap">
+                        <div class="card-block">
+                            <p class="card-title text-info text-center">Request to join {{tournament_name}}</p>
+                            <p class="card-text text-center">This is a request from {{teamname}} to participate in {{tournament_name}}</p>
+                            <div class=" cardFooter p-1">
+                                <form class="accept">
+                                    <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
+                                </form>&nbsp&nbsp
+                                <form class="reject">
+                                    <input type="text" name="team_id" value={{team_id}} class="d-none">
+                                    <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
+                                    <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br> {{/each}}
+                </div>
+            </div>
+            <div class="row">
+            {{#each id}}
+
+                <div class="col-md-12 mx-auto text-center ">
+                    <hr>
+                    <span>
+                        <h1 class="d-inline">{{tournamentName}}</h1>
+                    </span>
+                    <p>Teams</p>
+                </div>
+
+                {{#each ../tournaments}}
+
+                <div class="col-md-10 mx-auto text-center new_flex">
+
+                    {{#each this}} 
+                        {{#checkiftrue ../../id tournament_id}}
+                        <div class="d-block py-3 text-center mybox" style="width: 18rem;">
+                            <img src="/img/clubs.png" width="70px" height="70px" alt="Card image cap">
+                            <div>
+                                <h5 class="card-title text-white"> {{teamname}}</h5>
+                            </div>
+                        </div>
+                        {{/checkiftrue}} 
+                    {{/each}}
+
+                </div>
+                    
+                {{/each}}
+                 <div class="col-md-10 mx-auto text-center py-2">
+                    <button class="btn btn-info createFixture">Create fixtures</button><br><br>
+                    <form class="row form-group fixtureForm d-none bg-primary">
+                        <input type="text" name="tournament_id" value={{id}} class="d-none">
+                            <div class="col-md-3 mx-auto">
+                               <h3>Group A</h3> 
+                               <input type="text" class="form-control" name="A" required>
+                               <span class="text-white">VS</span>
+                               <input type="text" class="form-control" name="B" required>
+                               <br><br>
+                               <input type="text" class="form-control" name="C" required>
+                               <span class="text-white">VS</span>
+                               <input type="text" class="form-control" name="D" required>
+                            </div>
+                            <div class="col-md-3 mx-auto">
+                                <h3>Group B</h3>
+                                <input type="text" class="form-control" name="E" required>
+                                <span class="text-white">VS</span>
+                                <input type="text" class="form-control" name="F" required>
+                                <br><br>
+                                <input type="text" class="form-control" name="G" required>
+                                <span class="text-white">VS</span>
+                                <input type="text" class="form-control" name="H" required>
+                            </div>  
+                            
+                                <div class="col-12 text-center py-3">
+                                    <input type="submit" class="btn btn-success "value="Done!"> 
+                                </div>
+
+                           
+                    </form>
+                    
+                </div>
+                
+            {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
 {{/if}}
-{{!-- End of player block --}}
