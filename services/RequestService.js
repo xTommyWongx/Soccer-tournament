@@ -3,6 +3,14 @@ module.exports = class RequestService {
     constructor(knex){
         this.knex = knex;
     }
+    cancelRequest(managerName, playerEmail){
+        console.log("manger and email",managerName,playerEmail);
+        return this.knex('requests')
+                   .where({
+                        managerName: managerName,
+                        playerEmail: playerEmail
+                }).del();
+    }
     sendRequest(player, team_id, manager,teamName ){
          return this.knex('requests').insert({
                                 managerName: manager,

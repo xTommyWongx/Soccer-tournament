@@ -12,3 +12,10 @@ module.exports.isNotLoggedIn = (req, res, next) => {
     }
     res.redirect('/');
 }
+
+module.exports.isOrganizer = (req, res, next) => {
+    if ( req.isAuthenticated()  && req.user.user.organizer ){
+        return next();
+    }
+    res.redirect('/');
+}

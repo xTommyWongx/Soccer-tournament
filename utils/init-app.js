@@ -1,22 +1,43 @@
 const express = require('express');
 const multer = require('multer');
 const expressSession = require('express-session');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const hb = require('express-handlebars');
 const flash = require('connect-flash');
 const path = require('path');
+const methodOverride = require('method-override');
 
+// Handlebars Helpers
+const {formatDate, check, checkiftrue} = require('./helpersHbs');
 
 module.exports = () => {
+    // let client = redis.createClient();
+
+   
     let app = express();
-    app.engine('handlebars', hb({ defaultLayout: 'main' }));
+    app.engine('handlebars', hb({ 
+        helpers : {
+            formatDate : formatDate,
+            check : check,
+            checkiftrue: checkiftrue
+        },
+        defaultLayout: 'main'
+     }));
     app.set('view engine', 'handlebars');
     app.use(express.static(path.join(__dirname,'../public')));
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
     app.use(expressSession({
-        secret: 'superSecret'
+        secret: 'superSecret',
+        
+    //     store: new redisStore({ host: 'localhost', port: 6379, client: client,ttl :  260}),
+    // saveUninitialized: false,
+    // resave: false
+
     }));
+    app.use(cors());
+    app.use(methodOverride("_method")); // this is for put and delete request
 
     let sess;
 

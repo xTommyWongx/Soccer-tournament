@@ -8,11 +8,30 @@ module.exports = class RequesRouter {
     }
     router(){
         let router = express.Router();
-
+        router.post('/sendRequest',this.sendrequest.bind(this));
+        router.post('/cancelRequest',this.cancelrequest.bind(this));
         router.post('/accept',this.accept.bind(this));//accept request
         router.post('/reject',this.reject.bind(this));//reject request
         
         return router;
+    }
+    cancelrequest(req,res){
+        console.log("cancel,,,",req.user.user.username);
+                                                // manager name        , player email
+        return this.requestService.cancelRequest(req.user.user.username,req.body.player)
+                    .then(()=>{
+                        res.send();
+                    }).catch(err=>console.log(err));
+    }
+    sendrequest(req, res){
+        console.log("send request ",req.user.user.username);
+        return this.requestService.sendRequest(req.body.player,req.user.user.team_id,                                                   req.user.user.username,req.user.user.teamname)
+                .then(()=>{         
+                    res.send();
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })           
     }
     
    

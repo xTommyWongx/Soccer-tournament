@@ -9,11 +9,14 @@ module.exports = class PlayerService {
         let manager = false;
         let organizer = false;
         let player = false
+        let position = "";
 
         if (user.role === "manager") {
             manager = true;
+            position = "manager";
         } else if (user.role === "organizer") {
             organizer = true;
+            position = "organizer";
         }else if (user.role === "player"){
             player = true;
         }
@@ -24,7 +27,7 @@ module.exports = class PlayerService {
                 // email already in use
                 if ( result.length > 0 ) {
                          let err = "emailExists";
-                         return err;
+                         throw err;
                 } else {
                 
                     // encrypt the password
@@ -47,6 +50,7 @@ module.exports = class PlayerService {
                                 password: user.password,
                                 location: user.location,
                                 manager: manager,
+                                position: position,
                                 organizer: organizer,
                                 player: player
                             }).then((id)=>{

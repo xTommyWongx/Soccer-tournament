@@ -30,6 +30,7 @@ module.exports = (app) => {
                     .insert({
                         facebook_id: profile.id,
                         username: profile.displayName,
+                        player: true
                         // img : get facebook profile image url
                     }).then((id) => {
                         console.log(id[0]);
@@ -88,6 +89,7 @@ module.exports = (app) => {
     });
 
     passport.deserializeUser((user, done) => {
+        console.log("deserialize user called",user);
         done(null, user);
     });
 

@@ -1,0 +1,92 @@
+{{#unless organizerTournament}}
+<div class="row sizerow">
+    <div class="col-lg-12 banner">
+        <div class="text-center font-weight-bold">
+            <img src="/img/clubLogo.png" alt="" width="200px" height="200px">
+            <br>
+            <h3>No Tournaments Available At This Moment</h3>
+        </div>
+    </div>
+</div>
+{{/unless}} 
+
+{{#each organizerTournament}}
+<section class="tourneyPage">
+    <div class="tourneyContainer1 container-fluid ">
+        <div class="row">
+            <div class="tourContainer col-lg-4 col-md-4 col-sm-4 ">
+                <div class="trophyImg">
+                    <img class="troImg" src="/img/teamlogo.png" alt="teamlogo">
+                </div>
+
+                {{#if ../user.user.manager}} 
+                    {{#check tournament_id ../requests }}
+                    <form class="join_tournament">
+                        <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
+                        <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
+                        <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none">
+                        <input type="submit" class="btn savebtn text-white btn-sm mt-1" value="Cancel request" id="input">
+                    </form>
+                    {{else}}
+                    <form class="join_tournament">
+                        <input type="text" name="tournament_name" value="{{tournamentName}}" class="d-none">
+                        <input type="text" name="organizer_id" value="{{organizer_id}}" class="d-none">
+                        <input type="text" name="tournament_id" value="{{tournament_id}}" class="d-none">
+                        <input type="submit" class="btn editbtn text-white btn-sm mt-1" value="Join tournament" id="input">
+                    </form>
+
+                    {{/check}} 
+                {{/if}} 
+                {{#if ../user.user.organizer}}
+                <a href="/api/organizers/tournament/{{tournament_id}}/edit" class="btn editbtn text-white btn-sm mt-1">Edit</a>
+                <form id="tournament-delete" action="/api/organizers/tournament/{{tournament_id}}?_method=DELETE" method="POST">
+                    <button class="btn savebtn text-white btn-sm mt-1">Delete</button>
+                </form>
+                {{/if}}
+            </div>
+            <div class="tourneyDetails col-lg-8 col-md-8 col-sm-8 ">
+                <div class="tourneyLists">
+                    <h3 class="subheading font-weight-bold">{{tournamentName}}</h3>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Organizer</div>
+                            <div class="info">{{username}}</div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Date</div>
+                            <div class="info">{{formatDate date 'MMMM Do YYYY'}}</div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Location</div>
+                            <div class="info">{{location}}</div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Number of Teams</div>
+                            <div class="info">{{number_of_teams}}</div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Players on Field</div>
+                            <div class="info">{{number}}</div>
+                        </li>
+                    </ul>
+                    <ul class="pdcol">
+                        <li class="tourlist">
+                            <div class="label">Prize</div>
+                            <div class="info">{{prize}}</div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{/each}}
