@@ -496,11 +496,20 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     font-weight: normal;
 }
-.row{
+/* .row{
     max-height: 300px;
 }
 @media (max-width: 63.9375em){
     .row {
+        max-height:500px;
+    }
+}  
+*/
+.sizerow{
+    max-height: 300px;
+}
+@media (max-width: 63.9375em){
+    .sizerow {
         max-height:500px;
     }
 }    
