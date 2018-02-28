@@ -415,7 +415,7 @@ img {
 }
 @media (max-width: 56.25em){
     .imgContainer {
-        max-width: 230px;
+        max-width: 210px;
         height:200px;
 }}
 .playerImg {
