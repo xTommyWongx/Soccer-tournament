@@ -72,22 +72,28 @@
                 </div>
             </div>
             {{!-- fixtures --}}
-            {{#if matches}}
+             {{#if matches}}
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h3>Fixtures</h3>
                 </div>
                 {{#each matches}}
-                <div class="col-md-6 mx-auto text-center">
+                <div class="col-md-5 mx-auto text-center my-2">
                      
-                        <div class="btn btn-success">{{teamA}} vs {{teamB}}</div>
+                       <div class="card card_withborder text-center">
+                            <div class="card-header">
+                                <h4>{{tournamentName}}</h4>
+                            </div>
+                            <div class="card-block">
+                               
+                                <p class="card-text">{{teamA}} vs {{teamB}}</p>
+                               
+                            </div>
+                            
+                        </div>
                    
-
                 </div>
-                 {{/each}}
-
-                   
-                
+                 {{/each}}  
             </div>
             {{/if}}
             <div class="row">
@@ -206,12 +212,8 @@
                             
                         </div>
                    
-
                 </div>
-                 {{/each}}
-
-                   
-                
+                 {{/each}}  
             </div>
             {{/if}}
     </div>
@@ -275,7 +277,7 @@
                     <br> {{/each}}
                 </div>
             </div>
-            <div class="row">
+            
             {{#each id}}
 
                 <div class="col-md-12 mx-auto text-center ">
@@ -339,7 +341,7 @@
                 </div>
                 
             {{/each}}
-            </div>
+           
         </div>
     </div>
 </section>

@@ -247,12 +247,7 @@ body {
 /* button end */
 
 /* card */
-.card-header {
-    height: 50px !important;
-}
-.card-block {
-    height: 50px !important;
-}
+
 .card_withborder{
     border: 1px solid #a3a7aa !important;
     box-shadow: 2px 4px 2px #a3a7aa ;

@@ -53,6 +53,7 @@ module.exports = class ViewRouter {
                                     .then((matches)=>{
                                         console.log("players", players);
                                 console.log('request ..', result);
+                                console.log('matches',matches);
                                 res.render('dashboard', { requests: result, players: players,matches:matches });
 
                                     })
@@ -76,6 +77,7 @@ module.exports = class ViewRouter {
             this.knex('players').select().where('team_id', req.user.user.team_id)
                 .then((players) => {
                     return this.knex('matches').select()
+                        .innerJoin('tournaments','tournaments.id','tournament_id')
                         .then((matches)=>{
                             res.render('dashboard', { players: players ,matches:matches});
                         })
