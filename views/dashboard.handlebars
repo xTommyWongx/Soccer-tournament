@@ -1,5 +1,7 @@
-{{!-- if user is manager show the following --}} {{#if user.user.manager }} {{!-- but haven't formed any team yet, then show
-'create team' --}} {{#unless user.user.team_id}}
+{{!-- if user is manager show the following --}} 
+{{#if user.user.manager }} 
+{{!-- but haven't formed any team yet, then show 'create team' --}} 
+{{#unless user.user.team_id}}
 
 <div class="clubContainer container-fluid">
     <div class="row">
@@ -13,7 +15,8 @@
     </div>
 </div>
 
-{{/unless}} {{!-- if manager already has team, then show team details and available players --}} {{#if user.user.team_id}}
+{{/unless}} {{!-- if manager already has team, then show team details and available players --}} 
+{{#if user.user.team_id}}
 <section class="clubPage">
     <div class="clubContainer container-fluid">
         <div class="row">
@@ -23,7 +26,7 @@
                     <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
                     <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
                 </div>
-                <br> 
+                <br>
             </div>
             <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
                 <h1>
@@ -39,50 +42,52 @@
             <div class="stadiumImg col-lg-4 col-md-4 col-sm-4">
                 <img class="staImg" src="/img/fifa1-background.jpg" alt="champ">
             </div>
-</div>
-    {{!-- but haven't formed any team yet, then show 'create team' --}} 
-    
-    <div class="teamInfo container-fluid">
-        <div class="row">
-            <div class="adSpace col-lg-3 col-md-3">
+        </div>
+        {{!-- but haven't formed any team yet, then show 'create team' --}}
+
+        <div class="teamInfo container-fluid">
+            <div class="row">
+                <div class="adSpace col-lg-4 col-md-4">
+                </div>
+                <div class="personalLists col-lg-8 col-md-8">
+                    <div class="form-group">
+                        <h2>Club :&nbsp
+                            <strong>{{user.user.teamname}}</strong>
+                        </h2>
+                        <div class="personalLists ">
+                            <br>
+                            <br>
+                            <h3 class="subheading font-weight-bold">Squad</h3>
+
+                            {{#each players}}
+                            <ul class="pdcol">
+                                <li>
+                                    <div class="label">{{username}}</div>
+                                    <div class="info">{{position}}</div>
+                                </li>
+                            </ul>
+
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="personalLists col-lg-8 col-md-8">
-                <div class="form-group">
-                    <h2>Club :&nbsp
-                        <strong>{{user.user.teamname}}</strong>
-                    </h2>
-                    <div class="personalLists ">
-                        <br>
-                        <br>
-                        <h3 class="subheading font-weight-bold">Squad</h3>
-
-                        {{#each players}}
-                        <ul class="pdcol">
-                            <li>
-                                <div class="label">{{username}}</div>
-                                <div class="info">{{position}}</div>
-                            </li>
-                        </ul>
-
-                        {{/each}}
+            <div class="row">
+                <div class="col-md-12  text-center">
+                    {{!-- Available players details --}}
+                    <button class="btn savebtn text-white" id="showPlayerMarket">Show available players</button>
+                    <br>
+                    <br>
+                    <div id="playerslist">
+                        {{!-- available players are displayed here --}}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12  text-center">
-                {{!-- Available players details --}}
-                <button class="btn savebtn text-white" id="showPlayerMarket">Show available players</button>
-                <br>
-                <br>
-                <div id="playerslist">
-                    {{!-- available players are displayed here --}}
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
-{{/if}} {{/if}} {{!-- End of manager block --}} {{!-- Players block --}} {{#if user.user.player}}
+{{/if}} {{/if}} {{!-- End of manager block --}} 
+
+{{!-- Players block --}} {{#if user.user.player}}
 <section class="clubPage">
     <div class="clubContainer container-fluid">
         <div class="row">
@@ -96,10 +101,10 @@
             </div>
             <div class="clubDetails col-lg-4 col-md-4 col-sm-5">
                 <h1>
-                    <div class="clubName font-weight-bold">Manage Player</div>
+                    <div class="clubName font-weight-bold">Recruitment</div>
                 </h1>
                 <div class="website">
-                    <span class="label"></span>
+                    <span class="label">Players can choose to join or leave the club</span>
                     <a href="" target="_blank"></a>
                 </div>
                 <div class="socialLinks">
@@ -112,7 +117,7 @@
     </div>
     <div class="teamInfo container-fluid">
         <div class="row">
-            <div class="adSpace col-lg-3 col-md-3">
+            <div class="adSpace col-lg-4 col-md-4">
             </div>
             <div class="playerInfo col-lg-8 col-md-8 ">
                 <div class="row">
@@ -146,7 +151,7 @@
                     {{/each}}
 
                 </div>
-                <div class="personalLists col-lg-8 col-md-8">
+                <div class="personalLists">
                     <h4 class="subheading font-weight-bold text-warning p-2">Squad</h4>
                     {{#each players}}
                     <ul class="pdcol">
@@ -161,8 +166,9 @@
         </div>
     </div>
 </section>
+{{/if}} {{!-- End of player block --}} 
 
-{{/if}} {{!-- End of player block --}} {{!-- Organizer's block --}} {{#if user.user.organizer}}
+{{!-- Organizer's block --}} {{#if user.user.organizer}}
 <section class="clubPage">
     <div class="clubContainer container-fluid">
         <div class="row">
@@ -220,73 +226,42 @@
                     <br> {{/each}}
                 </div>
             </div>
+            <div class="row">
+                {{#each id}}
+
+                <div class="col-md-12 mx-auto text-center ">
+                    <hr>
+                    <span>
+                        <h1 class="d-inline">{{tournamentName}}</h1>
+                        <small>(tournament)</small>
+                    </span>
+                    <hr>
+                    <p>Teams</p>
+                </div>
+
+                {{#each ../tournaments}}
+
+                <div class="col-md-10 mx-auto text-center new_flex">
+
+                    {{#each this}} {{#checkiftrue ../../id tournament_id}}
+                    <div class="d-block py-3 text-center mybox" style="width: 18rem;">
+                        <img src="/img/clubs.png" width="70px" height="70px" alt="Card image cap">
+                        <div>
+                            <h5 class="card-title text-white"> {{teamname}}</h5>
+                        </div>
+                    </div>
+                    {{/checkiftrue}} {{/each}}
+
+                </div>
+
+                {{/each}}
+                <div class="col-md-10 mx-auto text-center py-2">
+                    <button class="btn btn-info" disabled>Fixtures</button>
+                </div>
+
+                {{/each}}
+            </div>
         </div>
     </div>
 </section>
-
-{{!-- Organizer's block --}}
-{{#if user.user.organizer}}
-
-<div class="container">  
-    <div class="flex_box">
-    {{#each requests}}
-        <div class="card helper" style="width: 20rem;">
-            <img class="mx-auto" src="/img/club.png" width="50px" height="100px" alt="Card image cap">
-            <div class="card-block">
-                <p class="card-title text-info text-center">Request to join {{tournament_name}}</p>
-                <p class="card-text text-center">This is a request from {{teamname}} to participate in {{tournament_name}}</p>
-                <div class=" cardFooter p-1">
-                    <form class="accept" >
-                        <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
-                        <input type="text" name="team_id" value={{team_id}} class="d-none">
-                        <input type="submit" class="btn btn-primary d-inline-block" value="Accept">
-                    </form>&nbsp&nbsp
-                    <form class="reject">
-                        <input type="text" name="team_id" value={{team_id}} class="d-none">
-                        <input type="text" name="tournament_id" value={{tournament_id}} class="d-none">
-                        <input type="submit" class="btn btn-danger d-inline-block" value="Reject">
-                    </form>
-                </div>
-            </div>  
-        </div>
-        <br><br>
-    {{/each}}
-   </div>
-</div>
-
- <div class="row">
-{{#each id}}
-
-     <div class="col-md-12 mx-auto text-center ">
-            <hr>
-            <span><h1 class="d-inline">{{tournamentName}}</h1><small>(tournament)</small></span>
-            <hr>
-            <p>Teams</p>
-    </div>
-    
-            {{#each ../tournaments}}
-           
-                <div class="col-md-10 mx-auto text-center new_flex">  
-                   
-                    {{#each this}}                       
-                        {{#checkiftrue ../../id tournament_id}}
-                        <div class="d-block py-3 text-center mybox" style="width: 18rem;">
-                            <img  src="/img/clubs.png" width="70px" height="70px" alt="Card image cap">
-                            <div >
-                                <h5 class="card-title text-white"> {{teamname}}</h5>
-                            </div>
-                        </div>                               
-                        {{/checkiftrue}}
-                    {{/each}}
-                    
-                </div>
-          
-            {{/each}}
-         <div class="col-md-10 mx-auto text-center py-2">
-            <button class="btn btn-info" disabled>Fixtures</button>
-         </div>   
- 
-{{/each}}
-</div>
-{{/if}}
 {{/if}}
