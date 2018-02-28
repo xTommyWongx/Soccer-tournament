@@ -24,7 +24,7 @@
                 <div class="clubImg">
                     {{#if user.user.img}}
                     <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
-                    <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
+                    <img src="/img/clubLogo.png" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
                 </div>
                 <br>
             </div>
@@ -170,7 +170,8 @@
 </section>
 {{/if}} {{!-- End of player block --}} 
 
-{{!-- Organizer's block --}} {{#if user.user.organizer}}
+{{!-- Organizer's block --}} 
+{{#if user.user.organizer}}
 <section class="clubPage">
     <div class="clubContainer container-fluid">
         <div class="row sizerow">
@@ -178,7 +179,7 @@
                 <div class="clubImg">
                     {{#if user.user.img}}
                     <img src="{{user.user.img}}" alt="profile picture" id="profile-pic" class="img-fluid"> {{else}}
-                    <img src="/img/mancity.svg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
+                    <img src="/img/kakashi.jpg" alt="profile picture" id="profile-pic" class="clubImg"> {{/if}}
                 </div>
                 <br>
             </div>
@@ -200,9 +201,7 @@
     </div>
     <div class="teamInfo container-fluid">
         <div class="row">
-            <div class="adSpace col-lg-3 col-md-3">
-            </div>
-            <div class="container col-lg-8 col-md-8">
+            <div class="container">
                 <div class="flex_box">
                     {{#each requests}}
                     <div class="card helper" style="width: 20rem;">
@@ -235,9 +234,7 @@
                     <hr>
                     <span>
                         <h1 class="d-inline">{{tournamentName}}</h1>
-                        <small>(tournament)</small>
                     </span>
-                    <hr>
                     <p>Teams</p>
                 </div>
 
