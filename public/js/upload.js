@@ -40,7 +40,7 @@ if($('.join_tournament') != null){
                xhr.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     form[i].querySelector('#input').value = "Cancel request";
-                    form[i].querySelector('#input').classList.remove('btn-success');
+                    // form[i].querySelector('#input').classList.remove('btn-success');
                     form[i].querySelector('#input').classList.add('btn-danger');
                     
                 }
@@ -58,7 +58,7 @@ if($('.join_tournament') != null){
                 if (this.readyState == 4 && this.status == 200) {
                     form[i].querySelector('#input').value = "Join tournament";
                     form[i].querySelector('#input').classList.remove('btn-danger');
-                    form[i].querySelector('#input').classList.add('btn-success');
+                    // form[i].querySelector('#input').classList.add('btn-success');
                     
                 }
               };
