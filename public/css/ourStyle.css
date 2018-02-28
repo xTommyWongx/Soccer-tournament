@@ -265,7 +265,7 @@ body {
 /* --end of card */
 
 hr {
-    color: #fff !important;
+    border-top: 3px solid rgb(23, 110, 168);
 }
 .facebook-btn {
     background: linear-gradient(-90deg, rgb(23, 110, 168), rgb(9, 125, 192));
@@ -415,7 +415,7 @@ img {
 }
 @media (max-width: 56.25em){
     .imgContainer {
-        max-width: 250px;
+        max-width: 230px;
         height:200px;
 }}
 .playerImg {
@@ -544,7 +544,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 50.25em){
     .clubDetails {
         font-size: 10px;
-        max-width: 200px;
+        max-width: 180px;
         margin-left: 0;
     }
 .clubName {
@@ -552,7 +552,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 .staImg {
-    max-height: 240px;
+    max-height: 220px;
 }
 @media (max-width: 56.25em){
     .staImg {
@@ -670,11 +670,14 @@ li {
 }
 .troImg {
     margin-top: 20px;
+    max-height: 180px;
+    margin-left: 60px;
 }
 @media (max-width: 50.25em){
     .troImg {
         max-height: 100px;
         margin-top: 20px;
+        margin-left: 34px;
     }
 }
 .tourneyDetails {
